@@ -1,0 +1,43 @@
+[gd_scene load_steps=10 format=3 uid="uid://ibhvykvk0l1h"]
+
+[ext_resource type="Script" uid="uid://cs0no4npoeeye" path="res://Player/PlayerCharacter.cs" id="1_pxyys"]
+[ext_resource type="Script" uid="uid://cpstywefhjmg8" path="res://Player/Input/InputGatherer.cs" id="2_pxyys"]
+[ext_resource type="Script" uid="uid://dk86atue48pac" path="res://Player/Model.cs" id="3_nn7gb"]
+[ext_resource type="Script" uid="uid://dbvarsp0ounar" path="res://Player/StateMachine/MoveMoving.cs" id="4_6f781"]
+[ext_resource type="Script" uid="uid://8ufc61fssymr" path="res://Player/StateMachine/MoveIdle.cs" id="5_ik8g8"]
+[ext_resource type="Script" uid="uid://j3crj01qhmma" path="res://Player/StateMachine/MoveInteracting.cs" id="6_x7hbx"]
+[ext_resource type="Texture2D" uid="uid://ckv3jqd0viyhp" path="res://icon.svg" id="7_gnsy3"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pxyys"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n04vi"]
+radius = 29.14
+height = 98.84
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_pxyys")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+material = SubResource("CanvasItemMaterial_pxyys")
+use_parent_material = true
+shape = SubResource("CapsuleShape2D_n04vi")
+
+[node name="Input" type="Node" parent="."]
+script = ExtResource("2_pxyys")
+
+[node name="Model" type="Node" parent="."]
+script = ExtResource("3_nn7gb")
+
+[node name="Moving" type="Node" parent="Model"]
+script = ExtResource("4_6f781")
+
+[node name="Idle" type="Node" parent="Model"]
+script = ExtResource("5_ik8g8")
+
+[node name="Interacting" type="Node" parent="Model"]
+script = ExtResource("6_x7hbx")
+
+[node name="IDK" type="Node" parent="Model"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("7_gnsy3")
