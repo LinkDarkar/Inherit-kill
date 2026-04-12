@@ -1,8 +1,36 @@
-[gd_scene load_steps=2 format=3 uid="uid://bf0p6jr0wr8xy"]
+[gd_scene format=3 uid="uid://bf0p6jr0wr8xy"]
 
 [ext_resource type="PackedScene" uid="uid://ibhvykvk0l1h" path="res://Player/PlayerCharacter.tscn" id="1_wtcfe"]
+[ext_resource type="PackedScene" uid="uid://boxuehltmn0ih" path="res://ui_test.tscn" id="2_0e48y"]
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="Gradient" id="Gradient_0e48y"]
+offsets = PackedFloat32Array(0, 0.005376344)
 
-[node name="Player" parent="." instance=ExtResource("1_wtcfe")]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_epypp"]
+gradient = SubResource("Gradient_0e48y")
+fill = 2
+fill_from = Vector2(0, 1)
+
+[node name="Node2D" type="Node2D" unique_id=1561003113]
+
+[node name="Player" parent="." unique_id=362596283 instance=ExtResource("1_wtcfe")]
 position = Vector2(531, 137)
+
+[node name="UI" parent="." unique_id=754586874 instance=ExtResource("2_0e48y")]
+
+[node name="white thing3" type="Sprite2D" parent="." unique_id=1257693402]
+position = Vector2(470.99994, 471.99997)
+scale = Vector2(6.573272, 3.2012935)
+texture = SubResource("GradientTexture2D_epypp")
+
+[node name="white thing" type="Sprite2D" parent="." unique_id=733836796]
+position = Vector2(210, 209)
+scale = Vector2(2.234375, 4.21875)
+texture = SubResource("GradientTexture2D_epypp")
+
+[node name="white thing2" type="Sprite2D" parent="." unique_id=1086876503]
+position = Vector2(963.75, 389.5)
+scale = Vector2(5.882813, 1.546875)
+texture = SubResource("GradientTexture2D_epypp")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=848003950]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ibhvykvk0l1h"]
+[gd_scene format=3 uid="uid://ibhvykvk0l1h"]
 
 [ext_resource type="Script" uid="uid://cs0no4npoeeye" path="res://Player/PlayerCharacter.cs" id="1_pxyys"]
 [ext_resource type="Script" uid="uid://cpstywefhjmg8" path="res://Player/Input/InputGatherer.cs" id="2_pxyys"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" uid="uid://8ufc61fssymr" path="res://Player/StateMachine/MoveIdle.cs" id="5_ik8g8"]
 [ext_resource type="Script" uid="uid://j3crj01qhmma" path="res://Player/StateMachine/MoveInteracting.cs" id="6_x7hbx"]
 [ext_resource type="Texture2D" uid="uid://ckv3jqd0viyhp" path="res://icon.svg" id="7_gnsy3"]
+[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="8_6f781"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="9_ik8g8"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pxyys"]
 
@@ -14,30 +16,42 @@
 radius = 29.14
 height = 98.84
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="Resource" id="Resource_x7hbx"]
+script = ExtResource("9_ik8g8")
+
+[node name="Player" type="CharacterBody2D" unique_id=1147506120]
 script = ExtResource("1_pxyys")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=15121375]
 material = SubResource("CanvasItemMaterial_pxyys")
 use_parent_material = true
 shape = SubResource("CapsuleShape2D_n04vi")
 
-[node name="Input" type="Node" parent="."]
+[node name="Input" type="Node" parent="." unique_id=1729832461]
 script = ExtResource("2_pxyys")
 
-[node name="Model" type="Node" parent="."]
+[node name="Model" type="Node" parent="." unique_id=862488429]
 script = ExtResource("3_nn7gb")
 
-[node name="Moving" type="Node" parent="Model"]
+[node name="Moving" type="Node" parent="Model" unique_id=996748224]
 script = ExtResource("4_6f781")
 
-[node name="Idle" type="Node" parent="Model"]
+[node name="Idle" type="Node" parent="Model" unique_id=1852934185]
 script = ExtResource("5_ik8g8")
 
-[node name="Interacting" type="Node" parent="Model"]
+[node name="Interacting" type="Node" parent="Model" unique_id=714361874]
 script = ExtResource("6_x7hbx")
 
-[node name="IDK" type="Node" parent="Model"]
+[node name="IDK" type="Node" parent="Model" unique_id=692331646]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2033065456]
 texture = ExtResource("7_gnsy3")
+
+[node name="PhantomCamera2D" type="Node2D" parent="." unique_id=1063934641 node_paths=PackedStringArray("follow_target")]
+top_level = true
+script = ExtResource("8_6f781")
+follow_mode = 1
+follow_target = NodePath("..")
+tween_resource = SubResource("Resource_x7hbx")
+draw_limits = true
+metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
