@@ -25,8 +25,9 @@ PhantomCameraManager="*uid://duq6jhf6unyis"
 
 [display]
 
-window/size/viewport_width=1280
-window/size/viewport_height=720
+window/size/viewport_width=640
+window/size/viewport_height=480
+window/vsync/vsync_mode=0
 
 [dotnet]
 

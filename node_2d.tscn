@@ -1,7 +1,15 @@
-[gd_scene format=3 uid="uid://bf0p6jr0wr8xy"]
+[gd_scene format=4 uid="uid://bf0p6jr0wr8xy"]
 
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_kdubu"]
 [ext_resource type="PackedScene" uid="uid://ibhvykvk0l1h" path="res://Player/PlayerCharacter.tscn" id="1_wtcfe"]
 [ext_resource type="PackedScene" uid="uid://boxuehltmn0ih" path="res://ui_test.tscn" id="2_0e48y"]
+[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_d21ai"]
+[ext_resource type="Texture2D" uid="uid://rp8d8mq61j07" path="res://Assets/tilesets/greybox tileset test.png" id="3_epypp"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_rj586"]
+
+[sub_resource type="Resource" id="Resource_4d7sh"]
+script = ExtResource("3_rj586")
+metadata/_custom_type_script = "uid://8umksf8e80fw"
 
 [sub_resource type="Gradient" id="Gradient_0e48y"]
 offsets = PackedFloat32Array(0, 0.005376344)
@@ -11,12 +19,54 @@ gradient = SubResource("Gradient_0e48y")
 fill = 2
 fill_from = Vector2(0, 1)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0hol4"]
+texture = ExtResource("3_epypp")
+1:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+6:1/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+9:3/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_q6r6c"]
+sources/0 = SubResource("TileSetAtlasSource_0hol4")
+
 [node name="Node2D" type="Node2D" unique_id=1561003113]
 
-[node name="Player" parent="." unique_id=362596283 instance=ExtResource("1_wtcfe")]
-position = Vector2(531, 137)
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1450512105]
+physics_interpolation_mode = 1
+top_level = true
+position = Vector2(318, 240)
+editor_draw_limits = true
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D" unique_id=315511038]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("1_kdubu")
+metadata/_custom_type_script = "uid://bd046eokvcnu2"
+
+[node name="PhantomCamera2D" type="Node2D" parent="." unique_id=909980143 node_paths=PackedStringArray("follow_target")]
+top_level = true
+position = Vector2(318, 240)
+script = ExtResource("2_d21ai")
+follow_mode = 1
+follow_target = NodePath("../Player")
+tween_resource = SubResource("Resource_4d7sh")
+draw_limits = true
+metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
 
 [node name="UI" parent="." unique_id=754586874 instance=ExtResource("2_0e48y")]
+visible = false
 
 [node name="white thing3" type="Sprite2D" parent="." unique_id=1257693402]
 position = Vector2(470.99994, 471.99997)
@@ -33,4 +83,9 @@ position = Vector2(963.75, 389.5)
 scale = Vector2(5.882813, 1.546875)
 texture = SubResource("GradientTexture2D_epypp")
 
+[node name="Player" parent="." unique_id=362596283 instance=ExtResource("1_wtcfe")]
+position = Vector2(318, 240)
+
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=848003950]
+tile_map_data = PackedByteArray("AAAaAAcAAAABAAEAAAAbAAcAAAABAAEAAAAcAAcAAAABAAEAAAAdAAcAAAABAAEAAAAdAAgAAAABAAEAAAAcAAgAAAABAAEAAAAbAAgAAAABAAEAAAAaAAgAAAABAAEAAAAaAAkAAAABAAEAAAAbAAkAAAABAAEAAAAcAAkAAAABAAEAAAAdAAkAAAABAAEAAAAdAAoAAAABAAEAAAAcAAoAAAABAAEAAAAbAAoAAAABAAEAAAAaAAoAAAABAAEAAAAZAAoAAAABAAEAAAAZAAsAAAABAAEAAAAaAAsAAAABAAEAAAAbAAsAAAABAAEAAAAeAAoAAAAGAAMAAAAfAAoAAAAGAAMAAAAdAAsAAAABAAEAAAAcAAsAAAABAAEAAAAeAAsAAAABAAEAAAAfAAsAAAABAAEAAAAgAAsAAAABAAEAAAAhAAsAAAABAAEAAAAiAAsAAAABAAEAAAAjAAsAAAABAAEAAAAkAAsAAAABAAEAAAAlAAsAAAABAAEAAAAmAAsAAAABAAEAAAAnAAsAAAABAAEAAAAoAAsAAAABAAEAAAApAAsAAAABAAEAAAAqAAsAAAABAAEAAAAqAAoAAAAJAAMAAAApAAoAAAAHAAMAAAAoAAoAAAAHAAMAAAAnAAoAAAAHAAMAAAAmAAoAAAAHAAMAAAAlAAoAAAAHAAMAAAAkAAoAAAAHAAMAAAAjAAoAAAAHAAMAAAAiAAoAAAAHAAMAAAAhAAoAAAAHAAMAAAAgAAoAAAAHAAMAAAAZAAkAAAABAAEAAAAZAAgAAAABAAEAAAAZAAcAAAABAAEAAAAkAAYAAAADAAMAAAAlAAYAAAAEAAMAAAAlAAcAAAAEAAQAAAAkAAcAAAADAAQAAAApAAYAAAAGAAMAAAApAAcAAAAGAAQAAAAqAAYAAAAHAAMAAAArAAYAAAAHAAMAAAAsAAYAAAAJAAMAAAAsAAcAAAAJAAQAAAArAAcAAAAIAAQAAAAqAAcAAAAIAAQAAAAfAAQAAAAGAAEAAAAfAAUAAAAGAAEAAAAgAAUAAAAGAAEAAAAgAAQAAAAGAAEAAAAhAAQAAAAGAAEAAAAhAAUAAAAGAAEAAAAiAAUAAAAGAAEAAAAiAAQAAAAGAAEAAAAeAAQAAAAGAAEAAAAeAAUAAAAGAAEAAAAdAAQAAAAGAAEAAAAdAAUAAAAGAAEAAAAdAAMAAAAGAAEAAAAeAAMAAAAGAAEAAAAfAAMAAAAGAAEAAAAgAAMAAAAGAAEAAAAhAAMAAAAGAAEAAAAiAAMAAAAGAAEAAAA=")
+tile_set = SubResource("TileSet_q6r6c")

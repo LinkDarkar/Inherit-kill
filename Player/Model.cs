@@ -16,7 +16,6 @@ public partial class Model : Node
         Node moving = GetTree().CurrentScene.GetNode<CharacterBody2D>("Player").GetNode<Node>("Model").GetNode<Node>("Moving");
         Node interacting = GetTree().CurrentScene.GetNode<CharacterBody2D>("Player").GetNode<Node>("Model").GetNode<Node>("Interacting");
 
-
         this.moves = new Godot.Collections.Dictionary<MOVES, MoveBase>
         {
             {MOVES.IDLE, (MoveBase)idle},

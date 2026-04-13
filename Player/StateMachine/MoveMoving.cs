@@ -29,7 +29,7 @@ public partial class MoveMoving : MoveBase
     {
         this.player.Velocity = new Vector2(inputPackage.movementDirection.X * this.speed, inputPackage.movementDirection.Y * this.speed);
         this.player.MoveAndSlide();
-        GD.Print("A");
+        GD.Print($"player velocity {this.player.Velocity}");
     }
 
     public override void OnEnterState()
