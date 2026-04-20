@@ -3,7 +3,7 @@ using System;
 
 public partial class MoveMoving : MoveBase
 {
-    private float speed = 350f;
+    private float speed = 110f;
 
     public override void _Ready()
     {

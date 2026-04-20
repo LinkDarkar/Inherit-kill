@@ -11,15 +11,21 @@
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pxyys"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n04vi"]
-radius = 16.0
-height = 32.0
+radius = 7.0
+height = 32.19
 
 [node name="Player" type="CharacterBody2D" unique_id=1147506120]
 script = ExtResource("1_pxyys")
 
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2033065456]
+scale = Vector2(0.26, 0.26)
+texture = ExtResource("7_gnsy3")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=15121375]
 material = SubResource("CanvasItemMaterial_pxyys")
 use_parent_material = true
+position = Vector2(0, 10)
+rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_n04vi")
 
 [node name="Input" type="Node" parent="." unique_id=1729832461]
@@ -38,7 +44,3 @@ script = ExtResource("5_ik8g8")
 script = ExtResource("6_x7hbx")
 
 [node name="IDK" type="Node" parent="Model" unique_id=692331646]
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2033065456]
-scale = Vector2(0.26, 0.26)
-texture = ExtResource("7_gnsy3")
