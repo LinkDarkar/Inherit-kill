@@ -5,5 +5,6 @@ public enum MOVES
     IDLE,
     MOVING,
 
-    INTERACTING
+    INTERACTING,
+    ATTACKING
 }

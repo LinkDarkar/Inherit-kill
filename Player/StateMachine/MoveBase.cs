@@ -5,12 +5,12 @@ public partial class MoveBase : Node
 {
     public MOVES moveType;
     public CharacterBody2D player;
-    public AnimationPlayer animationPlayer;
     public static Dictionary<MOVES, int> movesPriority = new Godot.Collections.Dictionary<MOVES, int>
     {
         {MOVES.IDLE, 1},
         {MOVES.MOVING, 2},
-        {MOVES.INTERACTING, 10}
+        {MOVES.INTERACTING, 10},
+        {MOVES.ATTACKING, 12}
     };
 
     // TODO give inputs

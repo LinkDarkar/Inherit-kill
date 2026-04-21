@@ -1,4 +1,3 @@
-
 using Godot;
 using Godot.Collections;
 
@@ -7,15 +6,7 @@ public partial class InputPackage : Node
     public Vector2 movementDirection = new Vector2();
     public Array<MOVES> actions = new Array<MOVES>();
 
-    public enum LOOK_DIRECTION
-    {
-        UP,
-        DOWN,
-        LEFT,
-        RIGHT
-    };
-
-    public LOOK_DIRECTION lastDirection = LOOK_DIRECTION.DOWN;
+    public DIRECTION lastDirection = DIRECTION.DOWN;
 
     public override void _Ready()
     {
@@ -28,22 +19,22 @@ public partial class InputPackage : Node
         {
             if (this.movementDirection.X > 0)
             {
-                lastDirection = LOOK_DIRECTION.RIGHT;
+                lastDirection = DIRECTION.RIGHT;
             }
             else
             {
-                lastDirection = LOOK_DIRECTION.LEFT;
+                lastDirection = DIRECTION.LEFT;
             }
         }
         else
         {
             if (this.movementDirection.Y > 0)
             {
-                lastDirection = LOOK_DIRECTION.DOWN;
+                lastDirection = DIRECTION.DOWN;
             }
             else
             {
-                lastDirection = LOOK_DIRECTION.UP;
+                lastDirection = DIRECTION.UP;
             }
         }
     }

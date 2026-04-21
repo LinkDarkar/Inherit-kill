@@ -21,6 +21,10 @@ public partial class MoveIdle : MoveBase
         {
             return MOVES.MOVING;
         }
+        else if (inputPackage.actions.Contains(MOVES.ATTACKING) == true)
+        {
+            return MOVES.ATTACKING;
+        }
 
         return base.TransitionLogic(inputPackage);
     }
@@ -28,27 +32,10 @@ public partial class MoveIdle : MoveBase
     public override void OnEnterState()
     {
         base.OnEnterState();
-        this.animationPlayer.Stop();
     }
 
     public override void Update(InputPackage inputPackage, double delta)
     {
         base.Update(inputPackage, delta);
-        if (inputPackage.lastDirection == InputPackage.LOOK_DIRECTION.RIGHT)
-        {
-            this.animationPlayer.Play("idle_right");
-        }
-        else if (inputPackage.lastDirection == InputPackage.LOOK_DIRECTION.LEFT)
-        {
-            this.animationPlayer.Play("idle_left");
-        }
-        else if (inputPackage.lastDirection == InputPackage.LOOK_DIRECTION.DOWN)
-        {
-            this.animationPlayer.Play("idle_down");
-        }
-        else if (inputPackage.lastDirection == InputPackage.LOOK_DIRECTION.UP)
-        {
-            this.animationPlayer.Play("idle_up");
-        }
     }
 }

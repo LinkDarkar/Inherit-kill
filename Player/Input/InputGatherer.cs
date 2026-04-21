@@ -4,7 +4,7 @@ using System;
 public partial class InputGatherer : Node
 {
     private InputPackage inputPackage;
-    private InputPackage.LOOK_DIRECTION lastDirection;
+    private DIRECTION lastDirection;
 
     public override void _Ready()
     {
@@ -25,6 +25,13 @@ public partial class InputGatherer : Node
         else
         {
             this.inputPackage.lastDirection = this.lastDirection;
+        }
+
+
+        if (Input.IsActionJustPressed("player_attack"))
+        {
+            // GD.Print("pressed attatacks");
+            this.inputPackage.actions.Add(MOVES.ATTACKING);
         }
 
         return this.inputPackage;

@@ -2,11 +2,18 @@
 
 [ext_resource type="Script" uid="uid://cs0no4npoeeye" path="res://Player/PlayerCharacter.cs" id="1_pxyys"]
 [ext_resource type="Texture2D" uid="uid://bj285mxkowrjf" path="res://Assets/spritesheets/urotsuki_sprite_sheet.png" id="2_gnsy3"]
+[ext_resource type="Texture2D" uid="uid://b68ajfanu85ea" path="res://Assets/spritesheets/spritesheetcharacter.png" id="2_nn7gb"]
 [ext_resource type="Script" uid="uid://cpstywefhjmg8" path="res://Player/Input/InputGatherer.cs" id="2_pxyys"]
 [ext_resource type="Script" uid="uid://dk86atue48pac" path="res://Player/Model.cs" id="3_nn7gb"]
 [ext_resource type="Script" uid="uid://dbvarsp0ounar" path="res://Player/StateMachine/MoveMoving.cs" id="4_6f781"]
+[ext_resource type="Texture2D" uid="uid://dunqdxwc4bna5" path="res://Assets/spritesheets/urotsuki attack chainsaw.png" id="4_ik8g8"]
 [ext_resource type="Script" uid="uid://8ufc61fssymr" path="res://Player/StateMachine/MoveIdle.cs" id="5_ik8g8"]
 [ext_resource type="Script" uid="uid://j3crj01qhmma" path="res://Player/StateMachine/MoveInteracting.cs" id="6_x7hbx"]
+[ext_resource type="Script" uid="uid://cdl8oeuq1ti15" path="res://Player/MoveAttacking.cs" id="10_ik8g8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6f781"]
+atlas = ExtResource("2_nn7gb")
+region = Rect2(432, 0, 72, 128)
 
 [sub_resource type="Animation" id="Animation_gnsy3"]
 length = 0.001
@@ -172,6 +179,94 @@ _data = {
 &"walk_up": SubResource("Animation_x7hbx")
 }
 
+[sub_resource type="Animation" id="Animation_gjyvj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="Animation" id="Animation_grsr8"]
+resource_name = "attack_down"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 4, 8, 12]
+}
+
+[sub_resource type="Animation" id="Animation_0ykgn"]
+resource_name = "attack_left"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [3, 7, 11, 15]
+}
+
+[sub_resource type="Animation" id="Animation_8v6cl"]
+resource_name = "attack_right"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [2, 6, 10, 14]
+}
+
+[sub_resource type="Animation" id="Animation_3ypln"]
+resource_name = "attack_up"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [1, 5, 9, 13]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ix2we"]
+_data = {
+&"RESET": SubResource("Animation_gjyvj"),
+&"attack_down": SubResource("Animation_grsr8"),
+&"attack_left": SubResource("Animation_0ykgn"),
+&"attack_right": SubResource("Animation_8v6cl"),
+&"attack_up": SubResource("Animation_3ypln")
+}
+
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pxyys"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n04vi"]
@@ -181,6 +276,17 @@ height = 10.09
 [node name="Player" type="CharacterBody2D" unique_id=1147506120]
 script = ExtResource("1_pxyys")
 
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1862484154]
+visible = false
+texture = SubResource("AtlasTexture_6f781")
+hframes = 3
+vframes = 4
+frame = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D2" unique_id=1365778718]
+libraries/ = SubResource("AnimationLibrary_8llf3")
+speed_scale = 0.5
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2033065456]
 texture = ExtResource("2_gnsy3")
 hframes = 3
@@ -189,6 +295,17 @@ frame = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D" unique_id=48019319]
 libraries/ = SubResource("AnimationLibrary_8llf3")
+speed_scale = 0.5
+
+[node name="AttackSprite" type="Sprite2D" parent="." unique_id=1139006262]
+visible = false
+texture = ExtResource("4_ik8g8")
+hframes = 4
+vframes = 4
+frame = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AttackSprite" unique_id=1858194267]
+libraries/ = SubResource("AnimationLibrary_ix2we")
 speed_scale = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=15121375]
@@ -214,3 +331,6 @@ script = ExtResource("5_ik8g8")
 script = ExtResource("6_x7hbx")
 
 [node name="IDK" type="Node" parent="Model" unique_id=692331646]
+
+[node name="Attacking" type="Node" parent="Model" unique_id=1859487508]
+script = ExtResource("10_ik8g8")
