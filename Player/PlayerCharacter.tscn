@@ -1,25 +1,123 @@
 [gd_scene format=3 uid="uid://ibhvykvk0l1h"]
 
 [ext_resource type="Script" uid="uid://cs0no4npoeeye" path="res://Player/PlayerCharacter.cs" id="1_pxyys"]
+[ext_resource type="Texture2D" uid="uid://bj285mxkowrjf" path="res://Assets/spritesheets/urotsuki_sprite_sheet.png" id="2_gnsy3"]
 [ext_resource type="Script" uid="uid://cpstywefhjmg8" path="res://Player/Input/InputGatherer.cs" id="2_pxyys"]
 [ext_resource type="Script" uid="uid://dk86atue48pac" path="res://Player/Model.cs" id="3_nn7gb"]
 [ext_resource type="Script" uid="uid://dbvarsp0ounar" path="res://Player/StateMachine/MoveMoving.cs" id="4_6f781"]
 [ext_resource type="Script" uid="uid://8ufc61fssymr" path="res://Player/StateMachine/MoveIdle.cs" id="5_ik8g8"]
 [ext_resource type="Script" uid="uid://j3crj01qhmma" path="res://Player/StateMachine/MoveInteracting.cs" id="6_x7hbx"]
-[ext_resource type="Texture2D" uid="uid://ckv3jqd0viyhp" path="res://icon.svg" id="7_gnsy3"]
+
+[sub_resource type="Animation" id="Animation_gnsy3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+
+[sub_resource type="Animation" id="Animation_nn7gb"]
+resource_name = "walk_down"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [8, 7, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_6f781"]
+resource_name = "walk_left"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [9, 10, 11, 10]
+}
+
+[sub_resource type="Animation" id="Animation_ik8g8"]
+resource_name = "walk_right"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [5, 4, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_x7hbx"]
+resource_name = "walk_up"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8llf3"]
+_data = {
+&"RESET": SubResource("Animation_gnsy3"),
+&"walk_down": SubResource("Animation_nn7gb"),
+&"walk_left": SubResource("Animation_6f781"),
+&"walk_right": SubResource("Animation_ik8g8"),
+&"walk_up": SubResource("Animation_x7hbx")
+}
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pxyys"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n04vi"]
-radius = 7.0
-height = 32.19
+radius = 2.92
+height = 10.09
 
 [node name="Player" type="CharacterBody2D" unique_id=1147506120]
 script = ExtResource("1_pxyys")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2033065456]
-scale = Vector2(0.26, 0.26)
-texture = ExtResource("7_gnsy3")
+texture = ExtResource("2_gnsy3")
+hframes = 3
+vframes = 4
+frame = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D" unique_id=48019319]
+libraries/ = SubResource("AnimationLibrary_8llf3")
+speed_scale = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=15121375]
 material = SubResource("CanvasItemMaterial_pxyys")

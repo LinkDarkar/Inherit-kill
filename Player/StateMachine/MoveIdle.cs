@@ -25,4 +25,11 @@ public partial class MoveIdle : MoveBase
         return base.TransitionLogic(inputPackage);
     }
 
+    public override void OnEnterState()
+    {
+        base.OnEnterState();
+        this.animationPlayer.Stop();
+    }
+
+
 }

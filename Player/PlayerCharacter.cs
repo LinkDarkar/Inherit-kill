@@ -18,6 +18,4 @@ public partial class PlayerCharacter : CharacterBody2D
 
         this.model.Update(inputPackage, delta);
     }
-
-
 }

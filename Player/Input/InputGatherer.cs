@@ -19,6 +19,7 @@ public partial class InputGatherer : Node
         {
             this.inputPackage.actions.Add(MOVES.MOVING);
         }
+        this.inputPackage.saveDirection();
 
         return this.inputPackage;
     }

@@ -5,6 +5,7 @@ public partial class MoveBase : Node
 {
     public MOVES moveType;
     public CharacterBody2D player;
+    public AnimationPlayer animationPlayer;
     public static Dictionary<MOVES, int> movesPriority = new Godot.Collections.Dictionary<MOVES, int>
     {
         {MOVES.IDLE, 1},

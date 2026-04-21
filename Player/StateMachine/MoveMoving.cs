@@ -29,7 +29,10 @@ public partial class MoveMoving : MoveBase
     {
         this.player.Velocity = new Vector2(inputPackage.movementDirection.X * this.speed, inputPackage.movementDirection.Y * this.speed);
         this.player.MoveAndSlide();
-        GD.Print($"player velocity {this.player.Velocity}");
+        // GD.Print($"player velocity {this.player.Velocity}");
+
+        // plays animation depending on direction?
+        this.PlayAnimation(inputPackage);
     }
 
     public override void OnEnterState()
@@ -45,5 +48,25 @@ public partial class MoveMoving : MoveBase
     private Vector2 VelocityByInput(InputPackage inputPackage, float delta)
     {
         return Vector2.Zero;
+    }
+
+    private void PlayAnimation(InputPackage inputPackage)
+    {
+        if (inputPackage.lastDirection == InputPackage.LOOK_DIRECTION.RIGHT)
+        {
+            this.animationPlayer.Play("walk_right");
+        }
+        else if (inputPackage.lastDirection == InputPackage.LOOK_DIRECTION.LEFT)
+        {
+            this.animationPlayer.Play("walk_left");
+        }
+        else if (inputPackage.lastDirection == InputPackage.LOOK_DIRECTION.DOWN)
+        {
+            this.animationPlayer.Play("walk_down");
+        }
+        else if (inputPackage.lastDirection == InputPackage.LOOK_DIRECTION.UP)
+        {
+            this.animationPlayer.Play("walk_up");
+        }
     }
 }
