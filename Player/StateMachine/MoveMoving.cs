@@ -29,9 +29,7 @@ public partial class MoveMoving : MoveBase
     {
         this.player.Velocity = new Vector2(inputPackage.movementDirection.X * this.speed, inputPackage.movementDirection.Y * this.speed);
         this.player.MoveAndSlide();
-        // GD.Print($"player velocity {this.player.Velocity}");
 
-        // plays animation depending on direction?
         this.PlayAnimation(inputPackage);
     }
 
