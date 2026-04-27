@@ -3,10 +3,15 @@ using System;
 
 public partial class MoveAttacking : MoveBase
 {
+    private Area2D attackArea;
+
     public override void _Ready()
     {
         this.moveType = MOVES.ATTACKING;
-        base._Ready();
+
+        this.attackArea = GetTree().CurrentScene.GetNode<CharacterBody2D>("Player").GetNode<Area2D>("Area2DAttack");
+        this.attackArea.Visible = false;
+        this.attackArea.Monitoring = false;
     }
 
     public override MOVES TransitionLogic(InputPackage inputPackage)
@@ -16,18 +21,19 @@ public partial class MoveAttacking : MoveBase
 
     public override void Update(InputPackage inputPackage, double delta)
     {
-        // this.PlayAnimation(inputPackage);
     }
 
     public override void OnEnterState()
     {
-        GD.Print("enters attack");
+        this.attackArea.Visible = true;
+        this.attackArea.Monitoring = true;
         base.OnEnterState();
     }
 
     public override void OnExitState()
     {
-        GD.Print("exits attack");
+        this.attackArea.Visible = false;
+        this.attackArea.Monitoring = false;
         base.OnExitState();
     }
 }

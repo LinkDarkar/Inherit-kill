@@ -74,6 +74,14 @@ player_attack={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Environment"
+2d_physics/layer_2="Player"
+2d_physics/layer_3="Interactable NPCs"
+2d_physics/layer_7="Props"
+2d_physics/layer_8="Interactable Props"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

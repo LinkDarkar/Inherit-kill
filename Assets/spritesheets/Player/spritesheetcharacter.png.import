@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dunqdxwc4bna5"
-path="res://.godot/imported/urotsuki attack chainsaw.png-723dc913744ed545e25d14e7ab49abf5.ctex"
+uid="uid://b68ajfanu85ea"
+path="res://.godot/imported/spritesheetcharacter.png-e11db683eaaa8242a5bff59e8667f9e9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/spritesheets/urotsuki attack chainsaw.png"
-dest_files=["res://.godot/imported/urotsuki attack chainsaw.png-723dc913744ed545e25d14e7ab49abf5.ctex"]
+source_file="res://Assets/spritesheets/Player/spritesheetcharacter.png"
+dest_files=["res://.godot/imported/spritesheetcharacter.png-e11db683eaaa8242a5bff59e8667f9e9.ctex"]
 
 [params]
 

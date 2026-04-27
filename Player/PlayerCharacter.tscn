@@ -1,15 +1,18 @@
 [gd_scene format=3 uid="uid://ibhvykvk0l1h"]
 
 [ext_resource type="Script" uid="uid://cs0no4npoeeye" path="res://Player/PlayerCharacter.cs" id="1_pxyys"]
-[ext_resource type="Texture2D" uid="uid://bj285mxkowrjf" path="res://Assets/spritesheets/urotsuki_sprite_sheet.png" id="2_gnsy3"]
-[ext_resource type="Texture2D" uid="uid://b68ajfanu85ea" path="res://Assets/spritesheets/spritesheetcharacter.png" id="2_nn7gb"]
+[ext_resource type="Texture2D" uid="uid://bj285mxkowrjf" path="res://Assets/spritesheets/Player/urotsuki_sprite_sheet.png" id="2_gnsy3"]
+[ext_resource type="Texture2D" uid="uid://b68ajfanu85ea" path="res://Assets/spritesheets/Player/spritesheetcharacter.png" id="2_nn7gb"]
 [ext_resource type="Script" uid="uid://cpstywefhjmg8" path="res://Player/Input/InputGatherer.cs" id="2_pxyys"]
 [ext_resource type="Script" uid="uid://dk86atue48pac" path="res://Player/Model.cs" id="3_nn7gb"]
 [ext_resource type="Script" uid="uid://dbvarsp0ounar" path="res://Player/StateMachine/MoveMoving.cs" id="4_6f781"]
-[ext_resource type="Texture2D" uid="uid://dunqdxwc4bna5" path="res://Assets/spritesheets/urotsuki attack chainsaw.png" id="4_ik8g8"]
+[ext_resource type="Texture2D" uid="uid://dunqdxwc4bna5" path="res://Assets/spritesheets/Player/urotsuki attack chainsaw.png" id="4_ik8g8"]
+[ext_resource type="Script" uid="uid://bn3s0e2vrtg53" path="res://Player/Boxes/Hitbox.cs" id="5_8llf3"]
 [ext_resource type="Script" uid="uid://8ufc61fssymr" path="res://Player/StateMachine/MoveIdle.cs" id="5_ik8g8"]
+[ext_resource type="Texture2D" uid="uid://ckv3jqd0viyhp" path="res://icon.svg" id="5_x7hbx"]
 [ext_resource type="Script" uid="uid://j3crj01qhmma" path="res://Player/StateMachine/MoveInteracting.cs" id="6_x7hbx"]
-[ext_resource type="Script" uid="uid://cdl8oeuq1ti15" path="res://Player/MoveAttacking.cs" id="10_ik8g8"]
+[ext_resource type="Script" uid="uid://cpjjw3uqu4200" path="res://Player/StateMachine/MoveAttacking.cs" id="10_ik8g8"]
+[ext_resource type="AudioStream" uid="uid://cx3qfltnhpw1l" path="res://Assets/Sounds/tm2_chainsaw002.wav" id="13_827r0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6f781"]
 atlas = ExtResource("2_nn7gb")
@@ -193,6 +196,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [2]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AttackSound:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_grsr8"]
 resource_name = "attack_down"
@@ -208,6 +223,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 4, 8, 12]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AttackSound:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_0ykgn"]
@@ -225,6 +252,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [3, 7, 11, 15]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AttackSound:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_8v6cl"]
 resource_name = "attack_right"
@@ -240,6 +279,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [2, 6, 10, 14]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AttackSound:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_3ypln"]
@@ -257,6 +308,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [1, 5, 9, 13]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AttackSound:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ix2we"]
 _data = {
@@ -270,10 +333,16 @@ _data = {
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pxyys"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n04vi"]
-radius = 2.92
-height = 10.09
+radius = 3.0
+height = 10.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ik8g8"]
+radius = 9.0
+height = 25.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1147506120]
+collision_layer = 2
+collision_mask = 197
 script = ExtResource("1_pxyys")
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1862484154]
@@ -287,36 +356,60 @@ frame = 8
 libraries/ = SubResource("AnimationLibrary_8llf3")
 speed_scale = 0.5
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2033065456]
+[node name="Sprite" type="Sprite2D" parent="." unique_id=2033065456]
 texture = ExtResource("2_gnsy3")
+offset = Vector2(0, -12)
 hframes = 3
 vframes = 4
 frame = 8
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D" unique_id=48019319]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite" unique_id=48019319]
 libraries/ = SubResource("AnimationLibrary_8llf3")
 speed_scale = 0.5
 
 [node name="AttackSprite" type="Sprite2D" parent="." unique_id=1139006262]
 visible = false
 texture = ExtResource("4_ik8g8")
+offset = Vector2(0, -12)
 hframes = 4
 vframes = 4
 frame = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AttackSprite" unique_id=1858194267]
 libraries/ = SubResource("AnimationLibrary_ix2we")
-speed_scale = 0.5
+speed_scale = 0.3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=15121375]
+[node name="CollisionBox" type="CollisionShape2D" parent="." unique_id=15121375]
+visible = false
 material = SubResource("CanvasItemMaterial_pxyys")
 use_parent_material = true
-position = Vector2(0, 10)
+position = Vector2(0, -2)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_n04vi")
 
+[node name="Area2DAttack" type="Area2D" parent="." unique_id=212306845]
+visible = false
+position = Vector2(0, -12)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("5_8llf3")
+
+[node name="HitboxAttack" type="CollisionShape2D" parent="Area2DAttack" unique_id=971478518]
+light_mask = 0
+visibility_layer = 1024
+shape = SubResource("CapsuleShape2D_ik8g8")
+debug_color = Color(0.97505087, 0, 0.42576468, 0.41960785)
+
+[node name="SpriteAttackDebug" type="Sprite2D" parent="Area2DAttack" unique_id=1503310523]
+visible = false
+position = Vector2(1.0728836e-06, 4.7683716e-07)
+scale = Vector2(-0.117, -0.181)
+texture = ExtResource("5_x7hbx")
+
 [node name="Input" type="Node" parent="." unique_id=1729832461]
 script = ExtResource("2_pxyys")
+
+[node name="Node" type="Node" parent="." unique_id=1709701979]
 
 [node name="Model" type="Node" parent="." unique_id=862488429]
 script = ExtResource("3_nn7gb")
@@ -334,3 +427,7 @@ script = ExtResource("6_x7hbx")
 
 [node name="Attacking" type="Node" parent="Model" unique_id=1859487508]
 script = ExtResource("10_ik8g8")
+
+[node name="AttackSound" type="AudioStreamPlayer" parent="." unique_id=800306342]
+stream = ExtResource("13_827r0")
+volume_db = -10.0

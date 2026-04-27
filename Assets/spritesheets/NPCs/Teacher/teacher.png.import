@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b68ajfanu85ea"
-path="res://.godot/imported/spritesheetcharacter.png-a07646429c0cd0c5a85834d7b554242b.ctex"
+uid="uid://ct16kk1ob8pqm"
+path="res://.godot/imported/teacher.png-66206353a387e6ec9d796d7ee4f54170.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/spritesheets/spritesheetcharacter.png"
-dest_files=["res://.godot/imported/spritesheetcharacter.png-a07646429c0cd0c5a85834d7b554242b.ctex"]
+source_file="res://Assets/spritesheets/NPCs/Teacher/teacher.png"
+dest_files=["res://.godot/imported/teacher.png-66206353a387e6ec9d796d7ee4f54170.ctex"]
 
 [params]
 

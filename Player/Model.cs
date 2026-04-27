@@ -12,6 +12,8 @@ public partial class Model : Node
     private Sprite2D sprite2D;
     private Sprite2D attackSprite;
 
+    private Area2D hitbox;
+
     private AnimationPlayer animationPlayer;
     private AnimationPlayer animationPlayerAttack;
 
@@ -23,10 +25,12 @@ public partial class Model : Node
 
     public override void _Ready()
     {
-        this.sprite2D = GetTree().CurrentScene.GetNode<CharacterBody2D>("Player").GetNode<Sprite2D>("Sprite2D");
+        this.sprite2D = GetTree().CurrentScene.GetNode<CharacterBody2D>("Player").GetNode<Sprite2D>("Sprite");
         this.attackSprite = GetTree().CurrentScene.GetNode<CharacterBody2D>("Player").GetNode<Sprite2D>("AttackSprite");
 
-        this.animationPlayer = GetTree().CurrentScene.GetNode<CharacterBody2D>("Player").GetNode<Sprite2D>("Sprite2D").GetNode<AnimationPlayer>("AnimationPlayer");
+        this.hitbox = GetTree().CurrentScene.GetNode<CharacterBody2D>("Player").GetNode<Area2D>("Area2DAttack");
+
+        this.animationPlayer = GetTree().CurrentScene.GetNode<CharacterBody2D>("Player").GetNode<Sprite2D>("Sprite").GetNode<AnimationPlayer>("AnimationPlayer");
         this.animationPlayerAttack = GetTree().CurrentScene.GetNode<CharacterBody2D>("Player").GetNode<Sprite2D>("AttackSprite").GetNode<AnimationPlayer>("AnimationPlayer");
 
         // create node variables to give the nodes of the states and then give them to the dictionary
@@ -86,6 +90,7 @@ public partial class Model : Node
         if (state == MOVES.ATTACKING)
         {
             this.attackDirection = this.lastLookDirection;
+            this.UpdateHitboxPosition();
         }
 
         this.currentMove.OnEnterState();
@@ -103,6 +108,29 @@ public partial class Model : Node
             this.sprite2D.Visible = true;
             this.attackSprite.Visible = false;
         }
+    }
+
+    private void UpdateHitboxPosition()
+    {
+        Vector2 positionOffset = this.attackDirection switch
+        {
+            DIRECTION.UP => new Vector2(0,-16),
+            DIRECTION.DOWN => new Vector2(0,-3),
+            DIRECTION.LEFT => new Vector2(-6,-12),
+            DIRECTION.RIGHT => new Vector2(6,-12),
+            _ => new Vector2(0,-3)
+        };
+        this.hitbox.Position = positionOffset;
+
+        float rotation = this.attackDirection switch
+        {
+            DIRECTION.UP => 0f,
+            DIRECTION.DOWN => 0f,
+            DIRECTION.LEFT => 90f,
+            DIRECTION.RIGHT => 90,
+            _ => 0f
+        };
+        this.hitbox.RotationDegrees = rotation;
     }
 
     private void HandleAnimations(InputPackage inputPackage)
