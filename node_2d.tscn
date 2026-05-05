@@ -7,6 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://rp8d8mq61j07" path="res://Assets/tilesets/greybox tileset test.png" id="3_epypp"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_rj586"]
 [ext_resource type="PackedScene" uid="uid://drwetybitm8ya" path="res://NPC/npc.tscn" id="7_d21ai"]
+[ext_resource type="Texture2D" uid="uid://dy0dwuffkgnk1" path="res://Assets/spritesheets/NPCs/Shadow Federico/Shadow_Federico.png" id="7_rj586"]
+[ext_resource type="SpriteFrames" uid="uid://b76rgcx1jsytg" path="res://Assets/spritesheets/NPCs/Guardia/guardia_sprite_frames.tres" id="9_hqns4"]
+[ext_resource type="SpriteFrames" uid="uid://ok1mns1yw0qr" path="res://Assets/spritesheets/NPCs/Fiestero/fiestero_sprite_frames.tres" id="9_ir8iy"]
+[ext_resource type="SpriteFrames" uid="uid://dmod6cyt77jya" path="res://Assets/spritesheets/NPCs/Mesero/mesero_sprite_frames.tres" id="10_x0ka3"]
 
 [sub_resource type="Resource" id="Resource_4d7sh"]
 script = ExtResource("3_rj586")
@@ -286,39 +290,55 @@ y_sort_enabled = true
 
 [node name="NPC" parent="NPCs" unique_id=1442265239 instance=ExtResource("7_d21ai")]
 z_index = 1
-position = Vector2(496, 212)
+position = Vector2(501, 283)
+spriteFrames = ExtResource("9_ir8iy")
+isSpy = true
 
 [node name="NPC2" parent="NPCs" unique_id=1627737644 instance=ExtResource("7_d21ai")]
 z_index = 1
-position = Vector2(320, 65)
+position = Vector2(366, 213)
+spriteFrames = ExtResource("9_ir8iy")
+texture2D = ExtResource("7_rj586")
 
 [node name="NPC3" parent="NPCs" unique_id=302887388 instance=ExtResource("7_d21ai")]
 z_index = 1
-position = Vector2(736, 69)
+position = Vector2(415, 164)
+spriteFrames = ExtResource("9_hqns4")
+pseudoclass = 1
 
 [node name="NPC4" parent="NPCs" unique_id=314609568 instance=ExtResource("7_d21ai")]
 z_index = 1
 position = Vector2(283, 242)
+spriteFrames = ExtResource("9_ir8iy")
 
 [node name="NPC5" parent="NPCs" unique_id=973523800 instance=ExtResource("7_d21ai")]
 z_index = 1
-position = Vector2(856, 187)
+position = Vector2(525, 238)
+spriteFrames = ExtResource("10_x0ka3")
+pseudoclass = 2
 
 [node name="NPC6" parent="NPCs" unique_id=1166161382 instance=ExtResource("7_d21ai")]
 z_index = 1
 position = Vector2(812, 255)
+spriteFrames = ExtResource("9_ir8iy")
 
 [node name="NPC7" parent="NPCs" unique_id=903141054 instance=ExtResource("7_d21ai")]
 z_index = 1
 position = Vector2(1176, 202)
+spriteFrames = ExtResource("9_hqns4")
+pseudoclass = 1
 
 [node name="NPC8" parent="NPCs" unique_id=419037664 instance=ExtResource("7_d21ai")]
 z_index = 1
 position = Vector2(407, 475)
+spriteFrames = ExtResource("9_hqns4")
+pseudoclass = 1
 
 [node name="NPC9" parent="NPCs" unique_id=507059034 instance=ExtResource("7_d21ai")]
 z_index = 1
 position = Vector2(1023, 240)
+spriteFrames = ExtResource("9_hqns4")
+pseudoclass = 1
 
 [node name="Player" parent="." unique_id=362596283 instance=ExtResource("1_wtcfe")]
 z_index = 1
