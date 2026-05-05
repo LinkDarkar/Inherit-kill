@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://qtw6im2nx74e"]
+
+[ext_resource type="Script" uid="uid://bm4edbikcahl5" path="res://MenuPrincipal.cs" id="1_bj1uy"]
+
+[node name="menuPrincipal" type="Control" unique_id=781601253]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bj1uy")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1879724269]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.00017891102, 0.0068437, 0.004387603, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2044147168]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -212.125
+offset_top = -39.25
+offset_right = 212.125
+offset_bottom = 233.25
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="botonJugar" type="Button" parent="VBoxContainer" unique_id=1863013235]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Jugar"
+
+[node name="botonSalir" type="Button" parent="VBoxContainer" unique_id=1148046173]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Salir"
+
+[node name="Label" type="Label" parent="." unique_id=1003800928]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -164.25
+offset_right = 164.25
+offset_bottom = 118.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "
+Inherit kill: Hierarchy"
