@@ -10,7 +10,7 @@ public partial class Npc : CharacterBody2D
     private Texture2D texture2D;
 
     [Export]
-    private bool isSpy = false;
+    public bool isSpy = false;
 
     [Export]
     private PSEUDOCLASS pseudoclass = PSEUDOCLASS.CIVIL;
@@ -118,5 +118,13 @@ public partial class Npc : CharacterBody2D
         this.PlayDyingSound();
         this.PlayVanishEffect();
         this.deathAnimationPlayer.AnimationFinished += this.OnDeathAnimationFinished;
+        if (this.isSpy == true)
+        {
+            GD.Print("exito");
+        }
+        else
+        {
+            GD.Print("fracaso");
+        }
     }
 }

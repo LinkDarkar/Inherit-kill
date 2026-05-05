@@ -242,7 +242,7 @@ y_sort_enabled = true
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1450512105]
 physics_interpolation_mode = 1
 top_level = true
-position = Vector2(440, 245)
+position = Vector2(515, 245)
 zoom = Vector2(1.7, 1.7)
 editor_draw_limits = true
 
@@ -254,17 +254,17 @@ metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
 [node name="PhantomCamera2D" type="Node2D" parent="." unique_id=909980143 node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(440, 245)
+position = Vector2(515, 245)
 script = ExtResource("2_d21ai")
-follow_mode = 1
+follow_mode = 2
 follow_target = NodePath("../Player")
 zoom = Vector2(1.7, 1.7)
 tween_resource = SubResource("Resource_4d7sh")
+follow_offset = Vector2(75, 0)
 draw_limits = true
 metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
 
 [node name="UI" parent="." unique_id=754586874 instance=ExtResource("2_0e48y")]
-visible = false
 
 [node name="Scenery" type="Node2D" parent="." unique_id=1554967292]
 y_sort_enabled = true

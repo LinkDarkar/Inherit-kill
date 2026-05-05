@@ -16,7 +16,7 @@ public partial class MenuPrincipal : Control
 	private void OnBotonJugarPressed()
 	{
 		// CAMBIA "res://nivel_1.tscn" por el nombre real del archivo de tu escena de juego
-		GetTree().ChangeSceneToFile("res://node_2d.tscn");
+		GetTree().ChangeSceneToFile("res://disco.tscn");
 	}
 
 	private void OnBotonSalirPressed()

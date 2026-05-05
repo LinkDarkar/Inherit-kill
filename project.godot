@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="MovimientoJugadorSoftEdu"
-run/main_scene="uid://qtw6im2nx74e"
+run/main_scene="uid://bf0p6jr0wr8xy"
 config/features=PackedStringArray("4.6", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -25,8 +25,8 @@ PhantomCameraManager="*uid://duq6jhf6unyis"
 
 [display]
 
-window/size/viewport_width=1280
-window/size/viewport_height=960
+window/size/viewport_width=1600
+window/size/viewport_height=900
 window/stretch/scale=2.0
 window/vsync/vsync_mode=0
 

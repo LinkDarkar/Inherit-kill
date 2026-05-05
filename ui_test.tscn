@@ -1,15 +1,21 @@
 [gd_scene format=3 uid="uid://boxuehltmn0ih"]
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=754586874]
+scale = Vector2(0.8, 0.8)
+transform = Transform2D(0.8, 0, 0, 0.8, 0, 0)
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=2077950784]
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -376.0
+offset_left = -191.25
+offset_top = 1.2500005
+offset_right = 198.75
+offset_bottom = 224.99988
 grow_horizontal = 0
 grow_vertical = 2
+size_flags_horizontal = 8
 
 [node name="GridContainer" type="GridContainer" parent="PanelContainer" unique_id=737160974]
 visible = false
@@ -29,10 +35,43 @@ theme_override_constants/separation = 10
 [node name="TestTítulo" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1881264766]
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
-text = "Test Título"
+text = "Test Ejercicio 1"
 horizontal_alignment = 1
 
+[node name="TestTítulo2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=608097056]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "class Civil{
+    public void rutina() {
+        animacion(\"Bailar\");
+    }
+}
+class Staff{
+    public void rutina() {
+        animacion(\"Limpiar\");
+    }
+}
+class SeguridadBase {
+    public void rutina() {
+        animacion(\"Vigilar\");
+    }
+}
+
+class ClienteComun extends CivilBase { }
+
+class Mesero extends StaffBase { }
+
+class Guardia extends SeguridadBase { }
+
+class Espia extends CivilBase {
+    public void rutina() {
+        animacion(\"Vigilar\");
+        super.rutina();
+    }
+}"
+
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1234718127]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 20
 
@@ -45,6 +84,7 @@ layout_mode = 2
 text = "7.343.455.640.893.050"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1130215954]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 20
 
@@ -57,6 +97,7 @@ layout_mode = 2
 text = "7.343.455.640.893.050"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1937115595]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 20
 
@@ -69,6 +110,7 @@ layout_mode = 2
 text = "7.343.455.640.893.050"
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=494638890]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 20
 
