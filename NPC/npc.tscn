@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://ct16kk1ob8pqm" path="res://Assets/spritesheets/NPCs/Teacher/teacher.png" id="2_6swda"]
 [ext_resource type="AudioStream" uid="uid://djkmng3mgggir" path="res://Assets/Sounds/ULTIMATE-himei-f.wav" id="3_kh24r"]
 [ext_resource type="SpriteFrames" uid="uid://t0jhg68tdtpo" path="res://Assets/spritesheets/NPCs/Teacher/teacher_sprite_frame.tres" id="5_rovd1"]
+[ext_resource type="AudioStream" uid="uid://dh8mwiynppybj" path="res://Assets/Sounds/UI/good_answer_inherit_kill.wav" id="5_u08xh"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xxcha"]
 radius = 5.0
@@ -39,7 +40,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_ul7y6"]
 resource_name = "dying"
-length = 0.8
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -47,7 +48,7 @@ tracks/0/path = NodePath(".:modulate:a")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.8),
+"times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [1.0, 0.0]
@@ -59,7 +60,7 @@ tracks/1/path = NodePath("../AnimatedSprite2D:modulate:a")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.8),
+"times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [1.0, 0.0]
@@ -90,6 +91,11 @@ shape = SubResource("CapsuleShape2D_xxcha")
 
 [node name="AudioDyingSound" type="AudioStreamPlayer2D" parent="." unique_id=1410807834]
 stream = ExtResource("3_kh24r")
+
+[node name="AudioIfSpy" type="AudioStreamPlayer2D" parent="." unique_id=814069688]
+stream = ExtResource("5_u08xh")
+volume_db = 10.0
+max_polyphony = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1664250867]
 sprite_frames = ExtResource("5_rovd1")

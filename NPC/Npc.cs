@@ -19,6 +19,7 @@ public partial class Npc : CharacterBody2D
     private AnimatedSprite2D animatedSprite2D;
     private AnimationPlayer deathAnimationPlayer;
     private AudioStreamPlayer2D audioDyingSound;
+    private AudioStreamPlayer2D audioIfSpy;
     private Timer timer;
     private bool timerStopped = false;
     private bool changeAnim = false;
@@ -36,9 +37,10 @@ public partial class Npc : CharacterBody2D
 
         this.deathAnimationPlayer = GetNode<AnimatedSprite2D>("AnimatedSprite2D").GetNode<AnimationPlayer>("AnimationPlayer");
         this.audioDyingSound = GetNode<AudioStreamPlayer2D>("AudioDyingSound");
+        this.audioIfSpy = GetNode<AudioStreamPlayer2D>("AudioIfSpy");
 
         this.timer = GetNode<Timer>("Timer");
-        this.timer.WaitTime = 5;
+        this.timer.WaitTime = 3;
         this.timer.Start();
 
         this.animatedSprite2D.Play("idle_down");
@@ -55,14 +57,12 @@ public partial class Npc : CharacterBody2D
             if (this.isSpy == true && this.changeAnim == true)
             {
                 this.currentAnim = "spying_down";
-                // this.changeAnim = false;
-                // GD.Print("tries to spy down");
             }
             return;
         }
         else if (this.pseudoclass == PSEUDOCLASS.GUARDIA)
         {
-            // play idle and every 5 seconds vigilar
+            // play idle and every X seconds vigilar
             this.currentAnim = "idle_down";
             if (this.changeAnim == true)
             {
@@ -72,7 +72,7 @@ public partial class Npc : CharacterBody2D
         }
         else if (this.pseudoclass == PSEUDOCLASS.STAFF)
         {
-            // play idle and every 5 seconds clean
+            // play idle and every X seconds clean
             this.currentAnim = "idle_down";
             if (this.changeAnim == true)
             {
@@ -94,13 +94,18 @@ public partial class Npc : CharacterBody2D
     {
         this.timerStopped = true;
         this.changeAnim = !this.changeAnim;
-        // GD.Print("timer stopped");
         this.timer.Start();
     }
 
     private void PlayDyingSound()
     {
         this.audioDyingSound.Play();
+
+        // this audio down here should be played from scene node script instead of here
+        if (this.isSpy == true)
+        {
+            this.audioIfSpy.Play();
+        }
     }
 
     private void PlayVanishEffect()
