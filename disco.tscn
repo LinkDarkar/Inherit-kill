@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://dhih8r0q3kloi"]
 
 [ext_resource type="Texture2D" uid="uid://bldiq14avoucp" path="res://Assets/tilesets/disco tileset.png" id="1_fygv6"]
+[ext_resource type="Script" uid="uid://b6p85y768a77p" path="res://Levels/LevelBase.cs" id="1_kc4yv"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_mqta7"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_ccd4q"]
 [ext_resource type="PackedScene" uid="uid://drwetybitm8ya" path="res://NPC/npc.tscn" id="2_lin8l"]
@@ -55,13 +56,17 @@ texture = ExtResource("1_fygv6")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_fygv6")
 
-[node name="Disco" type="Node2D" unique_id=524011168]
+[node name="Disco" type="Node2D" unique_id=524011168 node_paths=PackedStringArray("npcsNode", "spyNpc", "ui")]
 y_sort_enabled = true
+script = ExtResource("1_kc4yv")
+npcsNode = NodePath("NPCs")
+spyNpc = NodePath("NPCs/NPC")
+ui = NodePath("UI")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1967054462]
 physics_interpolation_mode = 1
 top_level = true
-position = Vector2(515, 245)
+position = Vector2(185, 201)
 zoom = Vector2(1.7, 1.7)
 editor_draw_limits = true
 
@@ -73,7 +78,7 @@ metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
 [node name="PhantomCamera2D" type="Node2D" parent="." unique_id=512041608 node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(515, 245)
+position = Vector2(185, 201)
 script = ExtResource("2_ccd4q")
 follow_mode = 2
 follow_target = NodePath("../Player")
@@ -183,4 +188,4 @@ texture2D = ExtResource("4_ss5di")
 
 [node name="Player" parent="." unique_id=1147506120 instance=ExtResource("4_vdp75")]
 z_index = 1
-position = Vector2(440, 245)
+position = Vector2(110, 201)

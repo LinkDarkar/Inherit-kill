@@ -121,3 +121,20 @@ text = "TestNombre"
 [node name="datos" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=1404945745]
 layout_mode = 2
 text = "7.343.455.640.893.050"
+
+[node name="PanelContainer2" type="PanelContainer" parent="." unique_id=1390143389]
+offset_right = 152.49998
+offset_bottom = 88.74999
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer2" unique_id=819536520]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="PanelContainer2/MarginContainer" unique_id=1711063009]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "70"
+horizontal_alignment = 1
