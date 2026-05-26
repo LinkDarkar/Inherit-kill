@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bipr6tmavgpa3"]
+
+[ext_resource type="PackedScene" uid="uid://csdmamqsvswc7" path="res://terminalBase.tscn" id="1_ryl6n"]
+
+[node name="terminalEscenario1" unique_id=597253294 instance=ExtResource("1_ryl6n")]
+
+[node name="Camera2D" parent="." index="0" unique_id=42762052]
+physics_interpolation_mode = 0

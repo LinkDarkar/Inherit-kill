@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://lcfhx8au44fl"]
+
+[ext_resource type="PackedScene" uid="uid://botmfl6w6iejf" path="res://discoBase.tscn" id="1_6p3e2"]
+
+[node name="Disco_Escenario2" unique_id=524011168 instance=ExtResource("1_6p3e2")]

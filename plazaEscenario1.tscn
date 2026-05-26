@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cj1csn3cft65f"]
+
+[ext_resource type="PackedScene" uid="uid://ce87b0gughyp2" path="res://plazaBase.tscn" id="1_787pn"]
+
+[node name="plazaEscenario1" unique_id=46403924 instance=ExtResource("1_787pn")]
+
+[node name="Camera2D" parent="." index="0" unique_id=198513161]
+physics_interpolation_mode = 0
