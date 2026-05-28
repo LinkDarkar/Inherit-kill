@@ -816,7 +816,6 @@ sources/2 = SubResource("TileSetAtlasSource_7c4s1")
 script = ExtResource("1_ngcqp")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=42762052]
-physics_interpolation_mode = 1
 top_level = true
 position = Vector2(315, 192)
 zoom = Vector2(1.7, 1.7)
@@ -828,12 +827,11 @@ process_physics_priority = 300
 script = ExtResource("2_e5ag7")
 metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
-[node name="PhantomCamera2D" type="Node2D" parent="." unique_id=579764994 node_paths=PackedStringArray("follow_target")]
+[node name="PhantomCamera2D" type="Node2D" parent="." unique_id=579764994]
 top_level = true
 position = Vector2(315, 192)
 script = ExtResource("3_jkxnf")
 follow_mode = 2
-follow_target = NodePath("")
 zoom = Vector2(1.7, 1.7)
 tween_resource = SubResource("Resource_diqko")
 follow_offset = Vector2(75, 0)

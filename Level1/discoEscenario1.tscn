@@ -86,6 +86,7 @@ draw_limits = true
 metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
 
 [node name="UI" parent="." unique_id=754586874 instance=ExtResource("5_0wnws")]
+Titulo = "NIVEL 1-1"
 
 [node name="LabelPuntuacion" type="Label" parent="UI" unique_id=999301686]
 offset_right = 116.0
