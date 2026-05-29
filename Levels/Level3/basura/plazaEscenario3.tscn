@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b3g8f7ev68tl5"]
 
-[ext_resource type="PackedScene" uid="uid://ce87b0gughyp2" path="res://plazaBase.tscn" id="1_eghc5"]
+[ext_resource type="PackedScene" path="res://plazaBase.tscn" id="1_eghc5"]
 
 [node name="plazaEscenario3" unique_id=46403924 instance=ExtResource("1_eghc5")]
 

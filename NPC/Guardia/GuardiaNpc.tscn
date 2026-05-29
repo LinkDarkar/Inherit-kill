@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://db174wftv8ocp"]
+
+[ext_resource type="PackedScene" uid="uid://drwetybitm8ya" path="res://NPC/BaseNpc.tscn" id="1_4ircd"]
+[ext_resource type="Script" uid="uid://dtca3ykro4a8f" path="res://NPC/Guardia/GuardiaNpc.cs" id="2_1xdgl"]
+[ext_resource type="SpriteFrames" uid="uid://b76rgcx1jsytg" path="res://Assets/spritesheets/NPCs/Guardia/guardia_sprite_frames.tres" id="3_jjmk0"]
+
+[node name="NPC" unique_id=1442265239 instance=ExtResource("1_4ircd")]
+script = ExtResource("2_1xdgl")
+spriteFrames = ExtResource("3_jjmk0")
+texture2D = null
+
+[node name="AnimatedSprite2D" parent="." index="4" unique_id=1664250867]
+sprite_frames = ExtResource("3_jjmk0")

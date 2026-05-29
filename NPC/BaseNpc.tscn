@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://drwetybitm8ya"]
 
-[ext_resource type="Script" uid="uid://daji4ibsifdw8" path="res://NPC/Npc.cs" id="1_xxcha"]
+[ext_resource type="Script" uid="uid://daji4ibsifdw8" path="res://NPC/BaseNpc.cs" id="1_xxcha"]
 [ext_resource type="Texture2D" uid="uid://cb3ifcq5rd1rc" path="res://Assets/spritesheets/NPCs/Federico/Federico.png" id="2_3etx6"]
 [ext_resource type="Texture2D" uid="uid://ct16kk1ob8pqm" path="res://Assets/spritesheets/NPCs/Teacher/teacher.png" id="2_6swda"]
 [ext_resource type="AudioStream" uid="uid://djkmng3mgggir" path="res://Assets/Sounds/ULTIMATE-himei-f.wav" id="3_kh24r"]

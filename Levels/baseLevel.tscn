@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://dikitauortch6"]
+
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_33m83"]
+[ext_resource type="Script" uid="uid://dq1borftk1jou" path="res://Levels/BaseLevel.cs" id="1_ayuvw"]
+[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_ayuvw"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_q6cgi"]
+[ext_resource type="PackedScene" uid="uid://boxuehltmn0ih" path="res://ui_test.tscn" id="4_7eaem"]
+[ext_resource type="PackedScene" uid="uid://ibhvykvk0l1h" path="res://Player/PlayerCharacter.tscn" id="5_3771n"]
+
+[sub_resource type="Resource" id="Resource_h43vg"]
+script = ExtResource("3_q6cgi")
+metadata/_custom_type_script = "uid://8umksf8e80fw"
+
+[node name="BaseLevel" type="Node2D" unique_id=1710420874]
+script = ExtResource("1_ayuvw")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1180162826]
+top_level = true
+position = Vector2(315, 192)
+zoom = Vector2(1.7, 1.7)
+editor_draw_limits = true
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D" unique_id=1679755940]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("1_33m83")
+metadata/_custom_type_script = "uid://bd046eokvcnu2"
+
+[node name="PhantomCamera2D" type="Node2D" parent="." unique_id=205927956]
+top_level = true
+position = Vector2(315, 192)
+script = ExtResource("2_ayuvw")
+follow_mode = 2
+zoom = Vector2(1.7, 1.7)
+tween_resource = SubResource("Resource_h43vg")
+follow_offset = Vector2(75, 0)
+draw_limits = true
+metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
+
+[node name="UI" parent="." unique_id=754586874 instance=ExtResource("4_7eaem")]
+
+[node name="LabelPuntuacion" type="Label" parent="UI" unique_id=693878860]
+offset_right = 116.0
+offset_bottom = 23.0
+text = "Puntuación: 70"
+
+[node name="Player" parent="." unique_id=1147506120 instance=ExtResource("5_3771n")]
+z_index = 1
+position = Vector2(240, 192)

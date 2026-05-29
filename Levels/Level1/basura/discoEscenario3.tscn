@@ -1,5 +1,5 @@
 [gd_scene format=3 uid="uid://dgx3bv1h0ixim"]
 
-[ext_resource type="PackedScene" uid="uid://botmfl6w6iejf" path="res://discoBase.tscn" id="1_g4h0x"]
+[ext_resource type="PackedScene" path="res://discoBase.tscn" id="1_g4h0x"]
 
 [node name="Disco_Escenario3" unique_id=524011168 instance=ExtResource("1_g4h0x")]

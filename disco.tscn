@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_mqta7"]
 [ext_resource type="Script" uid="uid://bm4l4kswc7ets" path="res://Disco.cs" id="1_ss5di"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_ccd4q"]
-[ext_resource type="PackedScene" uid="uid://drwetybitm8ya" path="res://NPC/npc.tscn" id="2_lin8l"]
+[ext_resource type="PackedScene" uid="uid://drwetybitm8ya" path="res://NPC/BaseNpc.tscn" id="2_lin8l"]
 [ext_resource type="SpriteFrames" uid="uid://ok1mns1yw0qr" path="res://Assets/spritesheets/NPCs/Fiestero/fiestero_sprite_frames.tres" id="3_5l50c"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_kc4yv"]
 [ext_resource type="PackedScene" uid="uid://boxuehltmn0ih" path="res://ui_test.tscn" id="4_ccd4q"]

@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_tacdc"]
 [ext_resource type="PackedScene" uid="uid://boxuehltmn0ih" path="res://ui_test.tscn" id="5_0wnws"]
 [ext_resource type="Texture2D" uid="uid://bldiq14avoucp" path="res://Assets/tilesets/disco tileset.png" id="6_q03vj"]
-[ext_resource type="PackedScene" uid="uid://drwetybitm8ya" path="res://NPC/npc.tscn" id="7_qc2em"]
+[ext_resource type="PackedScene" uid="uid://drwetybitm8ya" path="res://NPC/BaseNpc.tscn" id="7_qc2em"]
 [ext_resource type="SpriteFrames" uid="uid://ok1mns1yw0qr" path="res://Assets/spritesheets/NPCs/Fiestero/fiestero_sprite_frames.tres" id="8_icuu8"]
 [ext_resource type="Texture2D" uid="uid://dy0dwuffkgnk1" path="res://Assets/spritesheets/NPCs/Shadow Federico/Shadow_Federico.png" id="9_ujkfk"]
 [ext_resource type="SpriteFrames" uid="uid://b76rgcx1jsytg" path="res://Assets/spritesheets/NPCs/Guardia/guardia_sprite_frames.tres" id="10_mnihs"]

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://ccvclbjgynivi"]
+
+[ext_resource type="PackedScene" uid="uid://drwetybitm8ya" path="res://NPC/BaseNpc.tscn" id="1_lk5nl"]
+[ext_resource type="Script" uid="uid://chwcb321hhten" path="res://NPC/Teacher/TeacherNpc.cs" id="2_6rp06"]
+[ext_resource type="SpriteFrames" uid="uid://t0jhg68tdtpo" path="res://Assets/spritesheets/NPCs/Teacher/teacher_sprite_frame.tres" id="3_h6kc3"]
+
+[node name="NPC" unique_id=1442265239 instance=ExtResource("1_lk5nl")]
+script = ExtResource("2_6rp06")
+spriteFrames = ExtResource("3_h6kc3")

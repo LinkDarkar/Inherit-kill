@@ -1,7 +1,8 @@
 using Godot;
 using System;
+using System.Runtime.InteropServices.Marshalling;
 
-public partial class Npc : CharacterBody2D
+public partial class BaseNpc : CharacterBody2D
 {
 	[Export]
 	private SpriteFrames spriteFrames;
@@ -18,16 +19,19 @@ public partial class Npc : CharacterBody2D
 	[Signal]
 	public delegate void NpcAsesinadoEventHandler(bool eraEspia);
 
-	private Sprite2D sprite2D;
-	private AnimatedSprite2D animatedSprite2D;
-	private AnimationPlayer deathAnimationPlayer;
-	private AudioStreamPlayer2D audioDyingSound;
-	private AudioStreamPlayer2D audioIfSpy;
-	private Timer timer;
-	private bool timerStopped = false;
-	private bool changeAnim = false;
+	protected Sprite2D sprite2D;
+	protected AnimatedSprite2D animatedSprite2D;
+	protected AnimationPlayer deathAnimationPlayer;
+	protected AudioStreamPlayer2D audioDyingSound;
+	protected AudioStreamPlayer2D audioIfSpy;
 
-	private string currentAnim = "idle_down";
+	protected Timer timer;
+	protected bool timerStopped = false;
+	protected int lowerTimeLimit = 1;
+	protected int upperTimeLimit = 5;
+
+	protected bool changeAnim = false;
+	protected string currentAnim = "idle_down";
 
 	public override void _Ready()
 	{
@@ -35,6 +39,7 @@ public partial class Npc : CharacterBody2D
 		this.sprite2D = GetNode<Sprite2D>("Sprite2D");
 		this.sprite2D.Texture = texture2D;
 
+		// mostly just makes sure that the right animatedSprite2D is set
 		this.animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		this.animatedSprite2D.SpriteFrames = this.spriteFrames;
 
@@ -42,16 +47,18 @@ public partial class Npc : CharacterBody2D
 		this.audioDyingSound = GetNode<AudioStreamPlayer2D>("AudioDyingSound");
 		this.audioIfSpy = GetNode<AudioStreamPlayer2D>("AudioIfSpy");
 
-		this.timer = GetNode<Timer>("Timer");
-		this.timer.WaitTime = 3;
-		this.timer.Start();
-
 		this.animatedSprite2D.Play("idle_down");
+	}
 
+	protected virtual void timerSetup()
+	{
+		this.timer = GetNode<Timer>("Timer");
+		this.timer.WaitTime = GD.RandRange(this.lowerTimeLimit, this.upperTimeLimit);
+		this.timer.Start();
 		this.timer.Timeout += this.TimerStop;
 	}
 
-	private void HandleAnimations()
+	protected virtual void HandleAnimations()
 	{
 		if (this.pseudoclass == PSEUDOCLASS.CIVIL)
 		{
@@ -61,6 +68,7 @@ public partial class Npc : CharacterBody2D
 			{
 				this.currentAnim = "spying_down";
 			}
+
 			return;
 		}
 		else if (this.pseudoclass == PSEUDOCLASS.GUARDIA)

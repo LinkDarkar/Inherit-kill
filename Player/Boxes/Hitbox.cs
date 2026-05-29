@@ -11,7 +11,7 @@ public partial class Hitbox : Area2D
 
     private async void OnHitboxBodyEntered(Node2D body)
     {
-        if (body is Npc npc)
+        if (body is BaseNpc npc)
         {
             await ToSignal(GetTree().CreateTimer(0.3f), SceneTreeTimer.SignalName.Timeout);
             npc.PlayDyingEffects();

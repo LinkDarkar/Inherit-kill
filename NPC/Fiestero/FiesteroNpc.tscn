@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://ckhvls7w42sr"]
+
+[ext_resource type="PackedScene" uid="uid://drwetybitm8ya" path="res://NPC/BaseNpc.tscn" id="1_85d7d"]
+[ext_resource type="Script" uid="uid://cdbi64xufcgqq" path="res://NPC/Fiestero/FiesteroNpc.cs" id="2_k5hv0"]
+[ext_resource type="SpriteFrames" uid="uid://ok1mns1yw0qr" path="res://Assets/spritesheets/NPCs/Fiestero/fiestero_sprite_frames.tres" id="3_uwtlx"]
+
+[node name="NPC" unique_id=1442265239 instance=ExtResource("1_85d7d")]
+script = ExtResource("2_k5hv0")
+spriteFrames = ExtResource("3_uwtlx")
+texture2D = null
+
+[node name="AnimatedSprite2D" parent="." index="4" unique_id=1664250867]
+sprite_frames = ExtResource("3_uwtlx")

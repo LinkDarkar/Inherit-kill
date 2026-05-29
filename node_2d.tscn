@@ -2,11 +2,12 @@
 
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_kdubu"]
 [ext_resource type="PackedScene" uid="uid://ibhvykvk0l1h" path="res://Player/PlayerCharacter.tscn" id="1_wtcfe"]
+[ext_resource type="Script" uid="uid://daji4ibsifdw8" path="res://NPC/BaseNpc.cs" id="1_x0ka3"]
 [ext_resource type="PackedScene" uid="uid://boxuehltmn0ih" path="res://ui_test.tscn" id="2_0e48y"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_d21ai"]
 [ext_resource type="Texture2D" uid="uid://rp8d8mq61j07" path="res://Assets/tilesets/greybox tileset test.png" id="3_epypp"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_rj586"]
-[ext_resource type="PackedScene" uid="uid://drwetybitm8ya" path="res://NPC/npc.tscn" id="7_d21ai"]
+[ext_resource type="PackedScene" uid="uid://drwetybitm8ya" path="res://NPC/BaseNpc.tscn" id="7_d21ai"]
 [ext_resource type="Texture2D" uid="uid://dy0dwuffkgnk1" path="res://Assets/spritesheets/NPCs/Shadow Federico/Shadow_Federico.png" id="7_rj586"]
 [ext_resource type="SpriteFrames" uid="uid://b76rgcx1jsytg" path="res://Assets/spritesheets/NPCs/Guardia/guardia_sprite_frames.tres" id="9_hqns4"]
 [ext_resource type="SpriteFrames" uid="uid://ok1mns1yw0qr" path="res://Assets/spritesheets/NPCs/Fiestero/fiestero_sprite_frames.tres" id="9_ir8iy"]
@@ -238,6 +239,7 @@ sources/0 = SubResource("TileSetAtlasSource_4d7sh")
 
 [node name="Node2D" type="Node2D" unique_id=1561003113]
 y_sort_enabled = true
+script = ExtResource("1_x0ka3")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1450512105]
 physics_interpolation_mode = 1
