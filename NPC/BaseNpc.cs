@@ -1,6 +1,4 @@
 using Godot;
-using System;
-using System.Runtime.InteropServices.Marshalling;
 
 public partial class BaseNpc : CharacterBody2D
 {
@@ -15,12 +13,17 @@ public partial class BaseNpc : CharacterBody2D
 
 	[Export]
 	private PSEUDOCLASS pseudoclass = PSEUDOCLASS.CIVIL;
+
+	// DO NOT replace animationNames values in child classes, they are exclusively defined in the editor
+	[Export]
+	protected string[] animationNames;
 	
 	[Signal]
 	public delegate void NpcAsesinadoEventHandler(bool eraEspia);
 
 	protected Sprite2D sprite2D;
 	protected AnimatedSprite2D animatedSprite2D;
+	// protected 
 	protected AnimationPlayer deathAnimationPlayer;
 	protected AudioStreamPlayer2D audioDyingSound;
 	protected AudioStreamPlayer2D audioIfSpy;
@@ -43,11 +46,14 @@ public partial class BaseNpc : CharacterBody2D
 		this.animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		this.animatedSprite2D.SpriteFrames = this.spriteFrames;
 
+		// this.animationNames = this.spriteFrames.GetAnimationNames();
+
 		this.deathAnimationPlayer = GetNode<AnimatedSprite2D>("AnimatedSprite2D").GetNode<AnimationPlayer>("AnimationPlayer");
 		this.audioDyingSound = GetNode<AudioStreamPlayer2D>("AudioDyingSound");
 		this.audioIfSpy = GetNode<AudioStreamPlayer2D>("AudioIfSpy");
 
 		this.animatedSprite2D.Play("idle_down");
+		this.timerSetup();
 	}
 
 	protected virtual void timerSetup()
@@ -63,12 +69,10 @@ public partial class BaseNpc : CharacterBody2D
 		if (this.pseudoclass == PSEUDOCLASS.CIVIL)
 		{
 			this.currentAnim = "dance_down";
-
 			if (this.isSpy == true && this.changeAnim == true)
 			{
 				this.currentAnim = "spying_down";
 			}
-
 			return;
 		}
 		else if (this.pseudoclass == PSEUDOCLASS.GUARDIA)
@@ -104,7 +108,7 @@ public partial class BaseNpc : CharacterBody2D
 	private void TimerStop()
 	{
 		this.timerStopped = true;
-		this.changeAnim = !this.changeAnim;
+		this.changeAnim = true;
 		this.timer.Start();
 	}
 

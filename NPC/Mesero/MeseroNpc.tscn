@@ -8,6 +8,7 @@
 script = ExtResource("2_by3ag")
 spriteFrames = ExtResource("3_8sfgf")
 texture2D = null
+animationNames = PackedStringArray("clean_right", "idle_down")
 
 [node name="AnimatedSprite2D" parent="." index="4" unique_id=1664250867]
 sprite_frames = ExtResource("3_8sfgf")

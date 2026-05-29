@@ -14,5 +14,16 @@ public partial class GuardiaNpc : BaseNpc
     protected override void HandleAnimations()
     {
         // manejar animaciones profesor
+        if (this.changeAnim == true)
+        {
+            // this only works if the animation number is not too high
+            // or maybe... TODO add exclusive SPY counter to make sure there is not too much time
+            // between spy exclusive behaviour
+            int newAnimIndex = GD.RandRange(0, this.animationNames.Length);
+            this.currentAnim = this.animationNames[newAnimIndex];
+            GD.Print($"current anim {this.currentAnim}");
+            this.changeAnim = false;
+        }
+
     }
 }
