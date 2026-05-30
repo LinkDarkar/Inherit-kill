@@ -12,15 +12,15 @@ public partial class BaseNpc : CharacterBody2D
 	public bool isSpy = false;
 
 	[Export]
-	private PSEUDOCLASS pseudoclass = PSEUDOCLASS.CIVIL;
+	public PSEUDOCLASS pseudoclass = PSEUDOCLASS.CIVIL;
 
 	// DO NOT replace animationNames values in child classes, they are exclusively defined in the editor
 	[Export]
 	protected string[] animationNames;
-	
-	[Signal]
-	public delegate void NpcAsesinadoEventHandler(bool eraEspia);
 
+	[Signal]
+	public delegate void NpcAsesinadoEventHandler(bool eraEspia, string claseEliminada);
+	
 	protected Sprite2D sprite2D;
 	protected AnimatedSprite2D animatedSprite2D;
 	// protected 
@@ -138,14 +138,11 @@ public partial class BaseNpc : CharacterBody2D
 		this.PlayDyingSound();
 		this.PlayVanishEffect();
 		
-		// Nota: Es buena práctica asegurar que no te suscribas dos veces al evento 
-		// si el NPC recibe daño dos veces rápidamente, pero por ahora está bien así.
 		this.deathAnimationPlayer.AnimationFinished += this.OnDeathAnimationFinished;
 		
-		// 2. EMITIMOS LA SEÑAL PASANDO EL VALOR DE isSpy
-		EmitSignal(SignalName.NpcAsesinado, this.isSpy);
+		// 2. MODIFICACIÓN AQUÍ: Emitimos la señal enviando la pseudoclase como texto
+		EmitSignal(SignalName.NpcAsesinado, this.isSpy, this.pseudoclass.ToString());
 
-		// Tus prints de comprobación (los puedes dejar para depurar)
 		if (this.isSpy == true)
 		{
 			GD.Print("exito");

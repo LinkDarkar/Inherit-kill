@@ -1,47 +1,77 @@
 using Godot;
 using System;
+using System.Collections.Generic; // Necesario para usar HashSet
 
 public partial class Disco : Node2D 
 {
 	private int puntuacion = 70;
 	private Label labelPuntuacion;
 
+	[Export] 
+	public string PreguntaNivel = "Identificar al espía por comportamiento";
+	
+	// Ya no es [Export]. El código la armará sola.
+	private string alternativasDinamicas = ""; 
+	
+	private double cronometroRespuesta = 0;
+
 	public override void _Ready()
 	{
-		// 1. Obtenemos el Label que está dentro de tu escena instanciada "UI"
 		labelPuntuacion = GetNode<Label>("UI/LabelPuntuacion");
 		ActualizarTextoPuntuacion();
 
-		// 2. Buscamos tu nodo agrupador llamado exactamente "NPCs"
 		Node contenedorNpcs = GetNode<Node>("NPCs");
+		
+		// Usamos HashSet para guardar las clases sin que se repitan
+		HashSet<string> clasesEnElMapa = new HashSet<string>();
 
-		// Conectamos la señal de cada NPC hijo
 		foreach (Node hijo in contenedorNpcs.GetChildren())
 		{
-			// Verificamos que el hijo sea realmente de la clase Npc de tu script
-			if (hijo is BaseNpc npc)
+			// Nota: Cambia BaseNpc por Npc si ese es el nombre real de tu clase principal
+			if (hijo is BaseNpc npc) 
 			{
+				// Conectamos la nueva señal
 				npc.NpcAsesinado += OnNpcAsesinado;
+				
+				// Agregamos la clase de este NPC a nuestra lista de alternativas
+				clasesEnElMapa.Add(npc.pseudoclass.ToString());
 			}
 		}
+
+		// Convertimos el HashSet en un texto separado por comas (Ej: "CIVIL, GUARDIA, STAFF")
+		alternativasDinamicas = string.Join(", ", clasesEnElMapa);
 	}
 
-	private void OnNpcAsesinado(bool eraEspia)
+	public override void _Process(double delta)
 	{
+		cronometroRespuesta += delta;
+	}
+
+	// Actualizamos los parámetros para recibir el string
+	private void OnNpcAsesinado(bool eraEspia, string claseEliminada)
+	{
+		// Registramos la métrica perfecta, sin intervención manual
+		LoggerDatos.Instance?.RegistrarInteraccion(
+			pregunta: PreguntaNivel,
+			alternativas: alternativasDinamicas, // Se calculó solo en el _Ready
+			respuestaJugador: claseEliminada,    // Viene directamente del NPC que el jugador clickeó
+			fueCorrecta: eraEspia,
+			tiempoRespuesta: (float)cronometroRespuesta
+		);
+
+		cronometroRespuesta = 0;
+
 		if (eraEspia)
 		{
 			GD.Print("¡Objetivo eliminado! Misión cumplida.");
-			// Lógica de victoria (cargar siguiente nivel, mostrar pantalla, etc.)
 		}
 		else
 		{
-			// Penalización por objetivo incorrecto
 			puntuacion -= 10;
 			ActualizarTextoPuntuacion();
-			GD.Print($"¡Error! Inocente eliminado. La nota baja a {puntuacion}");
+			GD.Print($"¡Error! Asesinaste a un {claseEliminada}. La nota baja a {puntuacion}");
 
-			// Condición de derrota si baja de 4.0 (40 puntos)
-			if (puntuacion < 30)
+			if (puntuacion < 40)
 			{
 				GameOver();
 			}
@@ -54,8 +84,7 @@ public partial class Disco : Node2D
 		{
 			labelPuntuacion.Text = $"Nota: {puntuacion}";
 			
-			// Si llega a 40, lo pintamos de rojo como advertencia de que está a punto de reprobar
-			if (puntuacion == 40)
+			if (puntuacion <= 40)
 			{
 				labelPuntuacion.AddThemeColorOverride("font_color", new Color(1, 0, 0));
 			}
@@ -65,7 +94,5 @@ public partial class Disco : Node2D
 	private void GameOver()
 	{
 		GD.Print("¡Nota inferior a 40! Te echaste el ramo.");
-		// Lógica de derrota (reiniciar nivel)
-		// GetTree().ReloadCurrentScene(); 
 	}
 }
