@@ -21,8 +21,10 @@ metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1395428375]
 layout_mode = 1
-offset_right = 582.0
-offset_bottom = 168.0
+offset_left = 113.0
+offset_top = 148.0
+offset_right = 695.0
+offset_bottom = 316.0
 
 [node name="Label" type="Label" parent="VBoxContainer" unique_id=2025983175]
 layout_mode = 2
