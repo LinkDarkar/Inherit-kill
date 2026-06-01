@@ -47,13 +47,16 @@ metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
 [node name="UI" parent="." unique_id=754586874 instance=ExtResource("4_7eaem")]
 
 [node name="LabelPuntuacion" type="Label" parent="UI" unique_id=693878860]
-offset_right = 116.0
-offset_bottom = 23.0
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 131.0
+offset_bottom = 38.0
 text = "Puntuación: 70"
 
 [node name="NPCInfo" type="Node" parent="UI" unique_id=1694361608]
 
 [node name="PanelContainer" type="PanelContainer" parent="UI/NPCInfo" unique_id=1038421595]
+visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 
