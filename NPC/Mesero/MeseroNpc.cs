@@ -14,5 +14,6 @@ public partial class MeseroNpc : BaseNpc
     protected override void HandleAnimations()
     {
         // manejar animaciones profesor
+        base.HandleAnimations();
     }
 }

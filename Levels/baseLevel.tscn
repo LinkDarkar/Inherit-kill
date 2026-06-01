@@ -11,10 +11,16 @@
 script = ExtResource("3_q6cgi")
 metadata/_custom_type_script = "uid://8umksf8e80fw"
 
-[node name="BaseLevel" type="Node2D" unique_id=1710420874]
+[node name="BaseLevel" type="Node2D" unique_id=1710420874 node_paths=PackedStringArray("playerCharacter", "npcInfoContainer", "classLabel", "animLabel")]
+y_sort_enabled = true
 script = ExtResource("1_ayuvw")
+playerCharacter = NodePath("Player")
+npcInfoContainer = NodePath("UI/NPCInfo/PanelContainer")
+classLabel = NodePath("UI/NPCInfo/PanelContainer/VBoxContainer/Class")
+animLabel = NodePath("UI/NPCInfo/PanelContainer/VBoxContainer/Current Animation")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1180162826]
+physics_interpolation_mode = 1
 top_level = true
 position = Vector2(315, 192)
 zoom = Vector2(1.7, 1.7)
@@ -26,11 +32,12 @@ process_physics_priority = 300
 script = ExtResource("1_33m83")
 metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
-[node name="PhantomCamera2D" type="Node2D" parent="." unique_id=205927956]
+[node name="PhantomCamera2D" type="Node2D" parent="." unique_id=205927956 node_paths=PackedStringArray("follow_target")]
 top_level = true
 position = Vector2(315, 192)
 script = ExtResource("2_ayuvw")
 follow_mode = 2
+follow_target = NodePath("../Player")
 zoom = Vector2(1.7, 1.7)
 tween_resource = SubResource("Resource_h43vg")
 follow_offset = Vector2(75, 0)
@@ -43,6 +50,23 @@ metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
 offset_right = 116.0
 offset_bottom = 23.0
 text = "Puntuación: 70"
+
+[node name="NPCInfo" type="Node" parent="UI" unique_id=1694361608]
+
+[node name="PanelContainer" type="PanelContainer" parent="UI/NPCInfo" unique_id=1038421595]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/NPCInfo/PanelContainer" unique_id=468376417]
+layout_mode = 2
+
+[node name="Class" type="Label" parent="UI/NPCInfo/PanelContainer/VBoxContainer" unique_id=874265071]
+layout_mode = 2
+text = "Class: "
+
+[node name="Current Animation" type="Label" parent="UI/NPCInfo/PanelContainer/VBoxContainer" unique_id=1419725692]
+layout_mode = 2
+text = "Anim:"
 
 [node name="Player" parent="." unique_id=1147506120 instance=ExtResource("5_3771n")]
 z_index = 1

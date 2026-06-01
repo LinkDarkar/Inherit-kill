@@ -12,7 +12,7 @@ public partial class BaseNpc : CharacterBody2D
 	public bool isSpy = false;
 
 	[Export]
-	private PSEUDOCLASS pseudoclass = PSEUDOCLASS.CIVIL;
+	public PSEUDOCLASS pseudoclass = PSEUDOCLASS.CIVIL;
 
 	// DO NOT replace animationNames values in child classes, they are exclusively defined in the editor
 	[Export]
@@ -20,6 +20,8 @@ public partial class BaseNpc : CharacterBody2D
 	
 	[Signal]
 	public delegate void NpcAsesinadoEventHandler(bool eraEspia);
+	[Signal]
+	public delegate void NpcInteractuadoEventHandler(BaseNpc baseNpc);
 
 	protected Sprite2D sprite2D;
 	protected AnimatedSprite2D animatedSprite2D;
@@ -34,7 +36,7 @@ public partial class BaseNpc : CharacterBody2D
 	protected int upperTimeLimit = 5;
 
 	protected bool changeAnim = false;
-	protected string currentAnim = "idle_down";
+	public string currentAnim = "idle_down";
 
 	public override void _Ready()
 	{
@@ -45,8 +47,6 @@ public partial class BaseNpc : CharacterBody2D
 		// mostly just makes sure that the right animatedSprite2D is set
 		this.animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		this.animatedSprite2D.SpriteFrames = this.spriteFrames;
-
-		// this.animationNames = this.spriteFrames.GetAnimationNames();
 
 		this.deathAnimationPlayer = GetNode<AnimatedSprite2D>("AnimatedSprite2D").GetNode<AnimationPlayer>("AnimationPlayer");
 		this.audioDyingSound = GetNode<AudioStreamPlayer2D>("AudioDyingSound");
@@ -66,35 +66,20 @@ public partial class BaseNpc : CharacterBody2D
 
 	protected virtual void HandleAnimations()
 	{
-		if (this.pseudoclass == PSEUDOCLASS.CIVIL)
+		if (this.animationNames == null)
 		{
-			this.currentAnim = "dance_down";
-			if (this.isSpy == true && this.changeAnim == true)
-			{
-				this.currentAnim = "spying_down";
-			}
+			GD.Print($"{this.Name} has no animations to choose from");
 			return;
 		}
-		else if (this.pseudoclass == PSEUDOCLASS.GUARDIA)
-		{
-			// play idle and every X seconds vigilar
-			this.currentAnim = "idle_down";
-			if (this.changeAnim == true)
-			{
-				this.currentAnim = "vigilar_down";
-			}
-			return;
-		}
-		else if (this.pseudoclass == PSEUDOCLASS.STAFF)
-		{
-			// play idle and every X seconds clean
-			this.currentAnim = "idle_down";
-			if (this.changeAnim == true)
-			{
-				this.currentAnim = "clean_right";
-			}
-			return;
-		}
+
+		if (this.changeAnim == true)
+        {
+            // TODO add exclusive SPY counter to make sure there is not too much time
+            // between spy exclusive behaviour
+            int newAnimIndex = GD.RandRange(0, this.animationNames.Length - 1);
+            this.currentAnim = this.animationNames[newAnimIndex];
+            this.changeAnim = false;
+        }
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -154,5 +139,16 @@ public partial class BaseNpc : CharacterBody2D
 		{
 			GD.Print("fracaso");
 		}
+	}
+
+	public void PlayInteractionEffects()
+	{
+		this.HandlePlayerInteraction();
+		// add glow???
+	}
+
+	public void HandlePlayerInteraction()
+	{
+		EmitSignal(SignalName.NpcInteractuado, this);
 	}
 }

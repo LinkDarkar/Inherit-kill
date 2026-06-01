@@ -33,6 +33,10 @@ public partial class InputGatherer : Node
             // GD.Print("pressed attatacks");
             this.inputPackage.actions.Add(MOVES.ATTACKING);
         }
+        else if (Input.IsActionJustPressed("player_interact"))
+        {
+            this.inputPackage.actions.Add(MOVES.INTERACTING);
+        }
 
         return this.inputPackage;
     }

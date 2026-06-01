@@ -14,6 +14,7 @@ public partial class TeacherNpc : BaseNpc
     protected override void HandleAnimations()
     {
         // manejar animaciones profesor
+        base.HandleAnimations();
     }
 
 }

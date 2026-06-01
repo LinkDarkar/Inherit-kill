@@ -17,7 +17,7 @@ public partial class Model : Node
     private AnimationPlayer animationPlayer;
     private AnimationPlayer animationPlayerAttack;
 
-    private MoveBase currentMove;
+    public MoveBase currentMove;
     private Dictionary<MOVES, MoveBase> moves;
 
     private DIRECTION lastLookDirection = DIRECTION.DOWN;
@@ -87,7 +87,7 @@ public partial class Model : Node
         this.currentMove.OnExitState();
         this.currentMove = this.moves[state];
 
-        if (state == MOVES.ATTACKING)
+        if (state == MOVES.ATTACKING || state == MOVES.INTERACTING)
         {
             this.attackDirection = this.lastLookDirection;
             this.UpdateHitboxPosition();
@@ -146,6 +146,10 @@ public partial class Model : Node
                 this.PlayMoveAnimation(this.lastLookDirection);
                 break;
             case MOVES.ATTACKING:
+                this.PlayAttackAnimation(this.attackDirection);
+                break;
+            case MOVES.INTERACTING:
+                // por ahora usa lo del ataque de momento
                 this.PlayAttackAnimation(this.attackDirection);
                 break;
             default:

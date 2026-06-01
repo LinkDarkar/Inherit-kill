@@ -3,6 +3,9 @@ using System;
 
 public partial class Hitbox : Area2D
 {
+    [Export]
+    private PlayerCharacter playerCharacter;
+
     public override void _Ready()
     {
         base._Ready();
@@ -11,11 +14,14 @@ public partial class Hitbox : Area2D
 
     private async void OnHitboxBodyEntered(Node2D body)
     {
-        if (body is BaseNpc npc)
+        if (body is BaseNpc npc && this.playerCharacter.model.currentMove.moveType == MOVES.ATTACKING)
         {
             await ToSignal(GetTree().CreateTimer(0.3f), SceneTreeTimer.SignalName.Timeout);
             npc.PlayDyingEffects();
-            // ((Npc) body).PlayDyingEffects();
+        }
+        else if (body is BaseNpc npc1 && this.playerCharacter.model.currentMove.moveType == MOVES.INTERACTING)
+        {
+            npc1.PlayInteractionEffects();
         }
     }
 }
