@@ -18,14 +18,14 @@ public partial class BaseNpc : CharacterBody2D
 	[Export]
 	protected string[] animationNames;
 	
+	// SEÑALES FUSIONADAS
 	[Signal]
-	public delegate void NpcAsesinadoEventHandler(bool eraEspia);
+	public delegate void NpcAsesinadoEventHandler(bool eraEspia, string claseEliminada);
 	[Signal]
 	public delegate void NpcInteractuadoEventHandler(BaseNpc baseNpc);
-
+	
 	protected Sprite2D sprite2D;
 	protected AnimatedSprite2D animatedSprite2D;
-	// protected 
 	protected AnimationPlayer deathAnimationPlayer;
 	protected AudioStreamPlayer2D audioDyingSound;
 	protected AudioStreamPlayer2D audioIfSpy;
@@ -44,7 +44,6 @@ public partial class BaseNpc : CharacterBody2D
 		this.sprite2D = GetNode<Sprite2D>("Sprite2D");
 		this.sprite2D.Texture = texture2D;
 
-		// mostly just makes sure that the right animatedSprite2D is set
 		this.animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		this.animatedSprite2D.SpriteFrames = this.spriteFrames;
 
@@ -73,13 +72,13 @@ public partial class BaseNpc : CharacterBody2D
 		}
 
 		if (this.changeAnim == true)
-        {
-            // TODO add exclusive SPY counter to make sure there is not too much time
-            // between spy exclusive behaviour
-            int newAnimIndex = GD.RandRange(0, this.animationNames.Length - 1);
-            this.currentAnim = this.animationNames[newAnimIndex];
-            this.changeAnim = false;
-        }
+		{
+			// TODO add exclusive SPY counter to make sure there is not too much time
+			// between spy exclusive behaviour
+			int newAnimIndex = GD.RandRange(0, this.animationNames.Length - 1);
+			this.currentAnim = this.animationNames[newAnimIndex];
+			this.changeAnim = false;
+		}
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -88,7 +87,6 @@ public partial class BaseNpc : CharacterBody2D
 		this.HandleAnimations();
 		this.animatedSprite2D.Play(this.currentAnim);
 	}
-
 
 	private void TimerStop()
 	{
@@ -101,7 +99,6 @@ public partial class BaseNpc : CharacterBody2D
 	{
 		this.audioDyingSound.Play();
 
-		// this audio down here should be played from scene node script instead of here
 		if (this.isSpy == true)
 		{
 			this.audioIfSpy.Play();
@@ -123,14 +120,10 @@ public partial class BaseNpc : CharacterBody2D
 		this.PlayDyingSound();
 		this.PlayVanishEffect();
 		
-		// Nota: Es buena práctica asegurar que no te suscribas dos veces al evento 
-		// si el NPC recibe daño dos veces rápidamente, pero por ahora está bien así.
 		this.deathAnimationPlayer.AnimationFinished += this.OnDeathAnimationFinished;
 		
-		// 2. EMITIMOS LA SEÑAL PASANDO EL VALOR DE isSpy
-		EmitSignal(SignalName.NpcAsesinado, this.isSpy);
+		EmitSignal(SignalName.NpcAsesinado, this.isSpy, this.pseudoclass.ToString());
 
-		// Tus prints de comprobación (los puedes dejar para depurar)
 		if (this.isSpy == true)
 		{
 			GD.Print("exito");

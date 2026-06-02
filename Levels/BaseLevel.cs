@@ -1,14 +1,22 @@
 using Godot;
 using System;
-using System.ComponentModel;
+using System.Collections.Generic; // Para el HashSet de datos
+using System.ComponentModel;      // De la otra branch
 
 public partial class BaseLevel : Node2D
 {
-    private int puntuacion = 70;
+	private int puntuacion = 70;
 	private Label labelPuntuacion;
 
-	private MOVES prevPlayerState = MOVES.IDLE;
+	// --- VARIABLES PARA EL LOG DE DATOS ---
+	[Export] 
+	public string PreguntaNivel = "Identificar al espía por comportamiento";
+	
+	private string alternativasDinamicas = ""; 
+	private double cronometroRespuesta = 0;
 
+	// --- VARIABLES DE INTERACCIÓN ---
+	private MOVES prevPlayerState = MOVES.IDLE;
 	private BaseNpc selectedNpc = null;
 
 	// Player
@@ -25,32 +33,37 @@ public partial class BaseLevel : Node2D
 	[Export]
 	protected Label animLabel;
 
-
-    public override void _Ready()
+	public override void _Ready()
 	{
 		this.labelPuntuacion = GetNode<Label>("UI/LabelPuntuacion");
 		this.ActualizarTextoPuntuacion();
 
 		Node contenedorNpcs = GetNode<Node>("NPCs");
 
-		// Conectamos la señal de cada NPC hijo
+		// Usamos HashSet para guardar las clases sin que se repitan
+		HashSet<string> clasesEnElMapa = new HashSet<string>();
+
+		// Conectamos las señales de interacción y muerte
 		foreach (Node hijo in contenedorNpcs.GetChildren())
 		{
-			// Verificamos que el hijo sea realmente de la clase Npc de tu script
 			if (hijo is BaseNpc npc)
 			{
 				npc.NpcAsesinado += this.OnNpcAsesinado;
 				npc.NpcInteractuado += this.OnNpcInteractuado;
+				clasesEnElMapa.Add(npc.pseudoclass.ToString());
 			}
 		}
+		
+		// Convertimos el HashSet en un texto separado por comas
+		alternativasDinamicas = string.Join(", ", clasesEnElMapa);
 	}
 
-    public override void _PhysicsProcess(double delta)
-    {
-        base._PhysicsProcess(delta);
+	public override void _PhysicsProcess(double delta)
+	{
+		base._PhysicsProcess(delta);
 		this.InteractionManager();
 		this.UpdateNpcInfo();
-    }
+	}
 
 	private void InteractionManager()
 	{
@@ -71,7 +84,6 @@ public partial class BaseLevel : Node2D
 	
 	private Vector2 ObtainOnScreenCoords()
 	{
-		// I don't know how this works really
 		Vector2 screenPos = 
 			this.selectedNpc.GlobalPosition
 			- this.camera2D.GetScreenCenterPosition()
@@ -80,9 +92,23 @@ public partial class BaseLevel : Node2D
 		return screenPos;
 	}
 
-
-    private void OnNpcAsesinado(bool eraEspia)
+	public override void _Process(double delta)
 	{
+		cronometroRespuesta += delta;
+	}
+
+	private void OnNpcAsesinado(bool eraEspia, string claseEliminada)
+	{
+		LoggerDatos.Instance?.RegistrarInteraccion(
+			pregunta: PreguntaNivel,
+			alternativas: alternativasDinamicas, 
+			respuestaJugador: claseEliminada,    
+			fueCorrecta: eraEspia,
+			tiempoRespuesta: (float)cronometroRespuesta
+		);
+
+		cronometroRespuesta = 0;
+
 		if (eraEspia)
 		{
 			GD.Print("¡Objetivo eliminado! Misión cumplida.");
@@ -91,9 +117,9 @@ public partial class BaseLevel : Node2D
 		{
 			puntuacion -= 10;
 			this.ActualizarTextoPuntuacion();
-			GD.Print($"¡Error! Inocente eliminado. La nota baja a {puntuacion}");
+			GD.Print($"¡Error! Inocente eliminado ({claseEliminada}). La nota baja a {puntuacion}");
 
-			if (puntuacion < 30)
+			if (puntuacion < 40)
 			{
 				GameOver();
 			}
@@ -113,7 +139,6 @@ public partial class BaseLevel : Node2D
 	{
 		this.npcInfoContainer.Visible = true;
 		this.selectedNpc = baseNpc;
-		// update info in labels here?????
 	}
 
 	private void OnNpcInteractuadoFinished()
@@ -127,7 +152,7 @@ public partial class BaseLevel : Node2D
 		{
 			this.labelPuntuacion.Text = $"Nota: {puntuacion}";
 			
-			if (puntuacion == 40)
+			if (puntuacion <= 40)
 			{
 				this.labelPuntuacion.AddThemeColorOverride("font_color", new Color(1, 0, 0));
 			}
