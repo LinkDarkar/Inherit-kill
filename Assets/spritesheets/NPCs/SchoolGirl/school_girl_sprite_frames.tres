@@ -1,0 +1,14 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://wax83bp5xclp"]
+
+[ext_resource type="Texture2D" uid="uid://c06pnucl1ox6s" path="res://Assets/spritesheets/NPCs/SchoolGirl/school_girl_npc.png" id="1_t2xla"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_t2xla")
+}],
+"loop": true,
+"name": &"idle_down",
+"speed": 5.0
+}]

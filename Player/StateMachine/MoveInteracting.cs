@@ -16,6 +16,11 @@ public partial class MoveInteracting : MoveBase
 
     public override MOVES TransitionLogic(InputPackage inputPackage)
     {
+        if (inputPackage.actions.Contains(MOVES.MOVING))
+        {
+            return MOVES.MOVING;
+        }
+
         return MOVES.INTERACTING;
     }
 

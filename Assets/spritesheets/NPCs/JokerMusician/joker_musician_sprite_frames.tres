@@ -1,0 +1,44 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://cu5eh1qm4eulp"]
+
+[ext_resource type="Texture2D" uid="uid://cq5nhf0gkqtfi" path="res://Assets/spritesheets/NPCs/JokerMusician/joker_musician_spritesheet.png" id="1_j6cu0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t638q"]
+atlas = ExtResource("1_j6cu0")
+region = Rect2(0, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_588oj"]
+atlas = ExtResource("1_j6cu0")
+region = Rect2(0, 32, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbogo"]
+atlas = ExtResource("1_j6cu0")
+region = Rect2(24, 32, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_synns"]
+atlas = ExtResource("1_j6cu0")
+region = Rect2(48, 32, 24, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t638q")
+}],
+"loop": true,
+"name": &"idle_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_588oj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kbogo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_synns")
+}],
+"loop": true,
+"name": &"playing_music_down",
+"speed": 5.0
+}]
