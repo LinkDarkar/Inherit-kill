@@ -1,6 +1,7 @@
 using Godot;
 using System;
-using System.Collections.Generic; // Necesario para usar HashSet
+using System.Collections.Generic; // Para el HashSet de datos
+using System.ComponentModel;      // De la otra branch
 
 public partial class BaseLevel : Node2D
 {
@@ -11,11 +12,26 @@ public partial class BaseLevel : Node2D
 	[Export] 
 	public string PreguntaNivel = "Identificar al espía por comportamiento";
 	
-	// El código la armará sola leyendo los NPCs del mapa
 	private string alternativasDinamicas = ""; 
-	
-	// Cronómetro para medir cuánto tarda el jugador
 	private double cronometroRespuesta = 0;
+
+	// --- VARIABLES DE INTERACCIÓN ---
+	private MOVES prevPlayerState = MOVES.IDLE;
+	private BaseNpc selectedNpc = null;
+
+	// Player
+	[Export]
+	protected PlayerCharacter playerCharacter;
+	[Export]
+	protected Camera2D camera2D;
+
+	// NPC Info
+	[Export]
+	protected PanelContainer npcInfoContainer;
+	[Export]
+	protected Label classLabel;
+	[Export]
+	protected Label animLabel;
 
 	public override void _Ready()
 	{
@@ -27,22 +43,55 @@ public partial class BaseLevel : Node2D
 		// Usamos HashSet para guardar las clases sin que se repitan
 		HashSet<string> clasesEnElMapa = new HashSet<string>();
 
-		// Conectamos la señal de cada NPC hijo y recolectamos sus clases
+		// Conectamos las señales de interacción y muerte
 		foreach (Node hijo in contenedorNpcs.GetChildren())
 		{
-			// Verificamos que el hijo sea realmente de la clase Npc
 			if (hijo is BaseNpc npc)
 			{
-				npc.NpcAsesinado += OnNpcAsesinado;
+				npc.NpcAsesinado += this.OnNpcAsesinado;
+				npc.NpcInteractuado += this.OnNpcInteractuado;
 				clasesEnElMapa.Add(npc.pseudoclass.ToString());
 			}
 		}
-
-		// Convertimos el HashSet en un texto separado por comas (Ej: "CIVIL, GUARDIA, STAFF")
+		
+		// Convertimos el HashSet en un texto separado por comas
 		alternativasDinamicas = string.Join(", ", clasesEnElMapa);
 	}
 
-	// Este método corre automáticamente cada frame del juego
+	public override void _PhysicsProcess(double delta)
+	{
+		base._PhysicsProcess(delta);
+		this.InteractionManager();
+		this.UpdateNpcInfo();
+	}
+
+	private void InteractionManager()
+	{
+		if (this.prevPlayerState != this.playerCharacter.model.currentMove.moveType)
+		{
+			if (this.prevPlayerState == MOVES.INTERACTING)
+			{
+				this.OnNpcInteractuadoFinished();
+			}
+			this.prevPlayerState = this.playerCharacter.model.currentMove.moveType;
+		}
+
+		if (this.selectedNpc != null && this.playerCharacter.model.currentMove.moveType == MOVES.INTERACTING)
+		{
+			npcInfoContainer.GlobalPosition = this.ObtainOnScreenCoords();
+		}
+	}
+	
+	private Vector2 ObtainOnScreenCoords()
+	{
+		Vector2 screenPos = 
+			this.selectedNpc.GlobalPosition
+			- this.camera2D.GetScreenCenterPosition()
+			+ GetViewport().GetVisibleRect().Size / 2.0f;
+
+		return screenPos;
+	}
+
 	public override void _Process(double delta)
 	{
 		cronometroRespuesta += delta;
@@ -50,7 +99,6 @@ public partial class BaseLevel : Node2D
 
 	private void OnNpcAsesinado(bool eraEspia, string claseEliminada)
 	{
-		// Registramos la métrica perfecta para el CSV
 		LoggerDatos.Instance?.RegistrarInteraccion(
 			pregunta: PreguntaNivel,
 			alternativas: alternativasDinamicas, 
@@ -59,13 +107,11 @@ public partial class BaseLevel : Node2D
 			tiempoRespuesta: (float)cronometroRespuesta
 		);
 
-		// Reiniciamos el cronómetro a 0
 		cronometroRespuesta = 0;
 
 		if (eraEspia)
 		{
 			GD.Print("¡Objetivo eliminado! Misión cumplida.");
-			// Lógica de victoria
 		}
 		else
 		{
@@ -73,12 +119,31 @@ public partial class BaseLevel : Node2D
 			this.ActualizarTextoPuntuacion();
 			GD.Print($"¡Error! Inocente eliminado ({claseEliminada}). La nota baja a {puntuacion}");
 
-			// Se corrige a 40 para simular la reprobación
 			if (puntuacion < 40)
 			{
 				GameOver();
 			}
 		}
+	}
+
+	private void UpdateNpcInfo()
+	{
+		if (this.selectedNpc != null)
+		{
+			this.classLabel.Text = $"Class: {this.selectedNpc.pseudoclass}";
+			this.animLabel.Text = $"Anim: {this.selectedNpc.currentAnim}";
+		}
+	}
+
+	private void OnNpcInteractuado(BaseNpc baseNpc)
+	{
+		this.npcInfoContainer.Visible = true;
+		this.selectedNpc = baseNpc;
+	}
+
+	private void OnNpcInteractuadoFinished()
+	{
+		this.npcInfoContainer.Visible = false;
 	}
 
 	private void ActualizarTextoPuntuacion()
@@ -87,7 +152,6 @@ public partial class BaseLevel : Node2D
 		{
 			this.labelPuntuacion.Text = $"Nota: {puntuacion}";
 			
-			// Cambiamos a rojo si la nota está en riesgo crítico
 			if (puntuacion <= 40)
 			{
 				this.labelPuntuacion.AddThemeColorOverride("font_color", new Color(1, 0, 0));
@@ -98,7 +162,5 @@ public partial class BaseLevel : Node2D
 	private void GameOver()
 	{
 		GD.Print("¡Nota inferior a 40! Te echaste el ramo.");
-		// Lógica de derrota (reiniciar nivel)
-		// GetTree().ReloadCurrentScene(); 
 	}
 }

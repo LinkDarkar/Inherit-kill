@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Transactions;
 
 public partial class FedericoNpc : BaseNpc
 {
@@ -14,5 +15,6 @@ public partial class FedericoNpc : BaseNpc
     protected override void HandleAnimations()
     {
         // manejar animaciones profesor
+        base.HandleAnimations();
     }
 }

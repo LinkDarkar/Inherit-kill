@@ -4,7 +4,7 @@ using System;
 public partial class PlayerCharacter : CharacterBody2D
 {
 	private InputGatherer inputGatherer;
-	private Model model;
+	public Model model;
 
 	public override void _Ready()
 	{
