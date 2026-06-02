@@ -1,7 +1,8 @@
 [gd_scene format=4 uid="uid://4b27nix4ljc"]
 
-[ext_resource type="Script" uid="uid://bm4l4kswc7ets" path="res://Disco.cs" id="1_k1n5p"]
+[ext_resource type="Script" uid="uid://dq1borftk1jou" path="res://Levels/BaseLevel.cs" id="1_u2ag6"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_fuaiq"]
+[ext_resource type="PackedScene" uid="uid://bpuy5bifxyt5h" path="res://Levels/Level2/baseLevelTerminal.tscn" id="2_ouoay"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="3_cppw2"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_tacdc"]
 [ext_resource type="PackedScene" uid="uid://boxuehltmn0ih" path="res://ui_test.tscn" id="5_0wnws"]
@@ -58,7 +59,8 @@ sources/0 = SubResource("TileSetAtlasSource_fygv6")
 
 [node name="Disco" type="Node2D" unique_id=524011168]
 y_sort_enabled = true
-script = ExtResource("1_k1n5p")
+script = ExtResource("1_u2ag6")
+EscenaSiguiente = ExtResource("2_ouoay")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1967054462]
 physics_interpolation_mode = 1

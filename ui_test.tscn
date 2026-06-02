@@ -124,3 +124,38 @@ text = "TestNombre"
 [node name="datos" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=1404945745]
 layout_mode = 2
 text = "7.343.455.640.893.050"
+
+[node name="PopupFinal" type="Panel" parent="." unique_id=308707572]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -178.75
+offset_top = -157.5
+offset_right = 178.75
+offset_bottom = 157.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PopupFinal" unique_id=35972826]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -69.0
+offset_top = -29.0
+offset_right = 69.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LabelResultados" type="Label" parent="PopupFinal/VBoxContainer" unique_id=1793813213]
+layout_mode = 2
+text = "Nivel Completado"
+
+[node name="BotonContinuar" type="Button" parent="PopupFinal/VBoxContainer" unique_id=451564826]
+layout_mode = 2
+text = "Continuar"

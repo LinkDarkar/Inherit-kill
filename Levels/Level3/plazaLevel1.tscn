@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://baoqoc8pm7ajl"]
+
+[ext_resource type="PackedScene" uid="uid://bneehiqfcha7" path="res://Levels/Level3/baseLevelPlaza.tscn" id="1_4sx7v"]
+
+[node name="plazaLevel1" unique_id=1710420874 instance=ExtResource("1_4sx7v")]
+
+[node name="UI" parent="." index="2" unique_id=754586874]
+Titulo = "Nivel 3 - 1"
+CodigoPrincipal = "Ahora la cosa se complica ligeramente, los espías de la plaza intentan despistarte mediante referencias, recuerda como funciona la referencia a una variable y no tendrás problema en identificar al objetivo.
+
+Agente a1 = new Agente();
+Agente a2 = new Agente();
+Agente a3 = new Agente();
+
+Agente objetivoPrincipal = a2; 
+Agente dobleAgente = objetivoPrincipal; 
+
+a1.rutina(\"leer\");
+a2.rutina(\"mirarEstatua\");
+a3.rutina(\"tomarCafe\");
+
+dobleAgente.estado(\"Sudar\");
+"

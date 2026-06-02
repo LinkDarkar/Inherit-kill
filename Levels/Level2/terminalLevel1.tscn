@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://ddi17orjqbe7e"]
+
+[ext_resource type="PackedScene" uid="uid://bpuy5bifxyt5h" path="res://Levels/Level2/baseLevelTerminal.tscn" id="1_ntlsb"]
+
+[node name="terminalLevel1" unique_id=1710420874 instance=ExtResource("1_ntlsb")]
+
+[node name="UI" parent="." index="2" unique_id=754586874]
+Titulo = "Nivel 2 - 1"
+CodigoPrincipal = "Ahora nos llega información de que hay espías en el terminal de buses, esta vez necesitas comprender conceptos de atributos heredados para poder encontrarlo:
+
+class LectorGaceta {
+    String colorPeriodico;
+    
+    public LectorGaceta() {
+        this.colorPeriodico = \"blanco\"; 
+    }
+}
+
+class LectorComun extends LectorGaceta {
+    public LectorComun() {
+        super(); 
+    }
+}
+
+class espia extends LectorGaceta {
+    public espia() {
+        super();
+        this.colorPeriodico = \"Sepia\";
+    }
+}
+
+"

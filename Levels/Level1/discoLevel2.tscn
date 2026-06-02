@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cl6gtanf3drah"]
+
+[ext_resource type="PackedScene" uid="uid://baxhaosc1ulto" path="res://Levels/Level1/baseLevelDisco.tscn" id="1_t5nqx"]
+
+[node name="discoLevel2" unique_id=1710420874 instance=ExtResource("1_t5nqx")]
+
+[node name="UI" parent="." index="2" unique_id=754586874]
+Titulo = "Nivel 1-2"
+CodigoPrincipal = "Esta vez el espía se está camuflando utilizando herencia multinivel, observa atentamente el siguiente código para identificarlo:
+
+class Humano {
+    public void rutina() {
+        animacion(\"Quieto\");
+    }
+}
+
+class Civil extends Humano {
+    public void rutina() {
+        super.rutina();
+        animacion(\"Bailar\");
+    }
+}
+
+class ClienteVIP extends Civil {
+    public void rutina() {
+        super.rutina();
+        animacion(\"Beber\");
+    }
+}
+
+class Espia extends ClienteVIP {
+    public void rutina() {
+        super.rutina();
+        animacion(\"HablarPorMicrofono\");
+    }
+}
+"

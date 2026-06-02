@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://dkm4cpa6hy4jl"]
+
+[ext_resource type="PackedScene" uid="uid://baxhaosc1ulto" path="res://Levels/Level1/baseLevelDisco.tscn" id="1_261y6"]
+
+[node name="discoLevel1" unique_id=1710420874 instance=ExtResource("1_261y6")]
+
+[node name="UI" parent="." index="2" unique_id=754586874]
+Titulo = "Nivel 1 - 1"
+CodigoPrincipal = "Nos informan de la presencia de espías, para identificarlo debes obervar el comportamiento de los presentes en la discoteca, la única información que tenemos es el código de las clases de las entidades:
+
+class Civil{
+    public void rutina() {
+        animacion(\"Bailar\");
+    }
+}
+class Staff{
+    public void rutina() {
+        animacion(\"Limpiar\");
+    }
+}
+class SeguridadBase {
+    public void rutina() {
+        animacion(\"Vigilar\");
+    }
+}
+
+class ClienteComun extends CivilBase { }
+
+class Mesero extends StaffBase { }
+
+class Guardia extends SeguridadBase { }
+
+class Espia extends CivilBase {
+    public void rutina() {
+        animacion(\"Vigilar\");
+        super.rutina();              
+    }
+}
+"

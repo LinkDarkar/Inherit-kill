@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dl4661ptua1o1"]
+
+[ext_resource type="PackedScene" uid="uid://baxhaosc1ulto" path="res://Levels/Level1/baseLevelDisco.tscn" id="1_2ilnd"]
+
+[node name="discoLevel3" unique_id=1710420874 instance=ExtResource("1_2ilnd")]
+
+[node name="UI" parent="." index="2" unique_id=754586874]
+Titulo = "Nivel 1 - 3"
+CodigoPrincipal = "Para identificar al espía debes estar muy atento al código, hay un detalle muy importante para poder encontrarlo:
+
+class Invitado {
+    public void rutina() {
+        animacion(\"Bailar\");
+        animacion(\"Beber\");
+    }
+}
+
+class Fiestero VIP extends Invitado {
+    public void rutina() {
+        super.rutina();
+        animacion(\"lanzarBilletes\");
+    }
+}
+
+class Espia extends Invitado {
+    public void rutina() {
+        animacion(\"Bailar\");
+    }
+}
+"

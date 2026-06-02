@@ -1,7 +1,7 @@
 using Godot;
 using System;
-using System.Collections.Generic; // Para el HashSet de datos
-using System.ComponentModel;      // De la otra branch
+using System.Collections.Generic;
+using System.ComponentModel;
 
 public partial class BaseLevel : Node2D
 {
@@ -11,7 +11,6 @@ public partial class BaseLevel : Node2D
 	// --- VARIABLES PARA EL LOG DE DATOS ---
 	[Export] 
 	public string PreguntaNivel = "Identificar al espía por comportamiento";
-	
 	private string alternativasDinamicas = ""; 
 	private double cronometroRespuesta = 0;
 
@@ -19,31 +18,38 @@ public partial class BaseLevel : Node2D
 	private MOVES prevPlayerState = MOVES.IDLE;
 	private BaseNpc selectedNpc = null;
 
-	// Player
-	[Export]
-	protected PlayerCharacter playerCharacter;
-	[Export]
-	protected Camera2D camera2D;
+	[Export] protected PlayerCharacter playerCharacter;
+	[Export] protected Camera2D camera2D;
+	[Export] protected PanelContainer npcInfoContainer;
+	[Export] protected Label classLabel;
+	[Export] protected Label animLabel;
 
-	// NPC Info
-	[Export]
-	protected PanelContainer npcInfoContainer;
-	[Export]
-	protected Label classLabel;
-	[Export]
-	protected Label animLabel;
+	// --- NUEVO: VARIABLES PARA EL FLUJO DE NIVELES ---
+	[Export] 
+	public PackedScene EscenaSiguiente; // Arrastra aquí el siguiente nivel en el Inspector
+	
+	private Control popupFinal;
+	private Label labelResultado;
+	private Button botonContinuar;
+	private bool nivelAprobado = false; // Nos ayuda a saber qué hará el botón
 
 	public override void _Ready()
 	{
 		this.labelPuntuacion = GetNode<Label>("UI/LabelPuntuacion");
 		this.ActualizarTextoPuntuacion();
 
-		Node contenedorNpcs = GetNode<Node>("NPCs");
+		// --- NUEVO: BUSCAMOS LOS NODOS DEL POPUP Y CONECTAMOS EL BOTÓN ---
+		this.popupFinal = GetNode<Control>("UI/PopupFinal");
+		this.labelResultado = GetNode<Label>("UI/PopupFinal/VBoxContainer/LabelResultado");
+		this.botonContinuar = GetNode<Button>("UI/PopupFinal/VBoxContainer/BotonContinuar");
+		
+		this.botonContinuar.Pressed += OnBotonContinuarPressed;
+		this.popupFinal.Hide(); // Nos aseguramos de que esté oculto al iniciar
+		// -----------------------------------------------------------------
 
-		// Usamos HashSet para guardar las clases sin que se repitan
+		Node contenedorNpcs = GetNode<Node>("NPCs");
 		HashSet<string> clasesEnElMapa = new HashSet<string>();
 
-		// Conectamos las señales de interacción y muerte
 		foreach (Node hijo in contenedorNpcs.GetChildren())
 		{
 			if (hijo is BaseNpc npc)
@@ -54,7 +60,6 @@ public partial class BaseLevel : Node2D
 			}
 		}
 		
-		// Convertimos el HashSet en un texto separado por comas
 		alternativasDinamicas = string.Join(", ", clasesEnElMapa);
 	}
 
@@ -88,7 +93,6 @@ public partial class BaseLevel : Node2D
 			this.selectedNpc.GlobalPosition
 			- this.camera2D.GetScreenCenterPosition()
 			+ GetViewport().GetVisibleRect().Size / 2.0f;
-
 		return screenPos;
 	}
 
@@ -112,6 +116,7 @@ public partial class BaseLevel : Node2D
 		if (eraEspia)
 		{
 			GD.Print("¡Objetivo eliminado! Misión cumplida.");
+			MostrarPopupFinal(true); // --- NUEVO: Llamamos al popup de victoria
 		}
 		else
 		{
@@ -121,10 +126,51 @@ public partial class BaseLevel : Node2D
 
 			if (puntuacion < 40)
 			{
-				GameOver();
+				MostrarPopupFinal(false); // --- NUEVO: Llamamos al popup de derrota
 			}
 		}
 	}
+
+	// --- NUEVO: MÉTODOS PARA MOSTRAR EL POPUP Y CAMBIAR DE ESCENA ---
+	private void MostrarPopupFinal(bool victoria)
+	{
+		this.nivelAprobado = victoria;
+		this.popupFinal.Show();
+
+		if (victoria)
+		{
+			this.labelResultado.Text = "¡Nivel Aprobado!";
+			this.botonContinuar.Text = "Siguiente Escenario";
+		}
+		else
+		{
+			this.labelResultado.Text = "Nivel Reprobado (Nota inferior a 4.0)";
+			this.botonContinuar.Text = "Reintentar";
+		}
+	}
+
+	private void OnBotonContinuarPressed()
+	{
+		if (this.nivelAprobado)
+		{
+			// Si aprobó y hay una escena cargada en el Inspector, avanzamos
+			if (this.EscenaSiguiente != null)
+			{
+				GetTree().ChangeSceneToPacked(this.EscenaSiguiente);
+			}
+			else
+			{
+				GD.Print("No hay escena siguiente asignada en el Inspector.");
+				// Opcional: Aquí podrías enviarlo a la pantalla de créditos/victoria final
+			}
+		}
+		else
+		{
+			// Si falló, recargamos la escena actual para que lo intente de nuevo
+			GetTree().ReloadCurrentScene();
+		}
+	}
+	// -----------------------------------------------------------------
 
 	private void UpdateNpcInfo()
 	{
@@ -159,8 +205,5 @@ public partial class BaseLevel : Node2D
 		}
 	}
 
-	private void GameOver()
-	{
-		GD.Print("¡Nota inferior a 40! Te echaste el ramo.");
-	}
+	// GameOver original eliminado, ya que MostrarPopupFinal(false) cumple su función
 }

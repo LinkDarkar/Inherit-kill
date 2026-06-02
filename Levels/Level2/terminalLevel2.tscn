@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://u6y6ocs568gj"]
+
+[ext_resource type="PackedScene" uid="uid://bpuy5bifxyt5h" path="res://Levels/Level2/baseLevelTerminal.tscn" id="1_0xe0m"]
+
+[node name="terminalLevel2" unique_id=1710420874 instance=ExtResource("1_0xe0m")]
+
+[node name="UI" parent="." index="2" unique_id=754586874]
+Titulo = "Nivel 2 - 2"
+CodigoPrincipal = "Esta vez el espía se está haciendo pasar por un guardia, pero su falta de entrenamiento como tal lo dejará en envidencia:
+
+static int temperatura = 30
+
+class Guardia {
+    int toleranciaAlCalor;
+    
+    public Guardia(int tolerancia) {
+this.toleranciaAlCalor = tolerancia;
+if (temperatura > toleranciaAlCalor) {
+animacion(\"sudar\");
+}
+   }
+}
+
+class Espia extends Guardia {
+    public GuardiaFalso() {
+        super(20);
+    }
+}
+"

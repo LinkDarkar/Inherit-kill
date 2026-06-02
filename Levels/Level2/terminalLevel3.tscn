@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dxa7dif1qhpnk"]
+
+[ext_resource type="PackedScene" uid="uid://bpuy5bifxyt5h" path="res://Levels/Level2/baseLevelTerminal.tscn" id="1_urrpf"]
+
+[node name="terminalLevel3" unique_id=1710420874 instance=ExtResource("1_urrpf")]
+
+[node name="UI" parent="." index="2" unique_id=754586874]
+Titulo = "Nivel 2 - 3"
+CodigoPrincipal = "Debes observar las reacciones de los músicos, eso podría revelar quien es el espía
+
+class Musico{
+    boolean aceptaMonedas;
+    
+    public Musico() {
+        this.aceptaMonedas = true;
+    }
+    
+    public void recibirMoneda() {
+        if (this.aceptaMonedas) {
+            animacion(\"caritaFeliz\");
+        } else {
+            animacion(\"caritaEnojada\");
+        }
+    }
+}
+
+class Espia extends MusicoCallejero {
+    public Espia () {
+        super();
+        this.aceptaMonedas = false;
+    }
+}
+"
