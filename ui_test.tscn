@@ -72,6 +72,7 @@ class Espia extends CivilBase {
         super.rutina();
     }
 }"
+autowrap_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1234718127]
 visible = false
