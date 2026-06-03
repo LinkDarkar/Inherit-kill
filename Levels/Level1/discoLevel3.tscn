@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://dl4661ptua1o1"]
 
 [ext_resource type="PackedScene" uid="uid://baxhaosc1ulto" path="res://Levels/Level1/baseLevelDisco.tscn" id="1_2ilnd"]
+[ext_resource type="PackedScene" uid="uid://ddi17orjqbe7e" path="res://Levels/Level2/terminalLevel1.tscn" id="2_upklm"]
 
 [node name="discoLevel3" unique_id=1710420874 instance=ExtResource("1_2ilnd")]
+EscenaSiguiente = ExtResource("2_upklm")
 
 [node name="UI" parent="." index="2" unique_id=754586874]
 Titulo = "Nivel 1 - 3"

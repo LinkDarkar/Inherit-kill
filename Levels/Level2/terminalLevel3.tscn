@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://dxa7dif1qhpnk"]
 
 [ext_resource type="PackedScene" uid="uid://bpuy5bifxyt5h" path="res://Levels/Level2/baseLevelTerminal.tscn" id="1_urrpf"]
+[ext_resource type="PackedScene" uid="uid://baoqoc8pm7ajl" path="res://Levels/Level3/plazaLevel1.tscn" id="2_1p42n"]
 
 [node name="terminalLevel3" unique_id=1710420874 instance=ExtResource("1_urrpf")]
+EscenaSiguiente = ExtResource("2_1p42n")
 
 [node name="UI" parent="." index="2" unique_id=754586874]
 Titulo = "Nivel 2 - 3"

@@ -14,24 +14,57 @@ public partial class LoggerDatos : Node
 	{
 		Instance = this;
 
+		string carpetaLog;
+
 		if (OS.HasFeature("editor"))
 		{
-			rutaArchivo = ProjectSettings.GlobalizePath("res://log_interacciones.csv");
+			// 1. Ruta en el editor: carpeta "log" en la raíz del proyecto
+			carpetaLog = ProjectSettings.GlobalizePath("res://log");
+			
+			// Si la carpeta no existe, la creamos
+			if (!Directory.Exists(carpetaLog))
+			{
+				Directory.CreateDirectory(carpetaLog);
+			}
+
+			// 2. MAGIA ANTI-TRANSLATION: Creamos un archivo .gdignore
+			// Esto le dice al motor de Godot que ignore los CSV de esta carpeta
+			string rutaIgnore = Path.Combine(carpetaLog, ".gdignore");
+			if (!File.Exists(rutaIgnore))
+			{
+				File.WriteAllText(rutaIgnore, "Ignorar carpeta para evitar archivos translation");
+			}
 		}
 		else
 		{
+			// 3. Ruta en el juego exportado (.exe)
 			string rutaEjecutable = OS.GetExecutablePath();
 			string carpetaBase = Path.GetDirectoryName(rutaEjecutable);
-			rutaArchivo = Path.Combine(carpetaBase, "log_interacciones.csv");
+			
+			// Creamos la carpeta "log" junto al ejecutable
+			carpetaLog = Path.Combine(carpetaBase, "log");
+
+			if (!Directory.Exists(carpetaLog))
+			{
+				Directory.CreateDirectory(carpetaLog);
+			}
 		}
 
-		// SOLUCIÓN: Especificamos explícitamente "Godot.FileAccess"
+		// 4. Asignamos la ruta final de nuestro archivo Excel dentro de la nueva carpeta
+		rutaArchivo = Path.Combine(carpetaLog, "log_interacciones.csv");
+
+		// Creamos el archivo y los encabezados si no existe
 		if (!Godot.FileAccess.FileExists(rutaArchivo))
 		{
 			using var file = Godot.FileAccess.Open(rutaArchivo, Godot.FileAccess.ModeFlags.Write);
-			file.StoreLine("Timestamp,IdJugador,Pregunta,Alternativas,RespuestaJugador,FueCorrecta,TiempoDeRespuesta");
+			if (file != null)
+			{
+				file.StoreLine("Timestamp,IdJugador,Pregunta,Alternativas,RespuestaJugador,FueCorrecta,TiempoDeRespuesta");
+			}
 		}
 	}
+
+	// ... (Mantén tu función RegistrarInteraccion exactamente igual que antes abajo de esto) ...
 
 	public void RegistrarInteraccion(string pregunta, string alternativas, string respuestaJugador, bool fueCorrecta, float tiempoRespuesta)
 	{
@@ -42,7 +75,6 @@ public partial class LoggerDatos : Node
 
 		string lineaLog = $"{timestamp},{IdJugador},\"{pregunta}\",\"{alternativas}\",\"{respuestaJugador}\",{textoCorrecta},{tiempoFormateado}";
 
-		// SOLUCIÓN: Especificamos explícitamente "Godot.FileAccess"
 		using var file = Godot.FileAccess.Open(rutaArchivo, Godot.FileAccess.ModeFlags.ReadWrite);
 		file.SeekEnd();
 		file.StoreLine(lineaLog);
