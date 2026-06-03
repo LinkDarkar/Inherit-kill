@@ -40,7 +40,7 @@ public partial class BaseLevel : Node2D
 
 		// --- NUEVO: BUSCAMOS LOS NODOS DEL POPUP Y CONECTAMOS EL BOTÓN ---
 		this.popupFinal = GetNode<Control>("UI/PopupFinal");
-		this.labelResultado = GetNode<Label>("UI/PopupFinal/VBoxContainer/LabelResultado");
+		this.labelResultado = GetNode<Label>("UI/PopupFinal/VBoxContainer/LabelResultados");
 		this.botonContinuar = GetNode<Button>("UI/PopupFinal/VBoxContainer/BotonContinuar");
 		
 		this.botonContinuar.Pressed += OnBotonContinuarPressed;

@@ -2,9 +2,19 @@
 
 [ext_resource type="PackedScene" uid="uid://baxhaosc1ulto" path="res://Levels/Level1/baseLevelDisco.tscn" id="1_t5nqx"]
 [ext_resource type="PackedScene" uid="uid://dl4661ptua1o1" path="res://Levels/Level1/discoLevel3.tscn" id="2_hshrt"]
+[ext_resource type="PackedScene" uid="uid://ckhvls7w42sr" path="res://NPC/Fiestero/FiesteroNpc.tscn" id="3_8x3ob"]
+[ext_resource type="PackedScene" uid="uid://b5gij5f27k5x" path="res://NPC/Mesero/MeseroNpc.tscn" id="4_lyf82"]
+[ext_resource type="PackedScene" uid="uid://db174wftv8ocp" path="res://NPC/Guardia/GuardiaNpc.tscn" id="5_xy6bf"]
 
-[node name="discoLevel2" unique_id=1710420874 instance=ExtResource("1_t5nqx")]
+[node name="discoLevel2" unique_id=1710420874 node_paths=PackedStringArray("camera2D") instance=ExtResource("1_t5nqx")]
+camera2D = NodePath("Camera2D")
 EscenaSiguiente = ExtResource("2_hshrt")
+
+[node name="Camera2D" parent="." index="0" unique_id=1180162826]
+position = Vector2(279, 64)
+
+[node name="PhantomCamera2D" parent="." index="1" unique_id=205927956]
+position = Vector2(279, 64)
 
 [node name="UI" parent="." index="2" unique_id=754586874]
 Titulo = "Nivel 1-2"
@@ -12,28 +22,78 @@ CodigoPrincipal = "Esta vez el espía se está camuflando utilizando herencia mu
 
 class Humano {
     public void rutina() {
-        animacion(\"Quieto\");
+        animacion(\"idle\");
     }
 }
 
 class Civil extends Humano {
     public void rutina() {
         super.rutina();
-        animacion(\"Bailar\");
+        animacion(\"dance\");
     }
 }
 
 class ClienteVIP extends Civil {
     public void rutina() {
         super.rutina();
-        animacion(\"Beber\");
+        animacion(\"drink\");
     }
 }
 
 class Espia extends ClienteVIP {
     public void rutina() {
         super.rutina();
-        animacion(\"HablarPorMicrofono\");
+        animacion(\"speak_microphone\");
     }
 }
+
 "
+
+[node name="NPCs" type="Node2D" parent="." index="4" unique_id=3216147]
+y_sort_enabled = true
+
+[node name="NPC2" parent="NPCs" index="0" unique_id=1400103082 instance=ExtResource("3_8x3ob")]
+position = Vector2(416, 71)
+animationNames = PackedStringArray("dance_down", "idle_down", "idle_left")
+
+[node name="NPC8" parent="NPCs" index="1" unique_id=1343606461 instance=ExtResource("4_lyf82")]
+position = Vector2(246, 93)
+
+[node name="NPC9" parent="NPCs" index="2" unique_id=1439620598 instance=ExtResource("4_lyf82")]
+position = Vector2(164, 29)
+
+[node name="NPC11" parent="NPCs" index="3" unique_id=597353201 instance=ExtResource("5_xy6bf")]
+position = Vector2(234, -38)
+pseudoclass = 2
+animationNames = PackedStringArray("idle_down", "idle_left", "idle_right", "idle_up", "vigilar_down")
+
+[node name="NPC6" parent="NPCs" index="4" unique_id=154542622 instance=ExtResource("5_xy6bf")]
+position = Vector2(-17, 77)
+animationNames = PackedStringArray("idle_down", "idle_right", "idle_up", "vigilar_down")
+
+[node name="NPC5" parent="NPCs" index="5" unique_id=905077038 instance=ExtResource("5_xy6bf")]
+position = Vector2(474, 66)
+animationNames = PackedStringArray("idle_down", "idle_left", "idle_up", "vigilar_down")
+
+[node name="NPC" parent="NPCs" index="6" unique_id=1442265239 instance=ExtResource("3_8x3ob")]
+position = Vector2(99, 96)
+pseudoclass = 4
+animationNames = PackedStringArray("dance_down", "idle_down", "idle_left", "idle_right", "idle_up", "drink_down")
+
+[node name="NPC7" parent="NPCs" index="7" unique_id=1197702553 instance=ExtResource("3_8x3ob")]
+position = Vector2(58, 66)
+animationNames = PackedStringArray("dance_down", "idle_down", "idle_left", "idle_right", "idle_up")
+
+[node name="NPC3" parent="NPCs" index="8" unique_id=1855820071 instance=ExtResource("3_8x3ob")]
+position = Vector2(360, 59)
+pseudoclass = 4
+animationNames = PackedStringArray("dance_down", "idle_down", "idle_left", "idle_right", "idle_up", "drink_down")
+
+[node name="NPC4" parent="NPCs" index="9" unique_id=96217129 instance=ExtResource("3_8x3ob")]
+position = Vector2(36, 23)
+isSpy = true
+pseudoclass = 4
+animationNames = PackedStringArray("dance_down", "idle_down", "idle_left", "idle_right", "idle_up", "speak_microphone_down", "drink_down")
+
+[node name="Player" parent="." index="5" unique_id=1147506120]
+position = Vector2(204, 64)

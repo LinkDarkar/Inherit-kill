@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://de68yomldl4sd"]
+
+[ext_resource type="PackedScene" uid="uid://drwetybitm8ya" path="res://NPC/BaseNpc.tscn" id="1_y1yti"]
+[ext_resource type="SpriteFrames" uid="uid://dlhm0soe3j1co" path="res://Assets/spritesheets/NPCs/Guardia Estacion/guardia_estacion_no_sudoroso_sprite_frames.tres" id="2_7eigq"]
+
+[node name="NPC" unique_id=1442265239 instance=ExtResource("1_y1yti")]
+spriteFrames = ExtResource("2_7eigq")

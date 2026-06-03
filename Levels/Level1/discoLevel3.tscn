@@ -2,9 +2,19 @@
 
 [ext_resource type="PackedScene" uid="uid://baxhaosc1ulto" path="res://Levels/Level1/baseLevelDisco.tscn" id="1_2ilnd"]
 [ext_resource type="PackedScene" uid="uid://ddi17orjqbe7e" path="res://Levels/Level2/terminalLevel1.tscn" id="2_upklm"]
+[ext_resource type="PackedScene" uid="uid://ckhvls7w42sr" path="res://NPC/Fiestero/FiesteroNpc.tscn" id="3_4leeb"]
+[ext_resource type="PackedScene" uid="uid://b5gij5f27k5x" path="res://NPC/Mesero/MeseroNpc.tscn" id="4_vj5hi"]
+[ext_resource type="PackedScene" uid="uid://db174wftv8ocp" path="res://NPC/Guardia/GuardiaNpc.tscn" id="5_v2uc6"]
 
-[node name="discoLevel3" unique_id=1710420874 instance=ExtResource("1_2ilnd")]
+[node name="discoLevel3" unique_id=1710420874 node_paths=PackedStringArray("camera2D") instance=ExtResource("1_2ilnd")]
+camera2D = NodePath("Camera2D")
 EscenaSiguiente = ExtResource("2_upklm")
+
+[node name="Camera2D" parent="." index="0" unique_id=1180162826]
+position = Vector2(392, -8)
+
+[node name="PhantomCamera2D" parent="." index="1" unique_id=205927956]
+position = Vector2(392, -8)
 
 [node name="UI" parent="." index="2" unique_id=754586874]
 Titulo = "Nivel 1 - 3"
@@ -12,21 +22,73 @@ CodigoPrincipal = "Para identificar al espía debes estar muy atento al código,
 
 class Invitado {
     public void rutina() {
-        animacion(\"Bailar\");
-        animacion(\"Beber\");
+        animacion(\"dance\");
+        animacion(\"drink\");
     }
 }
 
-class Fiestero VIP extends Invitado {
+class FiesteroVIP extends Invitado {
     public void rutina() {
         super.rutina();
-        animacion(\"lanzarBilletes\");
+        animacion(\"throw_money\");
     }
 }
 
 class Espia extends Invitado {
     public void rutina() {
-        animacion(\"Bailar\");
+        animacion(\"dance\");
     }
 }
+
 "
+
+[node name="NPCs" type="Node2D" parent="." index="4" unique_id=1402532094]
+y_sort_enabled = true
+
+[node name="NPC2" parent="NPCs" index="0" unique_id=1442265239 instance=ExtResource("3_4leeb")]
+position = Vector2(416, 71)
+pseudoclass = 5
+animationNames = PackedStringArray("dance_down", "drink_down", "throw_money_down")
+
+[node name="NPC8" parent="NPCs" index="1" unique_id=363005806 instance=ExtResource("4_vj5hi")]
+position = Vector2(246, 93)
+
+[node name="NPC9" parent="NPCs" index="2" unique_id=1646134507 instance=ExtResource("4_vj5hi")]
+position = Vector2(164, 29)
+
+[node name="NPC11" parent="NPCs" index="3" unique_id=847817386 instance=ExtResource("5_v2uc6")]
+position = Vector2(234, -38)
+pseudoclass = 2
+animationNames = PackedStringArray("idle_down", "idle_left", "idle_right", "idle_up", "vigilar_down")
+
+[node name="NPC6" parent="NPCs" index="4" unique_id=1477643890 instance=ExtResource("5_v2uc6")]
+position = Vector2(-17, 77)
+animationNames = PackedStringArray("idle_down", "idle_right", "idle_up", "vigilar_down")
+
+[node name="NPC5" parent="NPCs" index="5" unique_id=1667164706 instance=ExtResource("5_v2uc6")]
+position = Vector2(474, 66)
+animationNames = PackedStringArray("idle_down", "idle_left", "idle_up", "vigilar_down")
+
+[node name="NPC" parent="NPCs" index="6" unique_id=1523672665 instance=ExtResource("3_4leeb")]
+position = Vector2(99, 96)
+pseudoclass = 5
+animationNames = PackedStringArray("dance_down", "drink_down", "throw_money_down")
+
+[node name="NPC7" parent="NPCs" index="7" unique_id=1346225366 instance=ExtResource("3_4leeb")]
+position = Vector2(58, 66)
+isSpy = true
+pseudoclass = 6
+animationNames = PackedStringArray("dance_down")
+
+[node name="NPC3" parent="NPCs" index="8" unique_id=1926011016 instance=ExtResource("3_4leeb")]
+position = Vector2(360, 59)
+pseudoclass = 6
+animationNames = PackedStringArray("dance_down", "drink_down")
+
+[node name="NPC4" parent="NPCs" index="9" unique_id=1958771728 instance=ExtResource("3_4leeb")]
+position = Vector2(36, 23)
+pseudoclass = 5
+animationNames = PackedStringArray("dance_down", "drink_down")
+
+[node name="Player" parent="." index="5" unique_id=1147506120]
+position = Vector2(317, -8)

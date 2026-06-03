@@ -1,6 +1,8 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://wax83bp5xclp"]
 
 [ext_resource type="Texture2D" uid="uid://c06pnucl1ox6s" path="res://Assets/spritesheets/NPCs/SchoolGirl/school_girl_npc.png" id="1_t2xla"]
+[ext_resource type="Texture2D" uid="uid://btogbjvaohwyk" path="res://Assets/spritesheets/NPCs/SchoolGirl/periodico_sepia.png" id="2_sws14"]
+[ext_resource type="Texture2D" uid="uid://b32mywj0ipaaj" path="res://Assets/spritesheets/NPCs/SchoolGirl/periodico_blanco.png" id="3_vb2nb"]
 
 [resource]
 animations = [{
@@ -10,5 +12,21 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_sws14")
+}],
+"loop": true,
+"name": &"reading_sepia_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_vb2nb")
+}],
+"loop": true,
+"name": &"reading_white_down",
 "speed": 5.0
 }]

@@ -2,8 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://bpuy5bifxyt5h" path="res://Levels/Level2/baseLevelTerminal.tscn" id="1_0xe0m"]
 [ext_resource type="PackedScene" uid="uid://dxa7dif1qhpnk" path="res://Levels/Level2/terminalLevel3.tscn" id="2_3685t"]
+[ext_resource type="PackedScene" uid="uid://2y75q8qib2le" path="res://NPC/SchoolGirl/SchoolGirlNpc.tscn" id="3_b0w3y"]
+[ext_resource type="Texture2D" uid="uid://b32mywj0ipaaj" path="res://Assets/spritesheets/NPCs/SchoolGirl/periodico_blanco.png" id="4_78wcx"]
+[ext_resource type="Texture2D" uid="uid://btogbjvaohwyk" path="res://Assets/spritesheets/NPCs/SchoolGirl/periodico_sepia.png" id="5_np803"]
+[ext_resource type="PackedScene" uid="uid://de68yomldl4sd" path="res://NPC/Guardia Estacion/GuardiaEstacionNpc.tscn" id="6_b0w3y"]
+[ext_resource type="SpriteFrames" uid="uid://csa14wttii3s8" path="res://Assets/spritesheets/NPCs/Guardia Estacion/guardia_estacion_sudoroso_sprite_frames.tres" id="7_78wcx"]
 
-[node name="terminalLevel2" unique_id=1710420874 instance=ExtResource("1_0xe0m")]
+[node name="terminalLevel2" unique_id=1710420874 node_paths=PackedStringArray("camera2D") instance=ExtResource("1_0xe0m")]
+camera2D = NodePath("Camera2D")
 EscenaSiguiente = ExtResource("2_3685t")
 
 [node name="UI" parent="." index="2" unique_id=754586874]
@@ -16,11 +22,11 @@ class Guardia {
     int toleranciaAlCalor;
     
     public Guardia(int tolerancia) {
-this.toleranciaAlCalor = tolerancia;
-if (temperatura > toleranciaAlCalor) {
-animacion(\"sudar\");
-}
-   }
+		this.toleranciaAlCalor = tolerancia;
+		if (temperatura > toleranciaAlCalor) {
+			animacion(\"sudar\");
+		}
+	}
 }
 
 class Espia extends Guardia {
@@ -28,4 +34,57 @@ class Espia extends Guardia {
         super(20);
     }
 }
+
 "
+
+[node name="NPCs" type="Node2D" parent="." index="4" unique_id=232843746]
+y_sort_enabled = true
+
+[node name="NPC" parent="NPCs" index="0" unique_id=1442265239 instance=ExtResource("3_b0w3y")]
+position = Vector2(119, 365)
+texture2D = ExtResource("4_78wcx")
+pseudoclass = 8
+animationNames = PackedStringArray("reading_white_down")
+
+[node name="NPC2" parent="NPCs" index="1" unique_id=959468902 instance=ExtResource("3_b0w3y")]
+position = Vector2(460, 330)
+texture2D = ExtResource("4_78wcx")
+pseudoclass = 9
+animationNames = PackedStringArray("reading_white_down")
+
+[node name="NPC3" parent="NPCs" index="2" unique_id=1261501853 instance=ExtResource("3_b0w3y")]
+position = Vector2(-127, 164)
+texture2D = ExtResource("4_78wcx")
+pseudoclass = 8
+animationNames = PackedStringArray("reading_white_down")
+
+[node name="NPC4" parent="NPCs" index="3" unique_id=1544219938 instance=ExtResource("3_b0w3y")]
+position = Vector2(-61, 164)
+texture2D = ExtResource("4_78wcx")
+pseudoclass = 9
+animationNames = PackedStringArray("reading_white_down")
+
+[node name="NPC5" parent="NPCs" index="4" unique_id=1517202673 instance=ExtResource("3_b0w3y")]
+position = Vector2(645, 334)
+texture2D = ExtResource("5_np803")
+isSpy = true
+pseudoclass = 8
+animationNames = PackedStringArray("reading_sepia_down")
+
+[node name="NPC6" parent="NPCs" index="5" unique_id=552649282 instance=ExtResource("6_b0w3y")]
+position = Vector2(-98, 123)
+pseudoclass = 1
+
+[node name="NPC7" parent="NPCs" index="6" unique_id=1905037871 instance=ExtResource("6_b0w3y")]
+position = Vector2(110, 312)
+spriteFrames = ExtResource("7_78wcx")
+isSpy = true
+pseudoclass = 1
+
+[node name="NPC8" parent="NPCs" index="7" unique_id=2118984944 instance=ExtResource("6_b0w3y")]
+position = Vector2(308, 311)
+pseudoclass = 1
+
+[node name="NPC9" parent="NPCs" index="8" unique_id=1081381495 instance=ExtResource("6_b0w3y")]
+position = Vector2(547, 310)
+pseudoclass = 1

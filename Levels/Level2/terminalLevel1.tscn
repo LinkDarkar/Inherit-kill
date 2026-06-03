@@ -2,6 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://bpuy5bifxyt5h" path="res://Levels/Level2/baseLevelTerminal.tscn" id="1_ntlsb"]
 [ext_resource type="PackedScene" uid="uid://u6y6ocs568gj" path="res://Levels/Level2/terminalLevel2.tscn" id="2_24ras"]
+[ext_resource type="PackedScene" uid="uid://2y75q8qib2le" path="res://NPC/SchoolGirl/SchoolGirlNpc.tscn" id="3_kpl78"]
+[ext_resource type="Texture2D" uid="uid://b32mywj0ipaaj" path="res://Assets/spritesheets/NPCs/SchoolGirl/periodico_blanco.png" id="4_2la1s"]
+[ext_resource type="Texture2D" uid="uid://btogbjvaohwyk" path="res://Assets/spritesheets/NPCs/SchoolGirl/periodico_sepia.png" id="4_lxsnm"]
 
 [node name="terminalLevel1" unique_id=1710420874 instance=ExtResource("1_ntlsb")]
 EscenaSiguiente = ExtResource("2_24ras")
@@ -32,3 +35,61 @@ class espia extends LectorGaceta {
 }
 
 "
+
+[node name="NPCs" type="Node2D" parent="." index="4" unique_id=1614510014]
+y_sort_enabled = true
+
+[node name="NPC" parent="NPCs" index="0" unique_id=1442265239 instance=ExtResource("3_kpl78")]
+position = Vector2(119, 365)
+texture2D = ExtResource("4_2la1s")
+pseudoclass = 8
+animationNames = PackedStringArray("reading_white_down")
+
+[node name="NPC2" parent="NPCs" index="1" unique_id=1398282362 instance=ExtResource("3_kpl78")]
+position = Vector2(460, 330)
+texture2D = ExtResource("4_2la1s")
+pseudoclass = 9
+animationNames = PackedStringArray("reading_white_down")
+
+[node name="NPC3" parent="NPCs" index="2" unique_id=582008834 instance=ExtResource("3_kpl78")]
+position = Vector2(-127, 164)
+texture2D = ExtResource("4_2la1s")
+pseudoclass = 8
+animationNames = PackedStringArray("reading_white_down")
+
+[node name="NPC4" parent="NPCs" index="3" unique_id=636309170 instance=ExtResource("3_kpl78")]
+position = Vector2(-61, 164)
+texture2D = ExtResource("4_2la1s")
+pseudoclass = 9
+animationNames = PackedStringArray("reading_white_down")
+
+[node name="NPC5" parent="NPCs" index="4" unique_id=1968961415 instance=ExtResource("3_kpl78")]
+position = Vector2(645, 334)
+texture2D = ExtResource("4_lxsnm")
+isSpy = true
+pseudoclass = 8
+animationNames = PackedStringArray("reading_sepia_down")
+
+[node name="NPC6" parent="NPCs" index="5" unique_id=1245664478 instance=ExtResource("3_kpl78")]
+position = Vector2(723, 331)
+texture2D = ExtResource("4_2la1s")
+pseudoclass = 9
+animationNames = PackedStringArray("reading_white_down")
+
+[node name="NPC7" parent="NPCs" index="6" unique_id=1756292967 instance=ExtResource("3_kpl78")]
+position = Vector2(16, 327)
+texture2D = ExtResource("4_2la1s")
+pseudoclass = 8
+animationNames = PackedStringArray("reading_white_down")
+
+[node name="NPC8" parent="NPCs" index="7" unique_id=1011982583 instance=ExtResource("3_kpl78")]
+position = Vector2(-123, 413)
+texture2D = ExtResource("4_2la1s")
+pseudoclass = 9
+animationNames = PackedStringArray("reading_white_down")
+
+[node name="NPC9" parent="NPCs" index="8" unique_id=720301618 instance=ExtResource("3_kpl78")]
+position = Vector2(359, 345)
+texture2D = ExtResource("4_2la1s")
+pseudoclass = 9
+animationNames = PackedStringArray("reading_white_down")

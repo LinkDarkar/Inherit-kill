@@ -1,4 +1,5 @@
 using Godot;
+using PseudoclassEnum;
 
 public partial class BaseNpc : CharacterBody2D
 {
@@ -12,7 +13,7 @@ public partial class BaseNpc : CharacterBody2D
 	public bool isSpy = false;
 
 	[Export]
-	public PSEUDOCLASS pseudoclass = PSEUDOCLASS.CIVIL;
+	public PseudoclassEnum.PSEUDOCLASS pseudoclass = PSEUDOCLASS.CIVIL;
 
 	// DO NOT replace animationNames values in child classes, they are exclusively defined in the editor
 	[Export]
