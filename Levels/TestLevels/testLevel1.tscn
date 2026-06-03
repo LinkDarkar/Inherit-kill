@@ -2,8 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://dikitauortch6" path="res://Levels/baseLevel.tscn" id="1_2628d"]
 [ext_resource type="Texture2D" uid="uid://c8rmc1gpxi1x6" path="res://Assets/tilesets/greybox_tileset_test2.png" id="2_3vqeq"]
-[ext_resource type="PackedScene" uid="uid://drwetybitm8ya" path="res://NPC/BaseNpc.tscn" id="3_loyu2"]
-[ext_resource type="SpriteFrames" uid="uid://ok1mns1yw0qr" path="res://Assets/spritesheets/NPCs/Fiestero/fiestero_sprite_frames.tres" id="4_yn408"]
 [ext_resource type="PackedScene" uid="uid://ckhvls7w42sr" path="res://NPC/Fiestero/FiesteroNpc.tscn" id="5_ixf8j"]
 [ext_resource type="PackedScene" uid="uid://2y75q8qib2le" path="res://NPC/SchoolGirl/SchoolGirlNpc.tscn" id="6_loyu2"]
 [ext_resource type="PackedScene" uid="uid://qhw585n3frqi" path="res://NPC/JokerMusician/JokerMusicianNpc.tscn" id="7_yn408"]
@@ -330,22 +328,21 @@ tile_set = SubResource("TileSet_bvr2r")
 [node name="NPCs" type="Node2D" parent="." index="5" unique_id=150813244]
 y_sort_enabled = true
 
-[node name="NPC" parent="NPCs" index="0" unique_id=1442265239 instance=ExtResource("3_loyu2")]
-z_index = 1
-position = Vector2(577, 221)
-spriteFrames = ExtResource("4_yn408")
-isSpy = true
+[node name="NPC" parent="NPCs" index="0" unique_id=1442265239 instance=ExtResource("5_ixf8j")]
+position = Vector2(157, 221)
+animationNames = PackedStringArray("dance_down", "idle_down", "spying_down", "walk_down", "speak_microphone_down", "throw_money_down", "drink_down")
 
-[node name="NPC2" parent="NPCs" index="1" unique_id=960855260 instance=ExtResource("5_ixf8j")]
-z_index = 1
+[node name="NPC5" parent="NPCs" index="1" unique_id=2090279750 instance=ExtResource("5_ixf8j")]
+position = Vector2(234, 216)
+animationNames = PackedStringArray("dance_down", "idle_down", "spying_down", "walk_down", "speak_microphone_down", "throw_money_down", "drink_down")
+
+[node name="NPC2" parent="NPCs" index="2" unique_id=960855260 instance=ExtResource("5_ixf8j")]
 position = Vector2(350, 228)
 
-[node name="NPC3" parent="NPCs" index="2" unique_id=1065024122 instance=ExtResource("6_loyu2")]
-z_index = 1
+[node name="NPC3" parent="NPCs" index="3" unique_id=1065024122 instance=ExtResource("6_loyu2")]
 position = Vector2(257, 159)
 
-[node name="NPC4" parent="NPCs" index="3" unique_id=1799971245 instance=ExtResource("7_yn408")]
-z_index = 1
+[node name="NPC4" parent="NPCs" index="4" unique_id=1799971245 instance=ExtResource("7_yn408")]
 position = Vector2(306, 155)
 
 [node name="Player" parent="." index="6" unique_id=1147506120]

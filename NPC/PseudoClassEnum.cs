@@ -1,7 +1,0 @@
-public enum PSEUDOCLASS
-{
-	CIVIL,
-	GUARDIA,
-	STAFF,
-	ESPIA
-}

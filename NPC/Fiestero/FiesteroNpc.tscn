@@ -8,7 +8,7 @@
 script = ExtResource("2_k5hv0")
 spriteFrames = ExtResource("3_uwtlx")
 texture2D = null
-animationNames = PackedStringArray("dance_down", "idle_down", "idle_left", "idle_right", "idle_up", "spying_down", "walk_down", "walk_left", "walk_right", "walk_up")
+animationNames = PackedStringArray("dance_down", "idle_down", "idle_left", "idle_right", "idle_up", "spying_down", "walk_down", "walk_left", "walk_right", "walk_up", "speak_microphone_down", "throw_money_down", "drink_down")
 
 [node name="AnimatedSprite2D" parent="." index="4" unique_id=1664250867]
 sprite_frames = ExtResource("3_uwtlx")

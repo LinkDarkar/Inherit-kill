@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bd3mq3mmekl3l"
-path="res://.godot/imported/fiestero.png-aee5ba8adfe946b2df7615f4b90d6935.ctex"
+uid="uid://cgcq10wmsf5ep"
+path="res://.godot/imported/guardia_no_tan_sudoroso.png-562b558b97905f01dd5cfea90a867a76.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/spritesheets/NPCs/Fiestero/fiestero.png"
-dest_files=["res://.godot/imported/fiestero.png-aee5ba8adfe946b2df7615f4b90d6935.ctex"]
+source_file="res://Assets/spritesheets/NPCs/Guardia Estacion/guardia_no_tan_sudoroso.png"
+dest_files=["res://.godot/imported/guardia_no_tan_sudoroso.png-562b558b97905f01dd5cfea90a867a76.ctex"]
 
 [params]
 

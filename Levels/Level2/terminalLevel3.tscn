@@ -33,3 +33,6 @@ class Espia extends MusicoCallejero {
     }
 }
 "
+
+[node name="NPCs" type="Node2D" parent="." index="4" unique_id=1182305405]
+y_sort_enabled = true

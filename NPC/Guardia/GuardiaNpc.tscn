@@ -8,6 +8,7 @@
 script = ExtResource("2_1xdgl")
 spriteFrames = ExtResource("3_jjmk0")
 texture2D = null
+pseudoclass = 1
 animationNames = PackedStringArray("idle_down", "idle_left", "idle_right", "idle_up", "vigilar_down", "walk_down", "walk_left", "walk_right", "walk_up")
 
 [node name="AnimatedSprite2D" parent="." index="4" unique_id=1664250867]
