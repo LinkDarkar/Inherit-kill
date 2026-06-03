@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://2y75q8qib2le"]
+
+[ext_resource type="PackedScene" uid="uid://drwetybitm8ya" path="res://NPC/BaseNpc.tscn" id="1_duqlg"]
+[ext_resource type="SpriteFrames" uid="uid://wax83bp5xclp" path="res://Assets/spritesheets/NPCs/SchoolGirl/school_girl_sprite_frames.tres" id="2_5732s"]
+[ext_resource type="Texture2D" uid="uid://c06pnucl1ox6s" path="res://Assets/spritesheets/NPCs/SchoolGirl/school_girl_npc.png" id="3_5732s"]
+
+[node name="NPC" unique_id=1442265239 instance=ExtResource("1_duqlg")]
+spriteFrames = ExtResource("2_5732s")
+texture2D = ExtResource("3_5732s")
+animationNames = PackedStringArray("idle_down")
+
+[node name="Sprite2D" parent="." index="0" unique_id=1170273696]
+texture = null

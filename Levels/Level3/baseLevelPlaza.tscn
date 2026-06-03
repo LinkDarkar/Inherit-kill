@@ -288,10 +288,7 @@ texture = ExtResource("2_phyvs")
 [sub_resource type="TileSet" id="TileSet_d7efv"]
 sources/1 = SubResource("TileSetAtlasSource_hrowo")
 
-[node name="BaseLevel" unique_id=1710420874 instance=ExtResource("1_et4ao")]
-
-[node name="PanelContainer" parent="UI/NPCInfo" parent_id_path=PackedInt32Array(1694361608) index="0" unique_id=1038421595]
-visible = false
+[node name="BaseLevel2" unique_id=1710420874 instance=ExtResource("1_et4ao")]
 
 [node name="CityPixel" type="Sprite2D" parent="." index="3" unique_id=221442440]
 z_index = -1

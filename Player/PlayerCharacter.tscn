@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dunqdxwc4bna5" path="res://Assets/spritesheets/Player/urotsuki attack chainsaw.png" id="4_ik8g8"]
 [ext_resource type="Script" uid="uid://bn3s0e2vrtg53" path="res://Player/Boxes/Hitbox.cs" id="5_8llf3"]
 [ext_resource type="Script" uid="uid://8ufc61fssymr" path="res://Player/StateMachine/MoveIdle.cs" id="5_ik8g8"]
+[ext_resource type="AudioStream" uid="uid://cnnqmybvc4hd8" path="res://Assets/Sounds/voice-yamete.wav" id="5_mv8iy"]
 [ext_resource type="Texture2D" uid="uid://ckv3jqd0viyhp" path="res://icon.svg" id="5_x7hbx"]
 [ext_resource type="Script" uid="uid://j3crj01qhmma" path="res://Player/StateMachine/MoveInteracting.cs" id="6_x7hbx"]
 [ext_resource type="Script" uid="uid://cpjjw3uqu4200" path="res://Player/StateMachine/MoveAttacking.cs" id="10_ik8g8"]
@@ -330,6 +331,154 @@ _data = {
 &"attack_up": SubResource("Animation_3ypln")
 }
 
+[sub_resource type="Animation" id="Animation_ix2we"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_in3ap"]
+resource_name = "interact_down"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../InteractSound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_mv8iy")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="Animation" id="Animation_bipy8"]
+resource_name = "interact_left"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../InteractSound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_mv8iy")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="Animation" id="Animation_7n8pw"]
+resource_name = "interact_right"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../InteractSound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_mv8iy")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="Animation" id="Animation_gepu4"]
+resource_name = "interact_up"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../InteractSound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_mv8iy")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xw56l"]
+_data = {
+&"RESET": SubResource("Animation_ix2we"),
+&"interact_down": SubResource("Animation_in3ap"),
+&"interact_left": SubResource("Animation_bipy8"),
+&"interact_right": SubResource("Animation_7n8pw"),
+&"interact_up": SubResource("Animation_gepu4")
+}
+
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pxyys"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n04vi"]
@@ -377,6 +526,16 @@ frame = 2
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AttackSprite" unique_id=1858194267]
 libraries/ = SubResource("AnimationLibrary_ix2we")
 speed_scale = 0.3
+
+[node name="InteractSprite" type="Sprite2D" parent="." unique_id=1897941727]
+visible = false
+texture = ExtResource("2_gnsy3")
+offset = Vector2(0, -12)
+hframes = 3
+vframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="InteractSprite" unique_id=760765080]
+libraries/ = SubResource("AnimationLibrary_xw56l")
 
 [node name="CollisionBox" type="CollisionShape2D" parent="." unique_id=15121375]
 visible = false
@@ -431,3 +590,5 @@ script = ExtResource("10_ik8g8")
 [node name="AttackSound" type="AudioStreamPlayer" parent="." unique_id=800306342]
 stream = ExtResource("13_827r0")
 volume_db = -10.0
+
+[node name="InteractSound" type="AudioStreamPlayer" parent="." unique_id=765749469]
