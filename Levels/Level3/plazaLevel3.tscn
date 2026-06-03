@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://beyx5hpj50dl3"]
 
 [ext_resource type="PackedScene" uid="uid://bneehiqfcha7" path="res://Levels/Level3/baseLevelPlaza.tscn" id="1_uxime"]
+[ext_resource type="PackedScene" uid="uid://ckhvls7w42sr" path="res://NPC/Fiestero/FiesteroNpc.tscn" id="4_mgsk8"]
 
 [node name="plazaLevel3" unique_id=1710420874 instance=ExtResource("1_uxime")]
 
@@ -8,14 +9,31 @@
 Titulo = "Nivel 3 - 3"
 CodigoPrincipal = "El último espía, usa todo lo aprendido y acaba con él.
 
-Informante i1 = new Informante(\"Tocar_Guitarra\");
-Informante i2 = new Informante(\"Dibujar_Retrato\");
+Informante i1 = new Informante(\"dance\");
+Informante i2 = new Informante(\"drink\");
 
 public void despistar(Informante agente) {
-    agente.estado(\"Llamar_por_Radio\"); 
-    agente = new Informante(\"Leer_Mapa\");
-    agente.estado(\"Sudar\"); 
+    agente.estado(\"speak_microphone\"); 
+    agente = new Informante(\"throw_money\");
+    agente.estado(\"idle\"); 
 }
 
 despistar(i1);
+
 "
+
+[node name="NPCs" type="Node2D" parent="." index="5" unique_id=1979257959]
+y_sort_enabled = true
+
+[node name="NPC" parent="NPCs" index="0" unique_id=1442265239 instance=ExtResource("4_mgsk8")]
+position = Vector2(240, 73)
+animationNames = PackedStringArray("dance_down")
+
+[node name="NPC2" parent="NPCs" index="1" unique_id=1320099578 instance=ExtResource("4_mgsk8")]
+position = Vector2(344, 120)
+isSpy = true
+animationNames = PackedStringArray("speak_microphone_down")
+
+[node name="NPC4" parent="NPCs" index="2" unique_id=1792628677 instance=ExtResource("4_mgsk8")]
+position = Vector2(105, 90)
+animationNames = PackedStringArray("idle_down")

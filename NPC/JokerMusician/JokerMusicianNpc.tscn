@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://qhw585n3frqi"]
 
 [ext_resource type="PackedScene" uid="uid://drwetybitm8ya" path="res://NPC/BaseNpc.tscn" id="1_5mbtg"]
-[ext_resource type="SpriteFrames" uid="uid://cu5eh1qm4eulp" path="res://Assets/spritesheets/NPCs/JokerMusician/joker_musician_sprite_frames.tres" id="2_00ggt"]
+[ext_resource type="Script" uid="uid://dmmsig3ug77t" path="res://NPC/JokerMusician/JokerMusicianNpc.cs" id="2_00ggt"]
 [ext_resource type="Texture2D" uid="uid://dcperlt5a4h5h" path="res://Assets/spritesheets/NPCs/JokerMusician/joker musician npc.png" id="2_e2lbf"]
+[ext_resource type="SpriteFrames" uid="uid://cu5eh1qm4eulp" path="res://Assets/spritesheets/NPCs/JokerMusician/joker_musician_sprite_frames.tres" id="3_00ggt"]
 
 [node name="NPC" unique_id=1442265239 instance=ExtResource("1_5mbtg")]
-spriteFrames = ExtResource("2_00ggt")
+script = ExtResource("2_00ggt")
+spriteFrames = ExtResource("3_00ggt")
 texture2D = null
 animationNames = PackedStringArray("idle_down", "playing_music_down")
 

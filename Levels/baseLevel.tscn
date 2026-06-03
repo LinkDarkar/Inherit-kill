@@ -11,10 +11,11 @@
 script = ExtResource("3_q6cgi")
 metadata/_custom_type_script = "uid://8umksf8e80fw"
 
-[node name="BaseLevel" type="Node2D" unique_id=1710420874 node_paths=PackedStringArray("playerCharacter", "npcInfoContainer", "classLabel", "animLabel")]
+[node name="BaseLevel" type="Node2D" unique_id=1710420874 node_paths=PackedStringArray("playerCharacter", "camera2D", "npcInfoContainer", "classLabel", "animLabel")]
 y_sort_enabled = true
 script = ExtResource("1_ayuvw")
 playerCharacter = NodePath("Player")
+camera2D = NodePath("Camera2D")
 npcInfoContainer = NodePath("UI/NPCInfo/PanelContainer")
 classLabel = NodePath("UI/NPCInfo/PanelContainer/VBoxContainer/Class")
 animLabel = NodePath("UI/NPCInfo/PanelContainer/VBoxContainer/Current Animation")

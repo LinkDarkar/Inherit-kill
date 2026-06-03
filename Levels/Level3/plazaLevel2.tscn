@@ -2,6 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://bneehiqfcha7" path="res://Levels/Level3/baseLevelPlaza.tscn" id="1_n7ut7"]
 [ext_resource type="PackedScene" uid="uid://beyx5hpj50dl3" path="res://Levels/Level3/plazaLevel3.tscn" id="2_8c558"]
+[ext_resource type="PackedScene" uid="uid://2y75q8qib2le" path="res://NPC/SchoolGirl/SchoolGirlNpc.tscn" id="3_0hx0q"]
+[ext_resource type="Texture2D" uid="uid://b32mywj0ipaaj" path="res://Assets/spritesheets/NPCs/SchoolGirl/periodico_blanco.png" id="4_vp8tb"]
 
 [node name="plazaLevel2" unique_id=1710420874 instance=ExtResource("1_n7ut7")]
 EscenaSiguiente = ExtResource("2_8c558")
@@ -16,5 +18,29 @@ Contacto sujetoBeta = new Contacto(\"maletinGris\");
 Contacto portadorReal = sujetoAlfa;
 Contacto espia = portadorReal;
 
-portadorReal = new Contacto(\"maletinPlateado\");
+portadorReal = new Contacto(\"maletinRojo\");
 "
+
+[node name="NPCs" type="Node2D" parent="." index="5" unique_id=768521854]
+y_sort_enabled = true
+
+[node name="NPC" parent="NPCs" index="0" unique_id=1442265239 instance=ExtResource("3_0hx0q")]
+position = Vector2(116, 114)
+texture2D = ExtResource("4_vp8tb")
+pseudoclass = 11
+animationNames = PackedStringArray("maletin_rojo")
+
+[node name="NPC4" parent="NPCs" index="1" unique_id=194157355 instance=ExtResource("3_0hx0q")]
+position = Vector2(182, 201)
+isSpy = true
+animationNames = PackedStringArray("maletin_negro")
+
+[node name="NPC5" parent="NPCs" index="2" unique_id=92951984 instance=ExtResource("3_0hx0q")]
+position = Vector2(248, 84)
+
+[node name="NPC2" parent="NPCs" index="3" unique_id=2099655144 instance=ExtResource("3_0hx0q")]
+position = Vector2(278, 136)
+
+[node name="NPC3" parent="NPCs" index="4" unique_id=1890266160 instance=ExtResource("3_0hx0q")]
+position = Vector2(38, 211)
+animationNames = PackedStringArray("maletin_gris")
