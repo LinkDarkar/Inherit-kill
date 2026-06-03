@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://clrx1oru6b1mk"
+
+[deps]
+
+files=["res://log_interacciones.en.translation", "res://log_interacciones.en.translation", "res://log_interacciones.en.translation", "res://log_interacciones.en.translation", "res://log_interacciones.en.translation", "res://log_interacciones.en.translation"]
+
+source_file="res://log_interacciones.csv"
+dest_files=["res://log_interacciones.en.translation", "res://log_interacciones.en.translation", "res://log_interacciones.en.translation", "res://log_interacciones.en.translation", "res://log_interacciones.en.translation", "res://log_interacciones.en.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

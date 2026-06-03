@@ -16,7 +16,7 @@ Agente objetivoPrincipal = a2;
 Agente dobleAgente = objetivoPrincipal; 
 
 a1.rutina(\"leer\");
-a2.rutina(\"mirarEstatua\");
+a2.rutina(\"mirarPoste\");
 a3.rutina(\"tomarCafe\");
 
 dobleAgente.estado(\"Sudar\");
