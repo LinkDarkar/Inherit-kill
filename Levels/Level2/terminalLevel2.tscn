@@ -7,9 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://btogbjvaohwyk" path="res://Assets/spritesheets/NPCs/SchoolGirl/periodico_sepia.png" id="5_np803"]
 [ext_resource type="PackedScene" uid="uid://de68yomldl4sd" path="res://NPC/Guardia Estacion/GuardiaEstacionNpc.tscn" id="6_b0w3y"]
 [ext_resource type="SpriteFrames" uid="uid://csa14wttii3s8" path="res://Assets/spritesheets/NPCs/Guardia Estacion/guardia_estacion_sudoroso_sprite_frames.tres" id="7_78wcx"]
+[ext_resource type="AudioStream" uid="uid://04hdogvol5ij" path="res://Assets/Music/4-radiant-ruins.mp3" id="8_np803"]
 
-[node name="terminalLevel2" unique_id=1710420874 node_paths=PackedStringArray("camera2D") instance=ExtResource("1_0xe0m")]
-camera2D = NodePath("Camera2D")
+[node name="terminalLevel2" unique_id=1710420874 instance=ExtResource("1_0xe0m")]
 EscenaSiguiente = ExtResource("2_3685t")
 
 [node name="UI" parent="." index="2" unique_id=754586874]
@@ -88,3 +88,7 @@ pseudoclass = 1
 [node name="NPC9" parent="NPCs" index="8" unique_id=1081381495 instance=ExtResource("6_b0w3y")]
 position = Vector2(547, 310)
 pseudoclass = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="6" unique_id=149072241]
+stream = ExtResource("8_np803")
+autoplay = true

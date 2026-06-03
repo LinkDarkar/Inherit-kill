@@ -5,9 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://ckhvls7w42sr" path="res://NPC/Fiestero/FiesteroNpc.tscn" id="3_8x3ob"]
 [ext_resource type="PackedScene" uid="uid://b5gij5f27k5x" path="res://NPC/Mesero/MeseroNpc.tscn" id="4_lyf82"]
 [ext_resource type="PackedScene" uid="uid://db174wftv8ocp" path="res://NPC/Guardia/GuardiaNpc.tscn" id="5_xy6bf"]
+[ext_resource type="AudioStream" uid="uid://ddk8u3do1p6k6" path="res://Assets/Music/22-frozen-glade.mp3" id="6_lyf82"]
 
-[node name="discoLevel2" unique_id=1710420874 node_paths=PackedStringArray("camera2D") instance=ExtResource("1_t5nqx")]
-camera2D = NodePath("Camera2D")
+[node name="discoLevel2" unique_id=1710420874 instance=ExtResource("1_t5nqx")]
 EscenaSiguiente = ExtResource("2_hshrt")
 
 [node name="Camera2D" parent="." index="0" unique_id=1180162826]
@@ -97,3 +97,7 @@ animationNames = PackedStringArray("dance_down", "idle_down", "idle_left", "idle
 
 [node name="Player" parent="." index="5" unique_id=1147506120]
 position = Vector2(204, 64)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="6" unique_id=1329811580]
+stream = ExtResource("6_lyf82")
+autoplay = true

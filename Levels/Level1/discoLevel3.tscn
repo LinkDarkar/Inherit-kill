@@ -5,9 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://ckhvls7w42sr" path="res://NPC/Fiestero/FiesteroNpc.tscn" id="3_4leeb"]
 [ext_resource type="PackedScene" uid="uid://b5gij5f27k5x" path="res://NPC/Mesero/MeseroNpc.tscn" id="4_vj5hi"]
 [ext_resource type="PackedScene" uid="uid://db174wftv8ocp" path="res://NPC/Guardia/GuardiaNpc.tscn" id="5_v2uc6"]
+[ext_resource type="AudioStream" uid="uid://d7qkvg5kt61i" path="res://Assets/Music/41-cultivated-lands.mp3" id="6_vj5hi"]
 
-[node name="discoLevel3" unique_id=1710420874 node_paths=PackedStringArray("camera2D") instance=ExtResource("1_2ilnd")]
-camera2D = NodePath("Camera2D")
+[node name="discoLevel3" unique_id=1710420874 instance=ExtResource("1_2ilnd")]
 EscenaSiguiente = ExtResource("2_upklm")
 
 [node name="Camera2D" parent="." index="0" unique_id=1180162826]
@@ -92,3 +92,7 @@ animationNames = PackedStringArray("dance_down", "drink_down")
 
 [node name="Player" parent="." index="5" unique_id=1147506120]
 position = Vector2(317, -8)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="6" unique_id=2056186237]
+stream = ExtResource("6_vj5hi")
+autoplay = true

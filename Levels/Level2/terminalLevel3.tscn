@@ -3,9 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://bpuy5bifxyt5h" path="res://Levels/Level2/baseLevelTerminal.tscn" id="1_urrpf"]
 [ext_resource type="PackedScene" uid="uid://baoqoc8pm7ajl" path="res://Levels/Level3/plazaLevel1.tscn" id="2_1p42n"]
 [ext_resource type="PackedScene" uid="uid://qhw585n3frqi" path="res://NPC/JokerMusician/JokerMusicianNpc.tscn" id="3_2aic4"]
+[ext_resource type="AudioStream" uid="uid://04hdogvol5ij" path="res://Assets/Music/4-radiant-ruins.mp3" id="4_tpp0d"]
 
-[node name="terminalLevel3" unique_id=1710420874 node_paths=PackedStringArray("camera2D") instance=ExtResource("1_urrpf")]
-camera2D = NodePath("Camera2D")
+[node name="terminalLevel3" unique_id=1710420874 instance=ExtResource("1_urrpf")]
 EscenaSiguiente = ExtResource("2_1p42n")
 
 [node name="UI" parent="." index="2" unique_id=754586874]
@@ -57,3 +57,7 @@ isSpy = true
 [node name="NPC5" parent="NPCs" index="4" unique_id=1090020369 node_paths=PackedStringArray("player") instance=ExtResource("3_2aic4")]
 position = Vector2(681, 318)
 player = NodePath("../../Player")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="6" unique_id=317224849]
+stream = ExtResource("4_tpp0d")
+autoplay = true

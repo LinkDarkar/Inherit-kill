@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://2y75q8qib2le" path="res://NPC/SchoolGirl/SchoolGirlNpc.tscn" id="3_kpl78"]
 [ext_resource type="Texture2D" uid="uid://b32mywj0ipaaj" path="res://Assets/spritesheets/NPCs/SchoolGirl/periodico_blanco.png" id="4_2la1s"]
 [ext_resource type="Texture2D" uid="uid://btogbjvaohwyk" path="res://Assets/spritesheets/NPCs/SchoolGirl/periodico_sepia.png" id="4_lxsnm"]
+[ext_resource type="AudioStream" uid="uid://04hdogvol5ij" path="res://Assets/Music/4-radiant-ruins.mp3" id="6_ktr04"]
 
 [node name="terminalLevel1" unique_id=1710420874 instance=ExtResource("1_ntlsb")]
 EscenaSiguiente = ExtResource("2_24ras")
@@ -93,3 +94,7 @@ position = Vector2(359, 345)
 texture2D = ExtResource("4_2la1s")
 pseudoclass = 9
 animationNames = PackedStringArray("reading_white_down")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="6" unique_id=1738289186]
+stream = ExtResource("6_ktr04")
+autoplay = true

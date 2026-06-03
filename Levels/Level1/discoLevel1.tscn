@@ -4,10 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://cl6gtanf3drah" path="res://Levels/Level1/discoLevel2.tscn" id="2_uwqi5"]
 [ext_resource type="PackedScene" uid="uid://ckhvls7w42sr" path="res://NPC/Fiestero/FiesteroNpc.tscn" id="3_l86jw"]
 [ext_resource type="PackedScene" uid="uid://b5gij5f27k5x" path="res://NPC/Mesero/MeseroNpc.tscn" id="6_3ddhs"]
+[ext_resource type="AudioStream" uid="uid://04hdogvol5ij" path="res://Assets/Music/4-radiant-ruins.mp3" id="6_f8rnk"]
 [ext_resource type="PackedScene" uid="uid://db174wftv8ocp" path="res://NPC/Guardia/GuardiaNpc.tscn" id="7_fypb7"]
 
-[node name="discoLevel1" unique_id=1710420874 node_paths=PackedStringArray("camera2D") instance=ExtResource("1_261y6")]
-camera2D = NodePath("Camera2D")
+[node name="discoLevel1" unique_id=1710420874 instance=ExtResource("1_261y6")]
 EscenaSiguiente = ExtResource("2_uwqi5")
 
 [node name="Camera2D" parent="." index="0" unique_id=1180162826]
@@ -83,3 +83,7 @@ animationNames = PackedStringArray("idle_down", "idle_left", "idle_right", "idle
 
 [node name="Player" parent="." index="5" unique_id=1147506120]
 position = Vector2(224, 78)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="6" unique_id=1694127799]
+stream = ExtResource("6_f8rnk")
+autoplay = true
