@@ -1,12 +1,12 @@
 [gd_scene format=4 uid="uid://ce87b0gughyp2"]
 
-[ext_resource type="Script" uid="uid://bm4l4kswc7ets" path="res://Disco.cs" id="1_1repe"]
+[ext_resource type="Script" uid="uid://bm4l4kswc7ets" path="res://temp/Disco.cs" id="1_1repe"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_x3i67"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="3_4exih"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_tdetg"]
-[ext_resource type="PackedScene" uid="uid://boxuehltmn0ih" path="res://ui_test.tscn" id="5_imshs"]
+[ext_resource type="PackedScene" uid="uid://boxuehltmn0ih" path="res://Menus/ui_test.tscn" id="5_imshs"]
 [ext_resource type="Texture2D" uid="uid://bldiq14avoucp" path="res://Assets/tilesets/disco tileset.png" id="6_r6mad"]
-[ext_resource type="Texture2D" uid="uid://botqn2smh4pme" path="res://Room_Builder_free_16x16.png" id="7_mij18"]
+[ext_resource type="Texture2D" uid="uid://botqn2smh4pme" path="res://Assets/Room_Builder_free_16x16.png" id="7_mij18"]
 [ext_resource type="Texture2D" uid="uid://x2mih55x0my0" path="res://Assets/tilesets/Pixel 16 v2 village free.png" id="8_y2kvi"]
 [ext_resource type="PackedScene" uid="uid://ibhvykvk0l1h" path="res://Player/PlayerCharacter.tscn" id="9_46st6"]
 

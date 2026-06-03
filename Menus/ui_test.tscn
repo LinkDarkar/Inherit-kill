@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://boxuehltmn0ih"]
 
-[ext_resource type="Script" uid="uid://bpdf1nsvt2s26" path="res://InstruccionesUI.cs" id="1_bbsb6"]
+[ext_resource type="Script" uid="uid://bpdf1nsvt2s26" path="res://Menus/InstruccionesUI.cs" id="1_bbsb6"]
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=754586874]
 scale = Vector2(0.8, 0.8)

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://yvtasek70i8q"]
 
-[ext_resource type="Script" uid="uid://d34lvrp54h0fu" path="res://PantallaRegistro.cs" id="1_4edly"]
+[ext_resource type="Script" uid="uid://d34lvrp54h0fu" path="res://Menus/PantallaRegistro.cs" id="1_4edly"]
 
 [node name="PantallaRegistro" type="Control" unique_id=1536748641]
 layout_mode = 3

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dikitauortch6" path="res://Levels/baseLevel.tscn" id="1_8cq8i"]
 [ext_resource type="Texture2D" uid="uid://bldiq14avoucp" path="res://Assets/tilesets/disco tileset.png" id="2_0kxxa"]
-[ext_resource type="Texture2D" uid="uid://botqn2smh4pme" path="res://Room_Builder_free_16x16.png" id="3_jdue4"]
+[ext_resource type="Texture2D" uid="uid://botqn2smh4pme" path="res://Assets/Room_Builder_free_16x16.png" id="3_jdue4"]
 [ext_resource type="Texture2D" uid="uid://x2mih55x0my0" path="res://Assets/tilesets/Pixel 16 v2 village free.png" id="4_khafu"]
 [ext_resource type="Texture2D" uid="uid://c7ya8nb5b6eki" path="res://Assets/tilesets/Room_Builder_free_16x16.png" id="5_yvygk"]
 
