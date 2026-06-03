@@ -7,7 +7,7 @@ public partial class FiesteroNpc : BaseNpc
     {
         base._Ready();
         
-        this.upperTimeLimit = 15;
+        this.upperTimeLimit = 20;
         this.lowerTimeLimit = 5;
     }
 
