@@ -1,14 +1,1 @@
-Timestamp,IdJugador,Pregunta,Alternativas,RespuestaJugador,FueCorrecta,TiempoDeRespuesta
-2026-06-02T20:37:41,6666666666666,"Identificar al espía por comportamiento","CIVIL, GUARDIA, STAFF","CIVIL",Si,5.203019
-2026-06-02T22:33:44,Desconocido,"Identificar al espía por comportamiento","CIVIL, SEGURIDAD, GUARDIA","CIVIL",No,78.98339
-2026-06-02T22:34:15,Desconocido,"Identificar al espía por comportamiento","CIVIL, STAFF, SEGURIDAD","CIVIL",Si,2.5501888
-2026-06-02T22:49:50,Desconocido,"Identificar al espía por comportamiento","CIVIL, STAFF, SEGURIDAD","CIVIL",Si,9.05009
-2026-06-02T22:49:54,Desconocido,"Identificar al espía por comportamiento","CIVIL, STAFF, SEGURIDAD, GUARDIA, CLIENTEVIP","CLIENTEVIP",Si,2.716522
-2026-06-02T22:50:00,Desconocido,"Identificar al espía por comportamiento","FIESTEROVIP, STAFF, SEGURIDAD, GUARDIA, INVITADO","FIESTEROVIP",No,4.665018
-2026-06-02T22:50:04,Desconocido,"Identificar al espía por comportamiento","FIESTEROVIP, STAFF, SEGURIDAD, GUARDIA, INVITADO","INVITADO",Si,4.083497
-2026-06-02T22:58:56,Desconocido,"Identificar al espía por comportamiento","LECTORGACETA, LECTORCOMUN","LECTORGACETA",Si,13.383452
-2026-06-02T23:10:12,Desconocido,"Identificar al espía por comportamiento","LECTORGACETA, LECTORCOMUN, GUARDIA","GUARDIA",Si,17.600052
-2026-06-02T23:35:01,Desconocido,"Identificar al espía por comportamiento","AGENTE","AGENTE",Si,5.449993
-2026-06-02T23:40:45,Desconocido,"Identificar al espía por comportamiento","AGENTE, CIVIL","CIVIL",Si,9.499686
-2026-06-02T23:43:20,Desconocido,"Identificar al espía por comportamiento","CIVIL","CIVIL",No,6.2668753
-2026-06-02T23:43:35,Desconocido,"Identificar al espía por comportamiento","CIVIL","CIVIL",Si,5.049907
+
