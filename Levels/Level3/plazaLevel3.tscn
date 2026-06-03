@@ -31,9 +31,9 @@ animationNames = PackedStringArray("dance_down")
 
 [node name="NPC2" parent="NPCs" index="1" unique_id=1320099578 instance=ExtResource("4_mgsk8")]
 position = Vector2(344, 120)
+isSpy = true
 animationNames = PackedStringArray("speak_microphone_down")
 
 [node name="NPC4" parent="NPCs" index="2" unique_id=1792628677 instance=ExtResource("4_mgsk8")]
 position = Vector2(105, 90)
-isSpy = true
 animationNames = PackedStringArray("idle_down")
