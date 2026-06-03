@@ -2,6 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://bneehiqfcha7" path="res://Levels/Level3/baseLevelPlaza.tscn" id="1_4sx7v"]
 [ext_resource type="PackedScene" uid="uid://djhq2klsc8ch8" path="res://Levels/Level3/plazaLevel2.tscn" id="2_c8pn0"]
+[ext_resource type="PackedScene" uid="uid://2y75q8qib2le" path="res://NPC/SchoolGirl/SchoolGirlNpc.tscn" id="3_yiu55"]
+[ext_resource type="PackedScene" uid="uid://ckhvls7w42sr" path="res://NPC/Fiestero/FiesteroNpc.tscn" id="4_2hs7u"]
+[ext_resource type="Texture2D" uid="uid://b32mywj0ipaaj" path="res://Assets/spritesheets/NPCs/SchoolGirl/periodico_blanco.png" id="4_snyie"]
+[ext_resource type="PackedScene" uid="uid://de68yomldl4sd" path="res://NPC/Guardia Estacion/GuardiaEstacionNpc.tscn" id="6_2hs7u"]
+[ext_resource type="SpriteFrames" uid="uid://csa14wttii3s8" path="res://Assets/spritesheets/NPCs/Guardia Estacion/guardia_estacion_sudoroso_sprite_frames.tres" id="7_snyie"]
 
 [node name="plazaLevel1" unique_id=1710420874 instance=ExtResource("1_4sx7v")]
 EscenaSiguiente = ExtResource("2_c8pn0")
@@ -23,3 +28,24 @@ a3.rutina(\"tomarCafe\");
 
 dobleAgente.estado(\"Sudar\");
 "
+
+[node name="NPCs" type="Node2D" parent="." index="5" unique_id=561824062]
+y_sort_enabled = true
+
+[node name="NPC" parent="NPCs" index="0" unique_id=1442265239 instance=ExtResource("3_yiu55")]
+position = Vector2(78, 46)
+texture2D = ExtResource("4_snyie")
+pseudoclass = 11
+animationNames = PackedStringArray("reading_white_down")
+
+[node name="NPC2" parent="NPCs" index="1" unique_id=533933660 instance=ExtResource("4_2hs7u")]
+position = Vector2(305, 79)
+pseudoclass = 11
+animationNames = PackedStringArray("drink_down")
+
+[node name="NPC3" parent="NPCs" index="2" unique_id=940572649 instance=ExtResource("6_2hs7u")]
+position = Vector2(396, 156)
+spriteFrames = ExtResource("7_snyie")
+isSpy = true
+pseudoclass = 11
+animationNames = PackedStringArray("idle_down")

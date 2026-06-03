@@ -18,6 +18,7 @@ namespace PseudoclassEnum
 		MUSICO,
 	
 		// ex3
+		AGENTE,
 	
 		ESPIA
 	}

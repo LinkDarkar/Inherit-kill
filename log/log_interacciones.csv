@@ -8,3 +8,7 @@ Timestamp,IdJugador,Pregunta,Alternativas,RespuestaJugador,FueCorrecta,TiempoDeR
 2026-06-02T22:50:04,Desconocido,"Identificar al espía por comportamiento","FIESTEROVIP, STAFF, SEGURIDAD, GUARDIA, INVITADO","INVITADO",Si,4.083497
 2026-06-02T22:58:56,Desconocido,"Identificar al espía por comportamiento","LECTORGACETA, LECTORCOMUN","LECTORGACETA",Si,13.383452
 2026-06-02T23:10:12,Desconocido,"Identificar al espía por comportamiento","LECTORGACETA, LECTORCOMUN, GUARDIA","GUARDIA",Si,17.600052
+2026-06-02T23:35:01,Desconocido,"Identificar al espía por comportamiento","AGENTE","AGENTE",Si,5.449993
+2026-06-02T23:40:45,Desconocido,"Identificar al espía por comportamiento","AGENTE, CIVIL","CIVIL",Si,9.499686
+2026-06-02T23:43:20,Desconocido,"Identificar al espía por comportamiento","CIVIL","CIVIL",No,6.2668753
+2026-06-02T23:43:35,Desconocido,"Identificar al espía por comportamiento","CIVIL","CIVIL",Si,5.049907

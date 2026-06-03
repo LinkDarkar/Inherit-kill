@@ -2,8 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://bpuy5bifxyt5h" path="res://Levels/Level2/baseLevelTerminal.tscn" id="1_urrpf"]
 [ext_resource type="PackedScene" uid="uid://baoqoc8pm7ajl" path="res://Levels/Level3/plazaLevel1.tscn" id="2_1p42n"]
+[ext_resource type="PackedScene" uid="uid://qhw585n3frqi" path="res://NPC/JokerMusician/JokerMusicianNpc.tscn" id="3_2aic4"]
 
-[node name="terminalLevel3" unique_id=1710420874 instance=ExtResource("1_urrpf")]
+[node name="terminalLevel3" unique_id=1710420874 node_paths=PackedStringArray("camera2D") instance=ExtResource("1_urrpf")]
+camera2D = NodePath("Camera2D")
 EscenaSiguiente = ExtResource("2_1p42n")
 
 [node name="UI" parent="." index="2" unique_id=754586874]
@@ -11,28 +13,47 @@ Titulo = "Nivel 2 - 3"
 CodigoPrincipal = "Debes observar las reacciones de los músicos, eso podría revelar quien es el espía
 
 class Musico{
-    boolean aceptaMonedas;
+    boolean tocar;
     
     public Musico() {
-        this.aceptaMonedas = true;
+        this.tocar = true;
     }
     
-    public void recibirMoneda() {
-        if (this.aceptaMonedas) {
-            animacion(\"caritaFeliz\");
-        } else {
-            animacion(\"caritaEnojada\");
-        }
+    public void actuar() {
+        if (this.tocar) {
+            tocarMusica();
+        } 
+    }
+}
+class Espia extends Musico {
+    public Espia () {
+        super();
+        this.tocar = false;
     }
 }
 
-class Espia extends MusicoCallejero {
-    public Espia () {
-        super();
-        this.aceptaMonedas = false;
-    }
-}
 "
 
 [node name="NPCs" type="Node2D" parent="." index="4" unique_id=1182305405]
 y_sort_enabled = true
+
+[node name="NPC" parent="NPCs" index="0" unique_id=1442265239 node_paths=PackedStringArray("player") instance=ExtResource("3_2aic4")]
+position = Vector2(-100, 150)
+player = NodePath("../../Player")
+
+[node name="NPC2" parent="NPCs" index="1" unique_id=130185212 node_paths=PackedStringArray("player") instance=ExtResource("3_2aic4")]
+position = Vector2(-39, 208)
+player = NodePath("../../Player")
+
+[node name="NPC3" parent="NPCs" index="2" unique_id=1199573542 node_paths=PackedStringArray("player") instance=ExtResource("3_2aic4")]
+position = Vector2(45, 318)
+player = NodePath("../../Player")
+
+[node name="NPC4" parent="NPCs" index="3" unique_id=426704424 node_paths=PackedStringArray("player") instance=ExtResource("3_2aic4")]
+position = Vector2(425, 310)
+player = NodePath("../../Player")
+isSpy = true
+
+[node name="NPC5" parent="NPCs" index="4" unique_id=1090020369 node_paths=PackedStringArray("player") instance=ExtResource("3_2aic4")]
+position = Vector2(681, 318)
+player = NodePath("../../Player")
