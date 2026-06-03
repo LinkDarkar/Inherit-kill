@@ -7,26 +7,26 @@ using Godot.Collections;
 
 public partial class Model : Node
 {
-    private CharacterBody2D player;
+	private CharacterBody2D player;
 
-    private Sprite2D sprite2D;
-    private Sprite2D attackSprite;
-    private Sprite2D interactSprite;
+	private Sprite2D sprite2D;
+	private Sprite2D attackSprite;
+	private Sprite2D interactSprite;
 
-    private Area2D hitbox;
+	private Area2D hitbox;
 
-    private AnimationPlayer animationPlayer;
-    private AnimationPlayer animationPlayerAttack;
-    private AnimationPlayer animationPlayerInteract;
+	private AnimationPlayer animationPlayer;
+	private AnimationPlayer animationPlayerAttack;
+	private AnimationPlayer animationPlayerInteract;
 
-    public MoveBase currentMove;
-    private Dictionary<MOVES, MoveBase> moves;
+	public MoveBase currentMove;
+	private Dictionary<MOVES, MoveBase> moves;
 
-    private DIRECTION lastLookDirection = DIRECTION.DOWN;
-    private DIRECTION attackDirection = DIRECTION.DOWN;
+	private DIRECTION lastLookDirection = DIRECTION.DOWN;
+	private DIRECTION attackDirection = DIRECTION.DOWN;
 
-    // this boolean is for the interact state
-    // since we have no interact animation, we don't want to repeat the sfx constantly
+	// this boolean is for the interact state
+	// since we have no interact animation, we don't want to repeat the sfx constantly
     // and we ALSO WANT to maintain the state even if the animation ended
     // we have this to, in case we need it, stop the animation playing once it ended once
     public bool shouldStopAnim = false;
@@ -248,10 +248,10 @@ public partial class Model : Node
 
         if (this.shouldStopAnim == true)
         {
-            // if it already played once and it finished, the animation doesn't play again
-            return;
-        }
+			// if it already played once and it finished, the animation doesn't play again
+			return;
+		}
 
-        this.animationPlayerInteract.Play(animation);
-    }
+		this.animationPlayerInteract.Play(animation);
+	}
 }
