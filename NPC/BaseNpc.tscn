@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://daji4ibsifdw8" path="res://NPC/BaseNpc.cs" id="1_xxcha"]
 [ext_resource type="Texture2D" uid="uid://cb3ifcq5rd1rc" path="res://Assets/spritesheets/NPCs/Federico/Federico.png" id="2_3etx6"]
 [ext_resource type="Texture2D" uid="uid://ct16kk1ob8pqm" path="res://Assets/spritesheets/NPCs/Teacher/teacher.png" id="2_6swda"]
-[ext_resource type="AudioStream" uid="uid://djkmng3mgggir" path="res://Assets/Sounds/ULTIMATE-himei-f.wav" id="3_kh24r"]
+[ext_resource type="AudioStream" uid="uid://dsno88gyko70p" path="res://Assets/Sounds/negative_2.wav" id="4_07qf4"]
 [ext_resource type="SpriteFrames" uid="uid://t0jhg68tdtpo" path="res://Assets/spritesheets/NPCs/Teacher/teacher_sprite_frame.tres" id="5_rovd1"]
 [ext_resource type="AudioStream" uid="uid://dh8mwiynppybj" path="res://Assets/Sounds/UI/good_answer_inherit_kill.wav" id="5_u08xh"]
 
@@ -91,7 +91,8 @@ rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_xxcha")
 
 [node name="AudioDyingSound" type="AudioStreamPlayer2D" parent="." unique_id=1410807834]
-stream = ExtResource("3_kh24r")
+stream = ExtResource("4_07qf4")
+volume_db = 3.836
 
 [node name="AudioIfSpy" type="AudioStreamPlayer2D" parent="." unique_id=814069688]
 stream = ExtResource("5_u08xh")
