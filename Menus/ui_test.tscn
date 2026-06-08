@@ -160,3 +160,6 @@ text = "Nivel Completado"
 [node name="BotonContinuar" type="Button" parent="PopupFinal/VBoxContainer" unique_id=451564826]
 layout_mode = 2
 text = "Continuar"
+
+[node name="LabelConsejo" type="Label" parent="PopupFinal/VBoxContainer" unique_id=1980949045]
+layout_mode = 2

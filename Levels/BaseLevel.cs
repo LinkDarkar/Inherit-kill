@@ -23,8 +23,10 @@ public partial class BaseLevel : Node2D
 	[Export] protected PanelContainer npcInfoContainer;
 	[Export] protected Label classLabel;
 	[Export] protected Label animLabel;
+	
 
-	// --- NUEVO: VARIABLES PARA EL FLUJO DE NIVELES ---
+	[Export(PropertyHint.MultilineText)] 
+	public string ConsejoDerrota = "aaaa";
 	[Export] 
 	public PackedScene EscenaSiguiente; // Arrastra aquí el siguiente nivel en el Inspector
 	
@@ -32,7 +34,7 @@ public partial class BaseLevel : Node2D
 	private Label labelResultado;
 	private Button botonContinuar;
 	private bool nivelAprobado = false; // Nos ayuda a saber qué hará el botón
-
+	private Label labelConsejo;
 	public override void _Ready()
 	{
 		this.labelPuntuacion = GetNode<Label>("UI/LabelPuntuacion");
@@ -42,7 +44,7 @@ public partial class BaseLevel : Node2D
 		this.popupFinal = GetNode<Control>("UI/PopupFinal");
 		this.labelResultado = GetNode<Label>("UI/PopupFinal/VBoxContainer/LabelResultados");
 		this.botonContinuar = GetNode<Button>("UI/PopupFinal/VBoxContainer/BotonContinuar");
-		
+		this.labelConsejo = GetNode<Label>("UI/PopupFinal/VBoxContainer/LabelConsejo");
 		this.botonContinuar.Pressed += OnBotonContinuarPressed;
 		this.popupFinal.Hide(); // Nos aseguramos de que esté oculto al iniciar
 		// -----------------------------------------------------------------
@@ -131,7 +133,6 @@ public partial class BaseLevel : Node2D
 		}
 	}
 
-	// --- NUEVO: MÉTODOS PARA MOSTRAR EL POPUP Y CAMBIAR DE ESCENA ---
 	private void MostrarPopupFinal(bool victoria)
 	{
 		this.nivelAprobado = victoria;
@@ -141,11 +142,22 @@ public partial class BaseLevel : Node2D
 		{
 			this.labelResultado.Text = "¡Nivel Aprobado!";
 			this.botonContinuar.Text = "Siguiente Escenario";
+			
+			if (this.labelConsejo != null) 
+			{
+				this.labelConsejo.Hide();
+			}
 		}
 		else
 		{
 			this.labelResultado.Text = "Nivel Reprobado (Nota inferior a 4.0)";
 			this.botonContinuar.Text = "Reintentar";
+			
+			if (this.labelConsejo != null)
+			{
+				this.labelConsejo.Text = "Tip:\n" + ConsejoDerrota;
+				this.labelConsejo.Show();
+			}
 		}
 	}
 
