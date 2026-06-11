@@ -13,6 +13,15 @@ EscenaSiguiente = ExtResource("2_8c558")
 Titulo = "Nivel 3 - 2"
 CodigoPrincipal = "Sabemos que el espía tiene un maletín, el problema es que no es la única persona con uno!
 
+class Contacto {
+    String item;
+    
+    public Contacto(String itemEquipado) {
+        this.item = itemEquipado;
+        mostrarItem(this.item);
+    }
+}
+
 Contacto sujetoAlfa = new Contacto(\"maletinNegro\");
 Contacto sujetoBeta = new Contacto(\"maletinGris\");
 

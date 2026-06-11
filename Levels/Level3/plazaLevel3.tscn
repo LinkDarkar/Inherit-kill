@@ -10,6 +10,16 @@ ConsejoDerrota = "Presta atención al alcance. ¿Qué alteraciones dentro del m�
 Titulo = "Nivel 3 - 3"
 CodigoPrincipal = "El último espía, usa todo lo aprendido y acaba con él.
 
+class Informante {
+    public Informante(String accionInicial) {
+        animacion(accionInicial);
+    }
+    
+    public void estado(String nuevaAccion) {
+        animacion(nuevaAccion);
+    }
+}
+
 Informante i1 = new Informante(\"dance\");
 Informante i2 = new Informante(\"drink\");
 

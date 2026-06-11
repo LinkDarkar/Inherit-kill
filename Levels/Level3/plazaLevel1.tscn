@@ -16,6 +16,16 @@ EscenaSiguiente = ExtResource("2_c8pn0")
 Titulo = "Nivel 3 - 1"
 CodigoPrincipal = "Ahora la cosa se complica ligeramente, los espías de la plaza intentan despistarte mediante referencias, recuerda como funciona la referencia a una variable y no tendrás problema en identificar al objetivo.
 
+class Agente {
+    public void rutina(String accion) {
+        animacion(accion);
+    }
+    
+    public void estado(String nuevoEstado) {
+        animacion(nuevoEstado);
+    }
+}
+
 Agente a1 = new Agente();
 Agente a2 = new Agente();
 Agente a3 = new Agente();
