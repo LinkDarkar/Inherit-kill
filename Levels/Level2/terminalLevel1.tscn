@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://btogbjvaohwyk" path="res://Assets/spritesheets/NPCs/SchoolGirl/periodico_sepia.png" id="4_lxsnm"]
 
 [node name="terminalLevel1" unique_id=1710420874 instance=ExtResource("1_ntlsb")]
+ConsejoDerrota = "Revisa el constructor. ¿El atributo heredado conserva su estado inicial al instanciarse?"
 EscenaSiguiente = ExtResource("2_24ras")
 
 [node name="UI" parent="." index="2" unique_id=754586874]

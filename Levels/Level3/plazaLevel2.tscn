@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b32mywj0ipaaj" path="res://Assets/spritesheets/NPCs/SchoolGirl/periodico_blanco.png" id="4_vp8tb"]
 
 [node name="plazaLevel2" unique_id=1710420874 instance=ExtResource("1_n7ut7")]
+ConsejoDerrota = "Ojo con la instanciación. ¿Qué pasa con las variables antiguas cuando a un alias se le asigna un objeto totalmente nuevo?"
 EscenaSiguiente = ExtResource("2_8c558")
 
 [node name="UI" parent="." index="2" unique_id=754586874]

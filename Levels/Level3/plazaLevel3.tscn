@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ckhvls7w42sr" path="res://NPC/Fiestero/FiesteroNpc.tscn" id="4_mgsk8"]
 
 [node name="plazaLevel3" unique_id=1710420874 instance=ExtResource("1_uxime")]
+ConsejoDerrota = "Presta atención al alcance. ¿Qué alteraciones dentro del método afectan al objeto original y cuáles son solo temporales?"
 
 [node name="UI" parent="." index="2" unique_id=754586874]
 Titulo = "Nivel 3 - 3"

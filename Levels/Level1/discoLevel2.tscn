@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://b5gij5f27k5x" path="res://NPC/Mesero/MeseroNpc.tscn" id="4_lyf82"]
 [ext_resource type="PackedScene" uid="uid://db174wftv8ocp" path="res://NPC/Guardia/GuardiaNpc.tscn" id="5_xy6bf"]
 
-[node name="discoLevel2" unique_id=1710420874 node_paths=PackedStringArray("camera2D") instance=ExtResource("1_t5nqx")]
-camera2D = NodePath("Camera2D")
+[node name="discoLevel2" unique_id=1710420874 instance=ExtResource("1_t5nqx")]
+ConsejoDerrota = "Sigue el árbol genealógico. ¿Qué ocurre visualmente cuando las rutinas se acumulan llamando a la clase base?"
 EscenaSiguiente = ExtResource("2_hshrt")
 
 [node name="Camera2D" parent="." index="0" unique_id=1180162826]

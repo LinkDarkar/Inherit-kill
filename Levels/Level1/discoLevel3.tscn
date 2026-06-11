@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://b5gij5f27k5x" path="res://NPC/Mesero/MeseroNpc.tscn" id="4_vj5hi"]
 [ext_resource type="PackedScene" uid="uid://db174wftv8ocp" path="res://NPC/Guardia/GuardiaNpc.tscn" id="5_v2uc6"]
 
-[node name="discoLevel3" unique_id=1710420874 node_paths=PackedStringArray("camera2D") instance=ExtResource("1_2ilnd")]
-camera2D = NodePath("Camera2D")
+[node name="discoLevel3" unique_id=1710420874 instance=ExtResource("1_2ilnd")]
+ConsejoDerrota = "Verifica si el objetivo realmente está invocando el comportamiento de su clase padre o lo está reemplazando por completo."
 EscenaSiguiente = ExtResource("2_upklm")
 
 [node name="Camera2D" parent="." index="0" unique_id=1180162826]

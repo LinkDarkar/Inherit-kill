@@ -9,6 +9,7 @@
 [ext_resource type="SpriteFrames" uid="uid://csa14wttii3s8" path="res://Assets/spritesheets/NPCs/Guardia Estacion/guardia_estacion_sudoroso_sprite_frames.tres" id="7_snyie"]
 
 [node name="plazaLevel1" unique_id=1710420874 instance=ExtResource("1_4sx7v")]
+ConsejoDerrota = "Sigue el rastro de la memoria. Si varias variables apuntan a la misma entidad, ¿a quién afecta realmente un cambio de estado?"
 EscenaSiguiente = ExtResource("2_c8pn0")
 
 [node name="UI" parent="." index="2" unique_id=754586874]

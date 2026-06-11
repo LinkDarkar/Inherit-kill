@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://db174wftv8ocp" path="res://NPC/Guardia/GuardiaNpc.tscn" id="7_fypb7"]
 
 [node name="discoLevel1" unique_id=1710420874 instance=ExtResource("1_261y6")]
+ConsejoDerrota = "Observa si hay acciones extra que realice el objetivo antes de ejecutar su rutina normal."
 EscenaSiguiente = ExtResource("2_uwqi5")
 
 [node name="Camera2D" parent="." index="0" unique_id=1180162826]
